@@ -18,19 +18,18 @@ domains service documentation.
 
 :::info[Service Summary]
 
-total resources: __5__  
+total resources: __4__  
 
 :::
 
 ## Resources
 <div class="row">
 <div class="providerDocColumn">
-<a href="/services/domains/config/">config</a><br />
-<a href="/services/domains/domain_registry/">domain_registry</a><br />
-<a href="/services/domains/domains/">domains</a>
+<a href="/services/domains/domain_config/">domain_config</a><br />
+<a href="/services/domains/domain_project_domains/">domain_project_domains</a>
 </div>
 <div class="providerDocColumn">
-<a href="/services/domains/price/">price</a><br />
-<a href="/services/domains/status/">status</a>
+<a href="/services/domains/domain_verification/">domain_verification</a><br />
+<a href="/services/domains/domains/">domains</a>
 </div>
 </div>

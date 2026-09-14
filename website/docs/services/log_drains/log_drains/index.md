@@ -15,6 +15,7 @@ image: /img/stackql-vercel-provider-featured-image.png
 ---
 
 import CopyableCode from '@site/src/components/CopyableCode/CopyableCode';
+import CodeBlock from '@theme/CodeBlock';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
@@ -22,7 +23,7 @@ Creates, updates, deletes, gets or lists a <code>log_drains</code> resource.
 
 ## Overview
 <table><tbody>
-<tr><td><b>Name</b></td><td><code>log_drains</code></td></tr>
+<tr><td><b>Name</b></td><td><CopyableCode code="log_drains" /></td></tr>
 <tr><td><b>Type</b></td><td>Resource</td></tr>
 <tr><td><b>Id</b></td><td><CopyableCode code="vercel.log_drains.log_drains" /></td></tr>
 </tbody></table>
@@ -32,13 +33,13 @@ Creates, updates, deletes, gets or lists a <code>log_drains</code> resource.
 The following fields are returned by `SELECT` queries:
 
 <Tabs
-    defaultValue="get_configurable_log_drain"
+    defaultValue="get"
     values={[
-        { label: 'get_configurable_log_drain', value: 'get_configurable_log_drain' },
-        { label: 'get_configurable_log_drains', value: 'get_configurable_log_drains' }
+        { label: 'get', value: 'get' },
+        { label: 'list', value: 'list' }
     ]}
 >
-<TabItem value="get_configurable_log_drain">
+<TabItem value="get">
 
 <table>
 <thead>
@@ -50,114 +51,44 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="id" /></td>
+    <td><CopyableCode code="client_id" /></td>
     <td><code>string</code></td>
-    <td></td>
+    <td> (wire: clientId)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="name" /></td>
+    <td><CopyableCode code="configuration_id" /></td>
     <td><code>string</code></td>
-    <td></td>
+    <td> (wire: configurationId)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="branch" /></td>
+    <td><CopyableCode code="created_from" /></td>
     <td><code>string</code></td>
-    <td></td>
+    <td> (wire: createdFrom)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="clientId" /></td>
+    <td><CopyableCode code="integration_configuration_uri" /></td>
     <td><code>string</code></td>
-    <td></td>
+    <td> (wire: integrationConfigurationUri)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="configurationId" /></td>
+    <td><CopyableCode code="integration_icon" /></td>
     <td><code>string</code></td>
-    <td></td>
+    <td> (wire: integrationIcon)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
-    <td><code>number</code></td>
-    <td></td>
-</tr>
-<tr>
-    <td><CopyableCode code="createdFrom" /></td>
+    <td><CopyableCode code="integration_website" /></td>
     <td><code>string</code></td>
-    <td></td>
+    <td> (wire: integrationWebsite)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="deliveryFormat" /></td>
-    <td><code>string</code></td>
-    <td></td>
-</tr>
-<tr>
-    <td><CopyableCode code="disabledAt" /></td>
-    <td><code>number</code></td>
-    <td></td>
-</tr>
-<tr>
-    <td><CopyableCode code="disabledBy" /></td>
-    <td><code>string</code></td>
-    <td></td>
-</tr>
-<tr>
-    <td><CopyableCode code="disabledReason" /></td>
-    <td><code>string</code></td>
-    <td></td>
-</tr>
-<tr>
-    <td><CopyableCode code="environment" /></td>
-    <td><code>string</code></td>
-    <td></td>
-</tr>
-<tr>
-    <td><CopyableCode code="firstErrorTimestamp" /></td>
-    <td><code>number</code></td>
-    <td></td>
-</tr>
-<tr>
-    <td><CopyableCode code="headers" /></td>
-    <td><code>object</code></td>
-    <td></td>
-</tr>
-<tr>
-    <td><CopyableCode code="ownerId" /></td>
-    <td><code>string</code></td>
-    <td></td>
-</tr>
-<tr>
-    <td><CopyableCode code="projectIds" /></td>
+    <td><CopyableCode code="projects_metadata" /></td>
     <td><code>array</code></td>
-    <td></td>
-</tr>
-<tr>
-    <td><CopyableCode code="secret" /></td>
-    <td><code>string</code></td>
-    <td></td>
-</tr>
-<tr>
-    <td><CopyableCode code="sources" /></td>
-    <td><code>array</code></td>
-    <td></td>
-</tr>
-<tr>
-    <td><CopyableCode code="status" /></td>
-    <td><code>string</code></td>
-    <td></td>
-</tr>
-<tr>
-    <td><CopyableCode code="teamId" /></td>
-    <td><code>string</code></td>
-    <td></td>
-</tr>
-<tr>
-    <td><CopyableCode code="url" /></td>
-    <td><code>string</code></td>
-    <td></td>
+    <td> (wire: projectsMetadata)</td>
 </tr>
 </tbody>
 </table>
 </TabItem>
-<TabItem value="get_configurable_log_drains">
+<TabItem value="list">
 
 <table>
 <thead>
@@ -169,109 +100,39 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="id" /></td>
+    <td><CopyableCode code="client_id" /></td>
     <td><code>string</code></td>
-    <td></td>
+    <td> (wire: clientId)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="name" /></td>
+    <td><CopyableCode code="configuration_id" /></td>
     <td><code>string</code></td>
-    <td></td>
+    <td> (wire: configurationId)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="branch" /></td>
+    <td><CopyableCode code="created_from" /></td>
     <td><code>string</code></td>
-    <td></td>
+    <td> (wire: createdFrom)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="clientId" /></td>
+    <td><CopyableCode code="integration_configuration_uri" /></td>
     <td><code>string</code></td>
-    <td></td>
+    <td> (wire: integrationConfigurationUri)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="configurationId" /></td>
+    <td><CopyableCode code="integration_icon" /></td>
     <td><code>string</code></td>
-    <td></td>
+    <td> (wire: integrationIcon)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
-    <td><code>number</code></td>
-    <td></td>
-</tr>
-<tr>
-    <td><CopyableCode code="createdFrom" /></td>
+    <td><CopyableCode code="integration_website" /></td>
     <td><code>string</code></td>
-    <td></td>
+    <td> (wire: integrationWebsite)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="deliveryFormat" /></td>
-    <td><code>string</code></td>
-    <td></td>
-</tr>
-<tr>
-    <td><CopyableCode code="disabledAt" /></td>
-    <td><code>number</code></td>
-    <td></td>
-</tr>
-<tr>
-    <td><CopyableCode code="disabledBy" /></td>
-    <td><code>string</code></td>
-    <td></td>
-</tr>
-<tr>
-    <td><CopyableCode code="disabledReason" /></td>
-    <td><code>string</code></td>
-    <td></td>
-</tr>
-<tr>
-    <td><CopyableCode code="environment" /></td>
-    <td><code>string</code></td>
-    <td></td>
-</tr>
-<tr>
-    <td><CopyableCode code="firstErrorTimestamp" /></td>
-    <td><code>number</code></td>
-    <td></td>
-</tr>
-<tr>
-    <td><CopyableCode code="headers" /></td>
-    <td><code>object</code></td>
-    <td></td>
-</tr>
-<tr>
-    <td><CopyableCode code="ownerId" /></td>
-    <td><code>string</code></td>
-    <td></td>
-</tr>
-<tr>
-    <td><CopyableCode code="projectIds" /></td>
+    <td><CopyableCode code="projects_metadata" /></td>
     <td><code>array</code></td>
-    <td></td>
-</tr>
-<tr>
-    <td><CopyableCode code="secret" /></td>
-    <td><code>string</code></td>
-    <td></td>
-</tr>
-<tr>
-    <td><CopyableCode code="sources" /></td>
-    <td><code>array</code></td>
-    <td></td>
-</tr>
-<tr>
-    <td><CopyableCode code="status" /></td>
-    <td><code>string</code></td>
-    <td></td>
-</tr>
-<tr>
-    <td><CopyableCode code="teamId" /></td>
-    <td><code>string</code></td>
-    <td></td>
-</tr>
-<tr>
-    <td><CopyableCode code="url" /></td>
-    <td><code>string</code></td>
-    <td></td>
+    <td> (wire: projectsMetadata)</td>
 </tr>
 </tbody>
 </table>
@@ -294,31 +155,31 @@ The following methods are available for this resource:
 </thead>
 <tbody>
 <tr>
-    <td><a href="#get_configurable_log_drain"><CopyableCode code="get_configurable_log_drain" /></a></td>
+    <td><a href="#get"><CopyableCode code="get" /></a></td>
     <td><CopyableCode code="select" /></td>
-    <td><a href="#parameter-id"><code>id</code></a>, <a href="#parameter-teamId"><code>teamId</code></a></td>
-    <td></td>
+    <td><a href="#parameter-id"><code>id</code></a></td>
+    <td><a href="#parameter-team_id"><code>team_id</code></a>, <a href="#parameter-slug"><code>slug</code></a></td>
     <td>Retrieves a Configurable Log Drain. This endpoint must be called with a team AccessToken (integration OAuth2 clients are not allowed). Only log drains owned by the authenticated team can be accessed.</td>
 </tr>
 <tr>
-    <td><a href="#get_configurable_log_drains"><CopyableCode code="get_configurable_log_drains" /></a></td>
+    <td><a href="#list"><CopyableCode code="list" /></a></td>
     <td><CopyableCode code="select" /></td>
-    <td><a href="#parameter-teamId"><code>teamId</code></a></td>
-    <td><a href="#parameter-projectId"><code>projectId</code></a></td>
-    <td>Retrieves a list of Configurable Log Drains. This endpoint must be called with a team AccessToken (integration OAuth2 clients are not allowed). Only log drains owned by the authenticated team can be accessed.</td>
+    <td></td>
+    <td><a href="#parameter-project_id"><code>project_id</code></a>, <a href="#parameter-project_id_or_name"><code>project_id_or_name</code></a>, <a href="#parameter-include_metadata"><code>include_metadata</code></a>, <a href="#parameter-team_id"><code>team_id</code></a>, <a href="#parameter-slug"><code>slug</code></a></td>
+    <td>Retrieves a list of all the Log Drains owned by the account. This endpoint must be called with an account AccessToken (integration OAuth2 clients are not allowed). Only log drains owned by the authenticated account can be accessed.</td>
 </tr>
 <tr>
-    <td><a href="#create_configurable_log_drain"><CopyableCode code="create_configurable_log_drain" /></a></td>
+    <td><a href="#create"><CopyableCode code="create" /></a></td>
     <td><CopyableCode code="insert" /></td>
-    <td><a href="#parameter-teamId"><code>teamId</code></a>, <a href="#parameter-data__deliveryFormat"><code>data__deliveryFormat</code></a>, <a href="#parameter-data__url"><code>data__url</code></a>, <a href="#parameter-data__sources"><code>data__sources</code></a></td>
-    <td></td>
+    <td><a href="#parameter-delivery_format"><code>delivery_format</code></a>, <a href="#parameter-url"><code>url</code></a>, <a href="#parameter-sources"><code>sources</code></a></td>
+    <td><a href="#parameter-team_id"><code>team_id</code></a>, <a href="#parameter-slug"><code>slug</code></a></td>
     <td>Creates a configurable log drain. This endpoint must be called with a team AccessToken (integration OAuth2 clients are not allowed)</td>
 </tr>
 <tr>
-    <td><a href="#delete_configurable_log_drain"><CopyableCode code="delete_configurable_log_drain" /></a></td>
+    <td><a href="#delete"><CopyableCode code="delete" /></a></td>
     <td><CopyableCode code="delete" /></td>
-    <td><a href="#parameter-id"><code>id</code></a>, <a href="#parameter-teamId"><code>teamId</code></a></td>
-    <td></td>
+    <td><a href="#parameter-id"><code>id</code></a></td>
+    <td><a href="#parameter-team_id"><code>team_id</code></a>, <a href="#parameter-slug"><code>slug</code></a></td>
     <td>Deletes a Configurable Log Drain. This endpoint must be called with a team AccessToken (integration OAuth2 clients are not allowed). Only log drains owned by the authenticated team can be deleted.</td>
 </tr>
 </tbody>
@@ -340,17 +201,32 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 <tr id="parameter-id">
     <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
-    <td>ID of the log drain to be deleted.</td>
-</tr>
-<tr id="parameter-teamId">
-    <td><CopyableCode code="teamId" /></td>
-    <td><code>string</code></td>
-    <td>The Team identifier or slug to perform the request on behalf of.</td>
-</tr>
-<tr id="parameter-projectId">
-    <td><CopyableCode code="projectId" /></td>
-    <td><code>string</code></td>
     <td></td>
+</tr>
+<tr id="parameter-include_metadata">
+    <td><CopyableCode code="include_metadata" /></td>
+    <td><code>boolean</code></td>
+    <td> (wire: includeMetadata)</td>
+</tr>
+<tr id="parameter-project_id">
+    <td><CopyableCode code="project_id" /></td>
+    <td><code>string</code></td>
+    <td> (wire: projectId)</td>
+</tr>
+<tr id="parameter-project_id_or_name">
+    <td><CopyableCode code="project_id_or_name" /></td>
+    <td><code>string</code></td>
+    <td> (wire: projectIdOrName)</td>
+</tr>
+<tr id="parameter-slug">
+    <td><CopyableCode code="slug" /></td>
+    <td><code>string</code></td>
+    <td>The Team slug to perform the request on behalf of.</td>
+</tr>
+<tr id="parameter-team_id">
+    <td><CopyableCode code="team_id" /></td>
+    <td><code>string</code></td>
+    <td>The Team identifier to perform the request on behalf of. (wire: teamId)</td>
 </tr>
 </tbody>
 </table>
@@ -358,75 +234,51 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 ## `SELECT` examples
 
 <Tabs
-    defaultValue="get_configurable_log_drain"
+    defaultValue="get"
     values={[
-        { label: 'get_configurable_log_drain', value: 'get_configurable_log_drain' },
-        { label: 'get_configurable_log_drains', value: 'get_configurable_log_drains' }
+        { label: 'get', value: 'get' },
+        { label: 'list', value: 'list' }
     ]}
 >
-<TabItem value="get_configurable_log_drain">
+<TabItem value="get">
 
 Retrieves a Configurable Log Drain. This endpoint must be called with a team AccessToken (integration OAuth2 clients are not allowed). Only log drains owned by the authenticated team can be accessed.
 
 ```sql
 SELECT
-id,
-name,
-branch,
-clientId,
-configurationId,
-createdAt,
-createdFrom,
-deliveryFormat,
-disabledAt,
-disabledBy,
-disabledReason,
-environment,
-firstErrorTimestamp,
-headers,
-ownerId,
-projectIds,
-secret,
-sources,
-status,
-teamId,
-url
+client_id,
+configuration_id,
+created_from,
+integration_configuration_uri,
+integration_icon,
+integration_website,
+projects_metadata
 FROM vercel.log_drains.log_drains
 WHERE id = '{{ id }}' -- required
-AND teamId = '{{ teamId }}' -- required
+AND team_id = '{{ team_id }}'
+AND slug = '{{ slug }}'
 ;
 ```
 </TabItem>
-<TabItem value="get_configurable_log_drains">
+<TabItem value="list">
 
-Retrieves a list of Configurable Log Drains. This endpoint must be called with a team AccessToken (integration OAuth2 clients are not allowed). Only log drains owned by the authenticated team can be accessed.
+Retrieves a list of all the Log Drains owned by the account. This endpoint must be called with an account AccessToken (integration OAuth2 clients are not allowed). Only log drains owned by the authenticated account can be accessed.
 
 ```sql
 SELECT
-id,
-name,
-branch,
-clientId,
-configurationId,
-createdAt,
-createdFrom,
-deliveryFormat,
-disabledAt,
-disabledBy,
-disabledReason,
-environment,
-firstErrorTimestamp,
-headers,
-ownerId,
-projectIds,
-secret,
-sources,
-status,
-teamId,
-url
+client_id,
+configuration_id,
+created_from,
+integration_configuration_uri,
+integration_icon,
+integration_website,
+projects_metadata
 FROM vercel.log_drains.log_drains
-WHERE teamId = '{{ teamId }}' -- required
-AND projectId = '{{ projectId }}'
+WHERE project_id = '{{ project_id }}'
+AND project_id_or_name = '{{ project_id_or_name }}'
+AND include_metadata = '{{ include_metadata }}'
+AND team_id = '{{ team_id }}'
+AND slug = '{{ slug }}'
 ;
 ```
 </TabItem>
@@ -436,103 +288,94 @@ AND projectId = '{{ projectId }}'
 ## `INSERT` examples
 
 <Tabs
-    defaultValue="create_configurable_log_drain"
+    defaultValue="create"
     values={[
-        { label: 'create_configurable_log_drain', value: 'create_configurable_log_drain' },
+        { label: 'create', value: 'create' },
         { label: 'Manifest', value: 'manifest' }
     ]}
 >
-<TabItem value="create_configurable_log_drain">
+<TabItem value="create">
 
 Creates a configurable log drain. This endpoint must be called with a team AccessToken (integration OAuth2 clients are not allowed)
 
 ```sql
 INSERT INTO vercel.log_drains.log_drains (
-data__deliveryFormat,
-data__url,
-data__headers,
-data__projectIds,
-data__sources,
-data__environment,
-data__branch,
-data__secret,
-teamId
+delivery_format,
+url,
+headers,
+project_ids,
+sources,
+environments,
+secret,
+sampling_rate,
+name,
+team_id,
+slug
 )
 SELECT 
-'{{ deliveryFormat }}' /* required */,
+'{{ delivery_format }}' /* required */,
 '{{ url }}' /* required */,
 '{{ headers }}',
-'{{ projectIds }}',
+'{{ project_ids }}',
 '{{ sources }}' /* required */,
-'{{ environment }}',
-'{{ branch }}',
+'{{ environments }}',
 '{{ secret }}',
-'{{ teamId }}'
-RETURNING
-id,
-name,
-branch,
-clientId,
-configurationId,
-createdAt,
-createdFrom,
-deliveryFormat,
-disabledAt,
-disabledBy,
-disabledReason,
-environment,
-firstErrorTimestamp,
-headers,
-ownerId,
-projectIds,
-secret,
-sources,
-status,
-teamId,
-url
+{{ sampling_rate }},
+'{{ name }}',
+'{{ team_id }}',
+'{{ slug }}'
 ;
 ```
 </TabItem>
 <TabItem value="manifest">
 
-```yaml
-# Description fields are for documentation purposes
+<CodeBlock language="yaml">{`# Description fields are for documentation purposes
 - name: log_drains
   props:
-    - name: teamId
-      value: string
-      description: Required parameter for the log_drains resource.
-    - name: deliveryFormat
-      value: string
+    - name: delivery_format
+      value: "{{ delivery_format }}"
       description: |
         The delivery log format
       valid_values: ['json', 'ndjson']
     - name: url
-      value: string
+      value: "{{ url }}"
       description: |
         The log drain url
     - name: headers
-      value: object
+      value: "{{ headers }}"
       description: |
         Headers to be sent together with the request
-    - name: projectIds
-      value: array
+    - name: project_ids
+      value:
+        - "{{ project_ids }}"
     - name: sources
-      value: array
-    - name: environment
-      value: string
-      description: |
-        The environment of log drain
-      valid_values: ['preview', 'production']
-    - name: branch
-      value: string
-      description: |
-        The branch regexp of log drain
+      value:
+        - "{{ sources }}"
+    - name: environments
+      value:
+        - "{{ environments }}"
     - name: secret
-      value: string
+      value: "{{ secret }}"
       description: |
         Custom secret of log drain
-```
+    - name: sampling_rate
+      value: {{ sampling_rate }}
+      description: |
+        The sampling rate for this log drain. It should be a percentage rate between 0 and 100. With max 2 decimal points
+    - name: name
+      value: "{{ name }}"
+      description: |
+        The custom name of this log drain.
+    - name: team_id
+      value: "{{ team_id }}"
+      description: The Team identifier to perform the request on behalf of.
+      description: The Team identifier to perform the request on behalf of.
+    - name: slug
+      value: "{{ slug }}"
+      description: The Team slug to perform the request on behalf of.
+      description: The Team slug to perform the request on behalf of.
+`}</CodeBlock>
+
 </TabItem>
 </Tabs>
 
@@ -540,19 +383,20 @@ url
 ## `DELETE` examples
 
 <Tabs
-    defaultValue="delete_configurable_log_drain"
+    defaultValue="delete"
     values={[
-        { label: 'delete_configurable_log_drain', value: 'delete_configurable_log_drain' }
+        { label: 'delete', value: 'delete' }
     ]}
 >
-<TabItem value="delete_configurable_log_drain">
+<TabItem value="delete">
 
 Deletes a Configurable Log Drain. This endpoint must be called with a team AccessToken (integration OAuth2 clients are not allowed). Only log drains owned by the authenticated team can be deleted.
 
 ```sql
 DELETE FROM vercel.log_drains.log_drains
 WHERE id = '{{ id }}' --required
-AND teamId = '{{ teamId }}' --required
+AND team_id = '{{ team_id }}'
+AND slug = '{{ slug }}'
 ;
 ```
 </TabItem>

@@ -25,11 +25,11 @@ total resources: __4__
 ## Resources
 <div class="row">
 <div class="providerDocColumn">
-<a href="/services/teams/invites/">invites</a><br />
+<a href="/services/teams/access_requests/">access_requests</a><br />
 <a href="/services/teams/members/">members</a>
 </div>
 <div class="providerDocColumn">
-<a href="/services/teams/request/">request</a><br />
+<a href="/services/teams/microfrontend_groups/">microfrontend_groups</a><br />
 <a href="/services/teams/teams/">teams</a>
 </div>
 </div>

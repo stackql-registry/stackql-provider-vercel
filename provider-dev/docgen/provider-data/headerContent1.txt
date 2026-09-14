@@ -8,7 +8,9 @@ keywords:
   - infrastructure-as-code
   - configuration-as-data
   - cloud inventory
-description: Query, deploy, and manage Vercel resources using SQL
+  - deployments
+  - edge config
+description: Query, deploy and manage Vercel projects, deployments, domains, environment variables, Edge Config, teams and more using SQL
 custom_edit_url: null
 image: /img/stackql-vercel-provider-featured-image.png
 id: 'provider-intro'
@@ -16,4 +18,4 @@ id: 'provider-intro'
 
 import CopyableCode from '@site/src/components/CopyableCode/CopyableCode';
 
-Cloud platform for serverless deployment and hosting of web applications. 
+Query, provision and operate the Vercel platform using SQL - projects, deployments (including uploading files and creating deployments), aliases, domains and DNS records, environment variables, Edge Config stores and items, teams and members, access groups, webhooks, log and trace drains, feature flags, the firewall, AI Gateway, sandboxes, the container registry and billing. The provider is generated from the published Vercel REST API OpenAPI document and covers every REST operation in it.

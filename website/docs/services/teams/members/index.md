@@ -15,6 +15,7 @@ image: /img/stackql-vercel-provider-featured-image.png
 ---
 
 import CopyableCode from '@site/src/components/CopyableCode/CopyableCode';
+import CodeBlock from '@theme/CodeBlock';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
@@ -22,7 +23,7 @@ Creates, updates, deletes, gets or lists a <code>members</code> resource.
 
 ## Overview
 <table><tbody>
-<tr><td><b>Name</b></td><td><code>members</code></td></tr>
+<tr><td><b>Name</b></td><td><CopyableCode code="members" /></td></tr>
 <tr><td><b>Type</b></td><td>Resource</td></tr>
 <tr><td><b>Id</b></td><td><CopyableCode code="vercel.teams.members" /></td></tr>
 </tbody></table>
@@ -32,12 +33,12 @@ Creates, updates, deletes, gets or lists a <code>members</code> resource.
 The following fields are returned by `SELECT` queries:
 
 <Tabs
-    defaultValue="get_team_members"
+    defaultValue="list"
     values={[
-        { label: 'get_team_members', value: 'get_team_members' }
+        { label: 'list', value: 'list' }
     ]}
 >
-<TabItem value="get_team_members">
+<TabItem value="list">
 
 <table>
 <thead>
@@ -54,9 +55,9 @@ The following fields are returned by `SELECT` queries:
     <td>The name of this user. (example: Jane Doe)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="accessRequestedAt" /></td>
+    <td><CopyableCode code="access_requested_at" /></td>
     <td><code>number</code></td>
-    <td>Timestamp in milliseconds for when this team member was accepted by an owner.</td>
+    <td>Timestamp in milliseconds for when this team member was accepted by an owner. (wire: accessRequestedAt)</td>
 </tr>
 <tr>
     <td><CopyableCode code="avatar" /></td>
@@ -71,12 +72,12 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="confirmed" /></td>
     <td><code>boolean</code></td>
-    <td>Boolean that indicates if this member was confirmed by an owner.</td>
+    <td>Boolean that indicates if this member was confirmed by an owner. (false, true)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>number</code></td>
-    <td>Timestamp in milliseconds when this member was added.</td>
+    <td>Timestamp in milliseconds when this member was added. (wire: createdAt)</td>
 </tr>
 <tr>
     <td><CopyableCode code="email" /></td>
@@ -94,9 +95,14 @@ The following fields are returned by `SELECT` queries:
     <td>Information about the GitLab account of this user.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="joinedFrom" /></td>
+    <td><CopyableCode code="is_enterprise_managed" /></td>
+    <td><code>boolean</code></td>
+    <td>Indicates whether the user is managed by an enterprise. (false, true) (wire: isEnterpriseManaged)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="joined_from" /></td>
     <td><code>object</code></td>
-    <td>Map with information about the members origin if they joined by requesting access.</td>
+    <td>Map with information about the members origin if they joined by requesting access. (wire: joinedFrom)</td>
 </tr>
 <tr>
     <td><CopyableCode code="projects" /></td>
@@ -106,7 +112,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="role" /></td>
     <td><code>string</code></td>
-    <td>Role of this user in the team. (example: OWNER)</td>
+    <td>Role of this user in the team. (BILLING, CONTRIBUTOR, DEVELOPER, MEMBER, OWNER, SECURITY, VIEWER, VIEWER_FOR_PLUS) (example: OWNER)</td>
 </tr>
 <tr>
     <td><CopyableCode code="uid" /></td>
@@ -139,39 +145,46 @@ The following methods are available for this resource:
 </thead>
 <tbody>
 <tr>
-    <td><a href="#get_team_members"><CopyableCode code="get_team_members" /></a></td>
+    <td><a href="#list"><CopyableCode code="list" /></a></td>
     <td><CopyableCode code="select" /></td>
-    <td><a href="#parameter-teamId"><code>teamId</code></a></td>
-    <td><a href="#parameter-limit"><code>limit</code></a>, <a href="#parameter-since"><code>since</code></a>, <a href="#parameter-until"><code>until</code></a>, <a href="#parameter-search"><code>search</code></a>, <a href="#parameter-role"><code>role</code></a>, <a href="#parameter-excludeProject"><code>excludeProject</code></a>, <a href="#parameter-eligibleMembersForProjectId"><code>eligibleMembersForProjectId</code></a></td>
+    <td><a href="#parameter-team_id"><code>team_id</code></a></td>
+    <td><a href="#parameter-limit"><code>limit</code></a>, <a href="#parameter-since"><code>since</code></a>, <a href="#parameter-until"><code>until</code></a>, <a href="#parameter-search"><code>search</code></a>, <a href="#parameter-role"><code>role</code></a>, <a href="#parameter-exclude_project"><code>exclude_project</code></a>, <a href="#parameter-eligible_members_for_project_id"><code>eligible_members_for_project_id</code></a>, <a href="#parameter-slug"><code>slug</code></a></td>
     <td>Get a paginated list of team members for the provided team.</td>
 </tr>
 <tr>
-    <td><a href="#remove_team_member"><CopyableCode code="remove_team_member" /></a></td>
-    <td><CopyableCode code="delete" /></td>
-    <td><a href="#parameter-teamId"><code>teamId</code></a>, <a href="#parameter-uid"><code>uid</code></a></td>
-    <td><a href="#parameter-newDefaultTeamId"><code>newDefaultTeamId</code></a></td>
-    <td>Remove a Team Member from the Team, or dismiss a user that requested access, or leave a team.</td>
+    <td><a href="#invite"><CopyableCode code="invite" /></a></td>
+    <td><CopyableCode code="insert" /></td>
+    <td><a href="#parameter-team_id"><code>team_id</code></a></td>
+    <td><a href="#parameter-slug"><code>slug</code></a></td>
+    <td>Invite a user to join the team specified in the URL. The authenticated user needs to be an `OWNER` in order to successfully invoke this endpoint. The user to be invited must be specified by email.</td>
 </tr>
 <tr>
-    <td><a href="#_get_team_members"><CopyableCode code="_get_team_members" /></a></td>
-    <td><CopyableCode code="exec" /></td>
-    <td><a href="#parameter-teamId"><code>teamId</code></a></td>
-    <td><a href="#parameter-limit"><code>limit</code></a>, <a href="#parameter-since"><code>since</code></a>, <a href="#parameter-until"><code>until</code></a>, <a href="#parameter-search"><code>search</code></a>, <a href="#parameter-role"><code>role</code></a>, <a href="#parameter-excludeProject"><code>excludeProject</code></a>, <a href="#parameter-eligibleMembersForProjectId"><code>eligibleMembersForProjectId</code></a></td>
-    <td>Get a paginated list of team members for the provided team.</td>
-</tr>
-<tr>
-    <td><a href="#invite_user_to_team"><CopyableCode code="invite_user_to_team" /></a></td>
-    <td><CopyableCode code="exec" /></td>
-    <td><a href="#parameter-teamId"><code>teamId</code></a></td>
-    <td></td>
-    <td>Invite a user to join the team specified in the URL. The authenticated user needs to be an `OWNER` in order to successfully invoke this endpoint. The user can be specified with an email or an ID. If both email and ID are provided, ID will take priority.</td>
-</tr>
-<tr>
-    <td><a href="#update_team_member"><CopyableCode code="update_team_member" /></a></td>
-    <td><CopyableCode code="exec" /></td>
-    <td><a href="#parameter-teamId"><code>teamId</code></a>, <a href="#parameter-uid"><code>uid</code></a></td>
+    <td><a href="#update"><CopyableCode code="update" /></a></td>
+    <td><CopyableCode code="update" /></td>
+    <td><a href="#parameter-uid"><code>uid</code></a>, <a href="#parameter-team_id"><code>team_id</code></a></td>
     <td></td>
     <td>Update the membership of a Team Member on the Team specified by `teamId`, such as changing the _role_ of the member, or confirming a request to join the Team for an unconfirmed member. The authenticated user must be an `OWNER` of the Team.</td>
+</tr>
+<tr>
+    <td><a href="#remove"><CopyableCode code="remove" /></a></td>
+    <td><CopyableCode code="delete" /></td>
+    <td><a href="#parameter-uid"><code>uid</code></a>, <a href="#parameter-team_id"><code>team_id</code></a></td>
+    <td><a href="#parameter-new_default_team_id"><code>new_default_team_id</code></a></td>
+    <td>Remove a Team Member from the Team, or dismiss a user that requested access, or leave a team. Directory Sync members can be removed when their directory email is absent or does not match the user's primary or verified secondary emails.</td>
+</tr>
+<tr>
+    <td><a href="#delete_invite"><CopyableCode code="delete_invite" /></a></td>
+    <td><CopyableCode code="delete" /></td>
+    <td><a href="#parameter-invite_id"><code>invite_id</code></a>, <a href="#parameter-team_id"><code>team_id</code></a></td>
+    <td></td>
+    <td>Delete an active Team invite code.</td>
+</tr>
+<tr>
+    <td><a href="#join"><CopyableCode code="join" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-team_id"><code>team_id</code></a></td>
+    <td></td>
+    <td>Join a team with a provided invite code or team ID.</td>
 </tr>
 </tbody>
 </table>
@@ -189,35 +202,40 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
     </tr>
 </thead>
 <tbody>
-<tr id="parameter-teamId">
-    <td><CopyableCode code="teamId" /></td>
+<tr id="parameter-invite_id">
+    <td><CopyableCode code="invite_id" /></td>
     <td><code>string</code></td>
-    <td>ID of the Team.</td>
+    <td>The Team invite code ID.</td>
+</tr>
+<tr id="parameter-team_id">
+    <td><CopyableCode code="team_id" /></td>
+    <td><code>string</code></td>
+    <td></td>
 </tr>
 <tr id="parameter-uid">
     <td><CopyableCode code="uid" /></td>
     <td><code>string</code></td>
-    <td>The ID of the member.</td>
+    <td>The user ID of the member.</td>
 </tr>
-<tr id="parameter-eligibleMembersForProjectId">
-    <td><CopyableCode code="eligibleMembersForProjectId" /></td>
+<tr id="parameter-eligible_members_for_project_id">
+    <td><CopyableCode code="eligible_members_for_project_id" /></td>
     <td><code>string</code></td>
-    <td>Include team members who are eligible to be members of the specified project.</td>
+    <td>Include team members who are eligible to be members of the specified project. (wire: eligibleMembersForProjectId)</td>
 </tr>
-<tr id="parameter-excludeProject">
-    <td><CopyableCode code="excludeProject" /></td>
+<tr id="parameter-exclude_project">
+    <td><CopyableCode code="exclude_project" /></td>
     <td><code>string</code></td>
-    <td>Exclude members who belong to the specified project.</td>
+    <td>Exclude members who belong to the specified project. (wire: excludeProject)</td>
 </tr>
 <tr id="parameter-limit">
     <td><CopyableCode code="limit" /></td>
     <td><code>number</code></td>
     <td>Limit how many teams should be returned</td>
 </tr>
-<tr id="parameter-newDefaultTeamId">
-    <td><CopyableCode code="newDefaultTeamId" /></td>
+<tr id="parameter-new_default_team_id">
+    <td><CopyableCode code="new_default_team_id" /></td>
     <td><code>string</code></td>
-    <td>The ID of the team to set as the new default team for the Northstar user.</td>
+    <td>The ID of the team to set as the new default team for the Northstar user. (wire: newDefaultTeamId)</td>
 </tr>
 <tr id="parameter-role">
     <td><CopyableCode code="role" /></td>
@@ -234,6 +252,11 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
     <td><code>number</code></td>
     <td>Timestamp in milliseconds to only include members added since then.</td>
 </tr>
+<tr id="parameter-slug">
+    <td><CopyableCode code="slug" /></td>
+    <td><code>string</code></td>
+    <td>The Team slug to perform the request on behalf of.</td>
+</tr>
 <tr id="parameter-until">
     <td><CopyableCode code="until" /></td>
     <td><code>number</code></td>
@@ -245,41 +268,122 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 ## `SELECT` examples
 
 <Tabs
-    defaultValue="get_team_members"
+    defaultValue="list"
     values={[
-        { label: 'get_team_members', value: 'get_team_members' }
+        { label: 'list', value: 'list' }
     ]}
 >
-<TabItem value="get_team_members">
+<TabItem value="list">
 
 Get a paginated list of team members for the provided team.
 
 ```sql
 SELECT
 name,
-accessRequestedAt,
+access_requested_at,
 avatar,
 bitbucket,
 confirmed,
-createdAt,
+created_at,
 email,
 github,
 gitlab,
-joinedFrom,
+is_enterprise_managed,
+joined_from,
 projects,
 role,
 uid,
 username
 FROM vercel.teams.members
-WHERE teamId = '{{ teamId }}' -- required
+WHERE team_id = '{{ team_id }}' -- required
 AND limit = '{{ limit }}'
 AND since = '{{ since }}'
 AND until = '{{ until }}'
 AND search = '{{ search }}'
 AND role = '{{ role }}'
-AND excludeProject = '{{ excludeProject }}'
-AND eligibleMembersForProjectId = '{{ eligibleMembersForProjectId }}'
+AND exclude_project = '{{ exclude_project }}'
+AND eligible_members_for_project_id = '{{ eligible_members_for_project_id }}'
+AND slug = '{{ slug }}'
 ;
+```
+</TabItem>
+</Tabs>
+
+
+## `INSERT` examples
+
+<Tabs
+    defaultValue="invite"
+    values={[
+        { label: 'invite', value: 'invite' },
+        { label: 'Manifest', value: 'manifest' }
+    ]}
+>
+<TabItem value="invite">
+
+Invite a user to join the team specified in the URL. The authenticated user needs to be an `OWNER` in order to successfully invoke this endpoint. The user to be invited must be specified by email.
+
+```sql
+INSERT INTO vercel.teams.members (
+team_id,
+slug
+)
+SELECT 
+'{{ team_id }}',
+'{{ slug }}'
+RETURNING
+email,
+role,
+team_permissions,
+team_roles,
+uid,
+username
+;
+```
+</TabItem>
+<TabItem value="manifest">
+
+<CodeBlock language="yaml">{`# Description fields are for documentation purposes
+- name: members
+  props:
+    - name: team_id
+      value: "{{ team_id }}"
+      description: Required parameter for the members resource.
+    - name: slug
+      value: "{{ slug }}"
+      description: The Team slug to perform the request on behalf of.
+      description: The Team slug to perform the request on behalf of.
+`}</CodeBlock>
+
+</TabItem>
+</Tabs>
+
+
+## `UPDATE` examples
+
+<Tabs
+    defaultValue="update"
+    values={[
+        { label: 'update', value: 'update' }
+    ]}
+>
+<TabItem value="update">
+
+Update the membership of a Team Member on the Team specified by `teamId`, such as changing the _role_ of the member, or confirming a request to join the Team for an unconfirmed member. The authenticated user must be an `OWNER` of the Team.
+
+```sql
+UPDATE vercel.teams.members
+SET 
+confirmed = {{ confirmed }},
+role = '{{ role }}',
+team_permissions = '{{ team_permissions }}',
+projects = '{{ projects }}',
+joined_from = '{{ joined_from }}'
+WHERE 
+uid = '{{ uid }}' --required
+AND team_id = '{{ team_id }}' --required
+RETURNING
+id;
 ```
 </TabItem>
 </Tabs>
@@ -288,20 +392,32 @@ AND eligibleMembersForProjectId = '{{ eligibleMembersForProjectId }}'
 ## `DELETE` examples
 
 <Tabs
-    defaultValue="remove_team_member"
+    defaultValue="remove"
     values={[
-        { label: 'remove_team_member', value: 'remove_team_member' }
+        { label: 'remove', value: 'remove' },
+        { label: 'delete_invite', value: 'delete_invite' }
     ]}
 >
-<TabItem value="remove_team_member">
+<TabItem value="remove">
 
-Remove a Team Member from the Team, or dismiss a user that requested access, or leave a team.
+Remove a Team Member from the Team, or dismiss a user that requested access, or leave a team. Directory Sync members can be removed when their directory email is absent or does not match the user's primary or verified secondary emails.
 
 ```sql
 DELETE FROM vercel.teams.members
-WHERE teamId = '{{ teamId }}' --required
-AND uid = '{{ uid }}' --required
-AND newDefaultTeamId = '{{ newDefaultTeamId }}'
+WHERE uid = '{{ uid }}' --required
+AND team_id = '{{ team_id }}' --required
+AND new_default_team_id = '{{ new_default_team_id }}'
+;
+```
+</TabItem>
+<TabItem value="delete_invite">
+
+Delete an active Team invite code.
+
+```sql
+DELETE FROM vercel.teams.members
+WHERE invite_id = '{{ invite_id }}' --required
+AND team_id = '{{ team_id }}' --required
 ;
 ```
 </TabItem>
@@ -310,62 +426,24 @@ AND newDefaultTeamId = '{{ newDefaultTeamId }}'
 
 ## Lifecycle Methods
 
+EXEC variables use wire (API) names.
+
 <Tabs
-    defaultValue="_get_team_members"
+    defaultValue="join"
     values={[
-        { label: '_get_team_members', value: '_get_team_members' },
-        { label: 'invite_user_to_team', value: 'invite_user_to_team' },
-        { label: 'update_team_member', value: 'update_team_member' }
+        { label: 'join', value: 'join' }
     ]}
 >
-<TabItem value="_get_team_members">
+<TabItem value="join">
 
-Get a paginated list of team members for the provided team.
-
-```sql
-EXEC vercel.teams.members._get_team_members 
-@teamId='{{ teamId }}' --required, 
-@limit='{{ limit }}', 
-@since='{{ since }}', 
-@until='{{ until }}', 
-@search='{{ search }}', 
-@role='{{ role }}', 
-@excludeProject='{{ excludeProject }}', 
-@eligibleMembersForProjectId='{{ eligibleMembersForProjectId }}'
-;
-```
-</TabItem>
-<TabItem value="invite_user_to_team">
-
-Invite a user to join the team specified in the URL. The authenticated user needs to be an `OWNER` in order to successfully invoke this endpoint. The user can be specified with an email or an ID. If both email and ID are provided, ID will take priority.
+Join a team with a provided invite code or team ID.
 
 ```sql
-EXEC vercel.teams.members.invite_user_to_team 
-@teamId='{{ teamId }}' --required 
+EXEC vercel.teams.members.join 
+@team_id='{{ team_id }}' --required 
 @@json=
 '{
-"uid": "{{ uid }}", 
-"email": "{{ email }}", 
-"role": "{{ role }}", 
-"projects": "{{ projects }}"
-}'
-;
-```
-</TabItem>
-<TabItem value="update_team_member">
-
-Update the membership of a Team Member on the Team specified by `teamId`, such as changing the _role_ of the member, or confirming a request to join the Team for an unconfirmed member. The authenticated user must be an `OWNER` of the Team.
-
-```sql
-EXEC vercel.teams.members.update_team_member 
-@teamId='{{ teamId }}' --required, 
-@uid='{{ uid }}' --required 
-@@json=
-'{
-"confirmed": {{ confirmed }}, 
-"role": "{{ role }}", 
-"projects": "{{ projects }}", 
-"joinedFrom": "{{ joinedFrom }}"
+"inviteCode": "{{ inviteCode }}"
 }'
 ;
 ```

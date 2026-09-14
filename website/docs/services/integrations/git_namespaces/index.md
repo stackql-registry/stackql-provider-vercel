@@ -15,6 +15,7 @@ image: /img/stackql-vercel-provider-featured-image.png
 ---
 
 import CopyableCode from '@site/src/components/CopyableCode/CopyableCode';
+import CodeBlock from '@theme/CodeBlock';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
@@ -22,7 +23,7 @@ Creates, updates, deletes, gets or lists a <code>git_namespaces</code> resource.
 
 ## Overview
 <table><tbody>
-<tr><td><b>Name</b></td><td><code>git_namespaces</code></td></tr>
+<tr><td><b>Name</b></td><td><CopyableCode code="git_namespaces" /></td></tr>
 <tr><td><b>Type</b></td><td>Resource</td></tr>
 <tr><td><b>Id</b></td><td><CopyableCode code="vercel.integrations.git_namespaces" /></td></tr>
 </tbody></table>
@@ -32,12 +33,12 @@ Creates, updates, deletes, gets or lists a <code>git_namespaces</code> resource.
 The following fields are returned by `SELECT` queries:
 
 <Tabs
-    defaultValue="git_namespaces"
+    defaultValue="list"
     values={[
-        { label: 'git_namespaces', value: 'git_namespaces' }
+        { label: 'list', value: 'list' }
     ]}
 >
-<TabItem value="git_namespaces">
+<TabItem value="list">
 
 <table>
 <thead>
@@ -59,19 +60,19 @@ The following fields are returned by `SELECT` queries:
     <td></td>
 </tr>
 <tr>
-    <td><CopyableCode code="installationId" /></td>
+    <td><CopyableCode code="installation_id" /></td>
     <td><code>number</code></td>
-    <td></td>
+    <td> (wire: installationId)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="isAccessRestricted" /></td>
+    <td><CopyableCode code="is_access_restricted" /></td>
     <td><code>boolean</code></td>
-    <td></td>
+    <td> (false, true) (wire: isAccessRestricted)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="ownerType" /></td>
+    <td><CopyableCode code="owner_type" /></td>
     <td><code>string</code></td>
-    <td></td>
+    <td> (wire: ownerType)</td>
 </tr>
 <tr>
     <td><CopyableCode code="provider" /></td>
@@ -79,13 +80,18 @@ The following fields are returned by `SELECT` queries:
     <td></td>
 </tr>
 <tr>
-    <td><CopyableCode code="requireReauth" /></td>
+    <td><CopyableCode code="require_reauth" /></td>
     <td><code>boolean</code></td>
-    <td></td>
+    <td> (false, true) (wire: requireReauth)</td>
 </tr>
 <tr>
     <td><CopyableCode code="slug" /></td>
     <td><code>string</code></td>
+    <td></td>
+</tr>
+<tr>
+    <td><CopyableCode code="viewer" /></td>
+    <td><code>object</code></td>
     <td></td>
 </tr>
 </tbody>
@@ -109,10 +115,10 @@ The following methods are available for this resource:
 </thead>
 <tbody>
 <tr>
-    <td><a href="#git_namespaces"><CopyableCode code="git_namespaces" /></a></td>
+    <td><a href="#list"><CopyableCode code="list" /></a></td>
     <td><CopyableCode code="select" /></td>
-    <td><a href="#parameter-teamId"><code>teamId</code></a></td>
-    <td><a href="#parameter-host"><code>host</code></a>, <a href="#parameter-provider"><code>provider</code></a></td>
+    <td></td>
+    <td><a href="#parameter-host"><code>host</code></a>, <a href="#parameter-provider"><code>provider</code></a>, <a href="#parameter-viewer_metadata"><code>viewer_metadata</code></a></td>
     <td>Lists git namespaces for a supported provider. Supported providers are `github`, `gitlab` and `bitbucket`. If the provider is not provided, it will try to obtain it from the user that authenticated the request.</td>
 </tr>
 </tbody>
@@ -131,11 +137,6 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
     </tr>
 </thead>
 <tbody>
-<tr id="parameter-teamId">
-    <td><CopyableCode code="teamId" /></td>
-    <td><code>string</code></td>
-    <td>The Team identifier or slug to perform the request on behalf of.</td>
-</tr>
 <tr id="parameter-host">
     <td><CopyableCode code="host" /></td>
     <td><code>string</code></td>
@@ -143,8 +144,13 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 </tr>
 <tr id="parameter-provider">
     <td><CopyableCode code="provider" /></td>
-    <td><code>string</code></td>
+    <td><code></code></td>
     <td></td>
+</tr>
+<tr id="parameter-viewer_metadata">
+    <td><CopyableCode code="viewer_metadata" /></td>
+    <td><code>boolean</code></td>
+    <td>When true, includes the viewer object for each namespace. (wire: viewerMetadata)</td>
 </tr>
 </tbody>
 </table>
@@ -152,12 +158,12 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 ## `SELECT` examples
 
 <Tabs
-    defaultValue="git_namespaces"
+    defaultValue="list"
     values={[
-        { label: 'git_namespaces', value: 'git_namespaces' }
+        { label: 'list', value: 'list' }
     ]}
 >
-<TabItem value="git_namespaces">
+<TabItem value="list">
 
 Lists git namespaces for a supported provider. Supported providers are `github`, `gitlab` and `bitbucket`. If the provider is not provided, it will try to obtain it from the user that authenticated the request.
 
@@ -165,16 +171,17 @@ Lists git namespaces for a supported provider. Supported providers are `github`,
 SELECT
 id,
 name,
-installationId,
-isAccessRestricted,
-ownerType,
+installation_id,
+is_access_restricted,
+owner_type,
 provider,
-requireReauth,
-slug
+require_reauth,
+slug,
+viewer
 FROM vercel.integrations.git_namespaces
-WHERE teamId = '{{ teamId }}' -- required
-AND host = '{{ host }}'
+WHERE host = '{{ host }}'
 AND provider = '{{ provider }}'
+AND viewer_metadata = '{{ viewer_metadata }}'
 ;
 ```
 </TabItem>

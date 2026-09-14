@@ -18,16 +18,16 @@ artifacts service documentation.
 
 :::info[Service Summary]
 
-total resources: __1__  
+total resources: __2__  
 
 :::
 
 ## Resources
 <div class="row">
 <div class="providerDocColumn">
-<a href="/services/artifacts/artifacts/">artifacts</a>
+<a href="/services/artifacts/artifact_status/">artifact_status</a>
 </div>
 <div class="providerDocColumn">
-
+<a href="/services/artifacts/artifacts/">artifacts</a>
 </div>
 </div>

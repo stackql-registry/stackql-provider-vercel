@@ -25,7 +25,7 @@ total resources: __2__
 ## Resources
 <div class="row">
 <div class="providerDocColumn">
-<a href="/services/log_drains/integrations/">integrations</a>
+<a href="/services/log_drains/integration_log_drains/">integration_log_drains</a>
 </div>
 <div class="providerDocColumn">
 <a href="/services/log_drains/log_drains/">log_drains</a>

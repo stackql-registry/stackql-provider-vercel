@@ -15,6 +15,7 @@ image: /img/stackql-vercel-provider-featured-image.png
 ---
 
 import CopyableCode from '@site/src/components/CopyableCode/CopyableCode';
+import CodeBlock from '@theme/CodeBlock';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
@@ -22,7 +23,7 @@ Creates, updates, deletes, gets or lists an <code>items</code> resource.
 
 ## Overview
 <table><tbody>
-<tr><td><b>Name</b></td><td><code>items</code></td></tr>
+<tr><td><b>Name</b></td><td><CopyableCode code="items" /></td></tr>
 <tr><td><b>Type</b></td><td>Resource</td></tr>
 <tr><td><b>Id</b></td><td><CopyableCode code="vercel.edge_config.items" /></td></tr>
 </tbody></table>
@@ -32,14 +33,15 @@ Creates, updates, deletes, gets or lists an <code>items</code> resource.
 The following fields are returned by `SELECT` queries:
 
 <Tabs
-    defaultValue="get_edge_config_items"
+    defaultValue="get"
     values={[
-        { label: 'get_edge_config_items', value: 'get_edge_config_items' }
+        { label: 'get', value: 'get' },
+        { label: 'list', value: 'list' }
     ]}
 >
-<TabItem value="get_edge_config_items">
+<TabItem value="get">
 
-The EdgeConfig.
+The Global Config.
 
 <table>
 <thead>
@@ -51,12 +53,17 @@ The EdgeConfig.
 </thead>
 <tbody>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
-    <td><code>number</code></td>
-    <td></td>
+    <td><CopyableCode code="edge_config_id" /></td>
+    <td><code>string</code></td>
+    <td> (wire: edgeConfigId)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="edgeConfigId" /></td>
+    <td><CopyableCode code="created_at" /></td>
+    <td><code>number</code></td>
+    <td> (wire: createdAt)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td></td>
 </tr>
@@ -66,14 +73,60 @@ The EdgeConfig.
     <td></td>
 </tr>
 <tr>
-    <td><CopyableCode code="updatedAt" /></td>
+    <td><CopyableCode code="updated_at" /></td>
     <td><code>number</code></td>
-    <td></td>
+    <td> (wire: updatedAt)</td>
 </tr>
 <tr>
     <td><CopyableCode code="value" /></td>
-    <td><code></code></td>
+    <td><code>string</code></td>
+    <td> (false, true)</td>
+</tr>
+</tbody>
+</table>
+</TabItem>
+<TabItem value="list">
+
+The Global Config.
+
+<table>
+<thead>
+    <tr>
+    <th>Name</th>
+    <th>Datatype</th>
+    <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+<tr>
+    <td><CopyableCode code="edge_config_id" /></td>
+    <td><code>string</code></td>
+    <td> (wire: edgeConfigId)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="created_at" /></td>
+    <td><code>number</code></td>
+    <td> (wire: createdAt)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="description" /></td>
+    <td><code>string</code></td>
     <td></td>
+</tr>
+<tr>
+    <td><CopyableCode code="key" /></td>
+    <td><code>string</code></td>
+    <td></td>
+</tr>
+<tr>
+    <td><CopyableCode code="updated_at" /></td>
+    <td><code>number</code></td>
+    <td> (wire: updatedAt)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="value" /></td>
+    <td><code>string</code></td>
+    <td> (false, true)</td>
 </tr>
 </tbody>
 </table>
@@ -96,18 +149,25 @@ The following methods are available for this resource:
 </thead>
 <tbody>
 <tr>
-    <td><a href="#get_edge_config_items"><CopyableCode code="get_edge_config_items" /></a></td>
+    <td><a href="#get"><CopyableCode code="get" /></a></td>
     <td><CopyableCode code="select" /></td>
-    <td><a href="#parameter-edgeConfigId"><code>edgeConfigId</code></a>, <a href="#parameter-teamId"><code>teamId</code></a></td>
-    <td></td>
-    <td>Returns all items of an Edge Config.</td>
+    <td><a href="#parameter-edge_config_id"><code>edge_config_id</code></a>, <a href="#parameter-edge_config_item_key"><code>edge_config_item_key</code></a></td>
+    <td><a href="#parameter-team_id"><code>team_id</code></a>, <a href="#parameter-slug"><code>slug</code></a></td>
+    <td>Returns a specific Global Config Item.</td>
 </tr>
 <tr>
-    <td><a href="#patcht_edge_config_items"><CopyableCode code="patcht_edge_config_items" /></a></td>
-    <td><CopyableCode code="exec" /></td>
-    <td><a href="#parameter-edgeConfigId"><code>edgeConfigId</code></a>, <a href="#parameter-teamId"><code>teamId</code></a>, <a href="#parameter-items"><code>items</code></a></td>
-    <td></td>
-    <td>Update multiple Edge Config Items in batch.</td>
+    <td><a href="#list"><CopyableCode code="list" /></a></td>
+    <td><CopyableCode code="select" /></td>
+    <td><a href="#parameter-edge_config_id"><code>edge_config_id</code></a></td>
+    <td><a href="#parameter-team_id"><code>team_id</code></a>, <a href="#parameter-slug"><code>slug</code></a></td>
+    <td>Returns all items of a Global Config.</td>
+</tr>
+<tr>
+    <td><a href="#update"><CopyableCode code="update" /></a></td>
+    <td><CopyableCode code="update" /></td>
+    <td><a href="#parameter-edge_config_id"><code>edge_config_id</code></a>, <a href="#parameter-items"><code>items</code></a></td>
+    <td><a href="#parameter-team_id"><code>team_id</code></a>, <a href="#parameter-slug"><code>slug</code></a></td>
+    <td>Update multiple Global Config Items in batch.</td>
 </tr>
 </tbody>
 </table>
@@ -125,15 +185,25 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
     </tr>
 </thead>
 <tbody>
-<tr id="parameter-edgeConfigId">
-    <td><CopyableCode code="edgeConfigId" /></td>
+<tr id="parameter-edge_config_id">
+    <td><CopyableCode code="edge_config_id" /></td>
     <td><code>string</code></td>
-    <td>Edge config id.</td>
+    <td></td>
 </tr>
-<tr id="parameter-teamId">
-    <td><CopyableCode code="teamId" /></td>
+<tr id="parameter-edge_config_item_key">
+    <td><CopyableCode code="edge_config_item_key" /></td>
     <td><code>string</code></td>
-    <td>The Team identifier or slug to perform the request on behalf of.</td>
+    <td></td>
+</tr>
+<tr id="parameter-slug">
+    <td><CopyableCode code="slug" /></td>
+    <td><code>string</code></td>
+    <td>The Team slug to perform the request on behalf of.</td>
+</tr>
+<tr id="parameter-team_id">
+    <td><CopyableCode code="team_id" /></td>
+    <td><code>string</code></td>
+    <td>The Team identifier to perform the request on behalf of. (wire: teamId)</td>
 </tr>
 </tbody>
 </table>
@@ -141,52 +211,77 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 ## `SELECT` examples
 
 <Tabs
-    defaultValue="get_edge_config_items"
+    defaultValue="get"
     values={[
-        { label: 'get_edge_config_items', value: 'get_edge_config_items' }
+        { label: 'get', value: 'get' },
+        { label: 'list', value: 'list' }
     ]}
 >
-<TabItem value="get_edge_config_items">
+<TabItem value="get">
 
-Returns all items of an Edge Config.
+Returns a specific Global Config Item.
 
 ```sql
 SELECT
-createdAt,
-edgeConfigId,
+edge_config_id,
+created_at,
+description,
 key,
-updatedAt,
+updated_at,
 value
 FROM vercel.edge_config.items
-WHERE edgeConfigId = '{{ edgeConfigId }}' -- required
-AND teamId = '{{ teamId }}' -- required
+WHERE edge_config_id = '{{ edge_config_id }}' -- required
+AND edge_config_item_key = '{{ edge_config_item_key }}' -- required
+AND team_id = '{{ team_id }}'
+AND slug = '{{ slug }}'
+;
+```
+</TabItem>
+<TabItem value="list">
+
+Returns all items of a Global Config.
+
+```sql
+SELECT
+edge_config_id,
+created_at,
+description,
+key,
+updated_at,
+value
+FROM vercel.edge_config.items
+WHERE edge_config_id = '{{ edge_config_id }}' -- required
+AND team_id = '{{ team_id }}'
+AND slug = '{{ slug }}'
 ;
 ```
 </TabItem>
 </Tabs>
 
 
-## Lifecycle Methods
+## `UPDATE` examples
 
 <Tabs
-    defaultValue="patcht_edge_config_items"
+    defaultValue="update"
     values={[
-        { label: 'patcht_edge_config_items', value: 'patcht_edge_config_items' }
+        { label: 'update', value: 'update' }
     ]}
 >
-<TabItem value="patcht_edge_config_items">
+<TabItem value="update">
 
-Update multiple Edge Config Items in batch.
+Update multiple Global Config Items in batch.
 
 ```sql
-EXEC vercel.edge_config.items.patcht_edge_config_items 
-@edgeConfigId='{{ edgeConfigId }}' --required, 
-@teamId='{{ teamId }}' --required 
-@@json=
-'{
-"items": "{{ items }}"
-}'
-;
+UPDATE vercel.edge_config.items
+SET 
+items = '{{ items }}'
+WHERE 
+edge_config_id = '{{ edge_config_id }}' --required
+AND items = '{{ items }}' --required
+AND team_id = '{{ team_id}}'
+AND slug = '{{ slug}}'
+RETURNING
+status;
 ```
 </TabItem>
 </Tabs>

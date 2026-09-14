@@ -15,6 +15,7 @@ image: /img/stackql-vercel-provider-featured-image.png
 ---
 
 import CopyableCode from '@site/src/components/CopyableCode/CopyableCode';
+import CodeBlock from '@theme/CodeBlock';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
@@ -22,7 +23,7 @@ Creates, updates, deletes, gets or lists a <code>deployments</code> resource.
 
 ## Overview
 <table><tbody>
-<tr><td><b>Name</b></td><td><code>deployments</code></td></tr>
+<tr><td><b>Name</b></td><td><CopyableCode code="deployments" /></td></tr>
 <tr><td><b>Type</b></td><td>Resource</td></tr>
 <tr><td><b>Id</b></td><td><CopyableCode code="vercel.deployments.deployments" /></td></tr>
 </tbody></table>
@@ -32,15 +33,15 @@ Creates, updates, deletes, gets or lists a <code>deployments</code> resource.
 The following fields are returned by `SELECT` queries:
 
 <Tabs
-    defaultValue="get_deployment"
+    defaultValue="get"
     values={[
-        { label: 'get_deployment', value: 'get_deployment' },
-        { label: 'get_deployments', value: 'get_deployments' }
+        { label: 'get', value: 'get' },
+        { label: 'list', value: 'list' }
     ]}
 >
-<TabItem value="get_deployment">
+<TabItem value="get">
 
-The deployment including only public information<br />The deployment including both public and private information
+Returns a reduced view of the deployment with public information only. Private fields are omitted when the requester is not the deployment owner.&lt;br /&gt;Returns the deployment object for the authenticated owner, including private fields such as environment variables, build log URLs, and internal metadata.&lt;br /&gt;Returns the reduced deployment view for anonymous (`vcn_`) callers. Pool-team details are withheld.
 
 <table>
 <thead>
@@ -51,10 +52,475 @@ The deployment including only public information<br />The deployment including b
     </tr>
 </thead>
 <tbody>
+<tr>
+    <td><CopyableCode code="id" /></td>
+    <td><code>string</code></td>
+    <td>A string holding the unique ID of the deployment (example: dpl_89qyp1cskzkLrVicDaZoDbjyHuDJ)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="name" /></td>
+    <td><code>string</code></td>
+    <td>The name of the project associated with the deployment at the time that the deployment was created (example: my-project)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="connect_configuration_id" /></td>
+    <td><code>string</code></td>
+    <td> (wire: connectConfigurationId)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="owner_id" /></td>
+    <td><code>string</code></td>
+    <td> (wire: ownerId)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="passive_connect_configuration_id" /></td>
+    <td><code>string</code></td>
+    <td>Since November 2023 this field defines a Secure Compute network that will only be used to deploy passive lambdas to (as in passiveRegions) (wire: passiveConnectConfigurationId)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="project_id" /></td>
+    <td><code>string</code></td>
+    <td> (wire: projectId)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="user_configured_deployment_id" /></td>
+    <td><code>string</code></td>
+    <td>Since January 2025 User-configured deployment ID for skew protection with pre-built deployments. This is set when users configure a custom deploymentId in their next.config.js file. This allows Next.js to use skew protection even when deployments are pre-built outside of Vercel's build system. (example: abc123) (wire: userConfiguredDeploymentId)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="alias" /></td>
+    <td><code>array</code></td>
+    <td></td>
+</tr>
+<tr>
+    <td><CopyableCode code="alias_assigned" /></td>
+    <td><code>boolean</code></td>
+    <td> (false, true) (wire: aliasAssigned)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="alias_assigned_at" /></td>
+    <td><code></code></td>
+    <td> (wire: aliasAssignedAt)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="alias_error" /></td>
+    <td><code>object</code></td>
+    <td>An object that will contain a `code` and a `message` when the aliasing fails, otherwise the value will be `null` (wire: aliasError)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="alias_final" /></td>
+    <td><code>string</code></td>
+    <td> (wire: aliasFinal)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="alias_warning" /></td>
+    <td><code>object</code></td>
+    <td> (wire: aliasWarning)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="always_refuse_to_build" /></td>
+    <td><code>boolean</code></td>
+    <td> (false, true) (wire: alwaysRefuseToBuild)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="atproto" /></td>
+    <td><code></code></td>
+    <td></td>
+</tr>
+<tr>
+    <td><CopyableCode code="attribution" /></td>
+    <td><code>object</code></td>
+    <td>Attribution metadata for the deployment, linking commit author to git and Vercel users. Only populated when the `enable-deployment-attribution` flag is enabled.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="auto_assign_custom_domains" /></td>
+    <td><code>boolean</code></td>
+    <td>applies to custom domains only, defaults to `true` (false, true) (wire: autoAssignCustomDomains)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="automatic_aliases" /></td>
+    <td><code>array</code></td>
+    <td> (wire: automaticAliases)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="booted_at" /></td>
+    <td><code>number</code></td>
+    <td> (wire: bootedAt)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="build" /></td>
+    <td><code>object</code></td>
+    <td></td>
+</tr>
+<tr>
+    <td><CopyableCode code="build_artifact_urls" /></td>
+    <td><code>array</code></td>
+    <td> (wire: buildArtifactUrls)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="build_container_finished_at" /></td>
+    <td><code>number</code></td>
+    <td>Since April 2025 it necessary for On-Demand Concurrency Minutes calculation (wire: buildContainerFinishedAt)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="build_error_at" /></td>
+    <td><code>number</code></td>
+    <td> (wire: buildErrorAt)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="build_skipped" /></td>
+    <td><code>boolean</code></td>
+    <td> (false, true) (wire: buildSkipped)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="building_at" /></td>
+    <td><code>number</code></td>
+    <td> (wire: buildingAt)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="builds" /></td>
+    <td><code>array</code></td>
+    <td></td>
+</tr>
+<tr>
+    <td><CopyableCode code="canceled_at" /></td>
+    <td><code>number</code></td>
+    <td> (wire: canceledAt)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="checks" /></td>
+    <td><code>object</code></td>
+    <td></td>
+</tr>
+<tr>
+    <td><CopyableCode code="checks_conclusion" /></td>
+    <td><code>string</code></td>
+    <td> (canceled, failed, skipped, succeeded) (wire: checksConclusion)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="checks_state" /></td>
+    <td><code>string</code></td>
+    <td> (completed, registered, running) (wire: checksState)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="config" /></td>
+    <td><code>object</code></td>
+    <td>Since February 2025 the configuration must include snapshot data at the time of deployment creation to capture properties for the /deployments/:id/config endpoint utilized for displaying Deployment Configuration on the frontend This is optional because older deployments may not have this data captured</td>
+</tr>
+<tr>
+    <td><CopyableCode code="connect_builds_enabled" /></td>
+    <td><code>boolean</code></td>
+    <td> (false, true) (wire: connectBuildsEnabled)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="created_at" /></td>
+    <td><code>number</code></td>
+    <td>A number containing the date when the deployment was created in milliseconds (wire: createdAt)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="created_in" /></td>
+    <td><code>string</code></td>
+    <td> (wire: createdIn)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="creator" /></td>
+    <td><code>object</code></td>
+    <td>Information about the deployment creator</td>
+</tr>
+<tr>
+    <td><CopyableCode code="crons" /></td>
+    <td><code>array</code></td>
+    <td></td>
+</tr>
+<tr>
+    <td><CopyableCode code="custom_environment" /></td>
+    <td><code></code></td>
+    <td> (wire: customEnvironment)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="default_route" /></td>
+    <td><code>string</code></td>
+    <td>Computed field that is only available for deployments with a microfrontend configuration. (wire: defaultRoute)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="deleted_at" /></td>
+    <td><code>number</code></td>
+    <td>A number containing the date when the deployment was deleted at milliseconds (wire: deletedAt)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="env" /></td>
+    <td><code>array</code></td>
+    <td></td>
+</tr>
+<tr>
+    <td><CopyableCode code="error_code" /></td>
+    <td><code>string</code></td>
+    <td> (wire: errorCode)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="error_link" /></td>
+    <td><code>string</code></td>
+    <td> (wire: errorLink)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="error_message" /></td>
+    <td><code>string</code></td>
+    <td> (wire: errorMessage)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="error_step" /></td>
+    <td><code>string</code></td>
+    <td> (wire: errorStep)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="flags" /></td>
+    <td><code></code></td>
+    <td></td>
+</tr>
+<tr>
+    <td><CopyableCode code="functions" /></td>
+    <td><code>object</code></td>
+    <td></td>
+</tr>
+<tr>
+    <td><CopyableCode code="git_repo" /></td>
+    <td><code></code></td>
+    <td> (wire: gitRepo)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="git_source" /></td>
+    <td><code></code></td>
+    <td> (wire: gitSource)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="images" /></td>
+    <td><code>object</code></td>
+    <td></td>
+</tr>
+<tr>
+    <td><CopyableCode code="init_ready_at" /></td>
+    <td><code>number</code></td>
+    <td> (wire: initReadyAt)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="inspector_url" /></td>
+    <td><code>string</code></td>
+    <td> (wire: inspectorUrl)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="integrations" /></td>
+    <td><code>object</code></td>
+    <td></td>
+</tr>
+<tr>
+    <td><CopyableCode code="is_first_branch_deployment" /></td>
+    <td><code>boolean</code></td>
+    <td> (false, true) (wire: isFirstBranchDeployment)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="is_in_concurrent_builds_queue" /></td>
+    <td><code>boolean</code></td>
+    <td> (false, true) (wire: isInConcurrentBuildsQueue)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="is_in_system_builds_queue" /></td>
+    <td><code>boolean</code></td>
+    <td> (false, true) (wire: isInSystemBuildsQueue)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="is_instant_static" /></td>
+    <td><code>boolean</code></td>
+    <td>Whether this deployment completed through the instant static fast path. (false, true) (wire: isInstantStatic)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="lambdas" /></td>
+    <td><code>array</code></td>
+    <td></td>
+</tr>
+<tr>
+    <td><CopyableCode code="manual_provisioning" /></td>
+    <td><code>object</code></td>
+    <td>Present when deployment was created with manual provisioning enabled, either explicitly or via the experimental BYOC git flow. The deployment stays in INITIALIZING until /continue is called. (wire: manualProvisioning)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="meta" /></td>
+    <td><code>object</code></td>
+    <td></td>
+</tr>
+<tr>
+    <td><CopyableCode code="microfrontends" /></td>
+    <td><code></code></td>
+    <td></td>
+</tr>
+<tr>
+    <td><CopyableCode code="monorepo_manager" /></td>
+    <td><code>string</code></td>
+    <td> (wire: monorepoManager)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="node_version" /></td>
+    <td><code>string</code></td>
+    <td>If set it overrides the `projectSettings.nodeVersion` for this deployment. (10.x, 12.x, 14.x, 16.x, 18.x, 20.x, 22.x, 24.x, 8.10.x) (wire: nodeVersion)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="oidc_token_claims" /></td>
+    <td><code>object</code></td>
+    <td> (wire: oidcTokenClaims)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="oom_report" /></td>
+    <td><code>string</code></td>
+    <td> (out-of-memory) (wire: oomReport)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="origin_cache_region" /></td>
+    <td><code>string</code></td>
+    <td> (wire: originCacheRegion)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="passive_regions" /></td>
+    <td><code>array</code></td>
+    <td>Since November 2023 this field defines a set of regions that we will deploy the lambda to passively Lambdas will be deployed to these regions but only invoked if all of the primary `regions` are marked as out of service (wire: passiveRegions)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="plan" /></td>
+    <td><code>string</code></td>
+    <td> (enterprise, hobby, pro)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="platform" /></td>
+    <td><code>object</code></td>
+    <td>Metadata about the source platform that triggered the deployment. Allows us to map a deployment back to a platform (e.g. the chat that created it)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="prebuilt" /></td>
+    <td><code>boolean</code></td>
+    <td> (false, true)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="preview_comments_enabled" /></td>
+    <td><code>boolean</code></td>
+    <td>Whether or not preview comments are enabled for the deployment (false, true) (wire: previewCommentsEnabled)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="project" /></td>
+    <td><code>object</code></td>
+    <td>The public project information associated with the deployment.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="project_settings" /></td>
+    <td><code>object</code></td>
+    <td> (wire: projectSettings)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="public" /></td>
+    <td><code>boolean</code></td>
+    <td>A boolean representing if the deployment is public or not. By default this is `false` (false, true)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="ready" /></td>
+    <td><code>number</code></td>
+    <td></td>
+</tr>
+<tr>
+    <td><CopyableCode code="ready_state" /></td>
+    <td><code>string</code></td>
+    <td>The state of the deployment depending on the process of deploying, or if it is ready or in an error state (BLOCKED, BUILDING, CANCELED, ERROR, INITIALIZING, QUEUED, READY) (example: READY) (wire: readyState)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="ready_state_reason" /></td>
+    <td><code>string</code></td>
+    <td> (wire: readyStateReason)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="ready_substate" /></td>
+    <td><code>string</code></td>
+    <td>Substate of deployment when readyState is 'READY' Tracks whether or not deployment has seen production traffic: - STAGED: never seen production traffic - ROLLING: in the process of having production traffic gradually transitioned. - PROMOTED: has seen production traffic (PROMOTED, ROLLING, STAGED) (wire: readySubstate)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="regions" /></td>
+    <td><code>array</code></td>
+    <td>The regions the deployment exists in</td>
+</tr>
+<tr>
+    <td><CopyableCode code="resource_config" /></td>
+    <td><code>object</code></td>
+    <td> (wire: resourceConfig)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="routes" /></td>
+    <td><code>array</code></td>
+    <td></td>
+</tr>
+<tr>
+    <td><CopyableCode code="seat_block" /></td>
+    <td><code>object</code></td>
+    <td>NSNB Blocked metadata (wire: seatBlock)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="services" /></td>
+    <td><code>array</code></td>
+    <td>Services detected during build from vercel.json experimentalServices or auto-detected from project structure. Used to inject service URLs as environment variables at runtime.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="soft_deleted_by_retention" /></td>
+    <td><code>boolean</code></td>
+    <td>flag to indicate if the deployment was deleted by retention policy (false, true) (example: true) (wire: softDeletedByRetention)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="source" /></td>
+    <td><code>string</code></td>
+    <td>Where was the deployment created from. Best-effort guess for metrics only — not authoritative; do not gate behavior on it. (api-trigger-git-deploy, cli, clone/repo, drop, git, git-deploy-hook, import, import/repo, redeploy, v0-web) (example: cli)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="status" /></td>
+    <td><code>string</code></td>
+    <td> (BLOCKED, BUILDING, CANCELED, ERROR, INITIALIZING, QUEUED, READY)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="target" /></td>
+    <td><code>string</code></td>
+    <td>If defined, either `staging` if a staging alias in the format `&lt;project&gt;.&lt;team&gt;.now.sh` was assigned upon creation, or `production` if the aliases from `alias` were assigned. `null` value indicates the "preview" deployment. (production, staging, )</td>
+</tr>
+<tr>
+    <td><CopyableCode code="team" /></td>
+    <td><code>object</code></td>
+    <td>The team that owns the deployment if any</td>
+</tr>
+<tr>
+    <td><CopyableCode code="tty_build_logs" /></td>
+    <td><code>boolean</code></td>
+    <td> (false, true) (wire: ttyBuildLogs)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="type" /></td>
+    <td><code>string</code></td>
+    <td> (LAMBDAS)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="undeleted_at" /></td>
+    <td><code>number</code></td>
+    <td>A number containing the date when the deployment was undeleted at milliseconds (wire: undeletedAt)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="url" /></td>
+    <td><code>string</code></td>
+    <td>A string with the unique URL of the deployment (example: my-instant-deployment-3ij3cxz9qr.now.sh)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="user_aliases" /></td>
+    <td><code>array</code></td>
+    <td>An array of domains that were provided by the user when creating the Deployment. (wire: userAliases)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="version" /></td>
+    <td><code>number</code></td>
+    <td>The platform version that was used to create the deployment. (2)</td>
+</tr>
 </tbody>
 </table>
 </TabItem>
-<TabItem value="get_deployments">
+<TabItem value="list">
 
 <table>
 <thead>
@@ -71,39 +537,59 @@ The deployment including only public information<br />The deployment including b
     <td>The name of the deployment. (example: docs)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="aliasAssigned" /></td>
+    <td><CopyableCode code="connect_configuration_id" /></td>
+    <td><code>string</code></td>
+    <td>The ID of Secure Compute network used for this deployment (wire: connectConfigurationId)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="passive_connect_configuration_id" /></td>
+    <td><code>string</code></td>
+    <td>The ID of Secure Compute network used for this deployment's passive functions (wire: passiveConnectConfigurationId)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="project_id" /></td>
+    <td><code>string</code></td>
+    <td>The project ID of the deployment (wire: projectId)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="alias_assigned" /></td>
     <td><code></code></td>
-    <td></td>
+    <td> (wire: aliasAssigned)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="aliasError" /></td>
+    <td><CopyableCode code="alias_error" /></td>
     <td><code>object</code></td>
-    <td>An error object in case aliasing of the deployment failed.</td>
+    <td>An error object in case aliasing of the deployment failed. (wire: aliasError)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="buildingAt" /></td>
+    <td><CopyableCode code="attribution" /></td>
+    <td><code>object</code></td>
+    <td>Commit attribution metadata</td>
+</tr>
+<tr>
+    <td><CopyableCode code="building_at" /></td>
     <td><code>number</code></td>
-    <td>Timestamp of when the deployment started building at.</td>
+    <td>Timestamp of when the deployment started building at. (wire: buildingAt)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="checksConclusion" /></td>
+    <td><CopyableCode code="checks" /></td>
+    <td><code>object</code></td>
+    <td>Detailed information about v2 deployment checks. Includes information about blocked workflows in the deployment lifecycle.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="checks_conclusion" /></td>
     <td><code>string</code></td>
-    <td>Conclusion for checks</td>
+    <td>Conclusion for checks (canceled, failed, skipped, succeeded) (wire: checksConclusion)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="checksState" /></td>
+    <td><CopyableCode code="checks_state" /></td>
     <td><code>string</code></td>
-    <td>State of all registered checks</td>
+    <td>State of all registered checks (completed, registered, running) (wire: checksState)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="connectBuildsEnabled" /></td>
+    <td><CopyableCode code="connect_builds_enabled" /></td>
     <td><code>boolean</code></td>
-    <td>The flag saying if Vercel Connect configuration is used for builds</td>
-</tr>
-<tr>
-    <td><CopyableCode code="connectConfigurationId" /></td>
-    <td><code>string</code></td>
-    <td>The ID of Vercel Connect configuration used for this deployment</td>
+    <td>The flag saying if Secure Compute network is used for builds (false, true) (wire: connectBuildsEnabled)</td>
 </tr>
 <tr>
     <td><CopyableCode code="created" /></td>
@@ -111,24 +597,59 @@ The deployment including only public information<br />The deployment including b
     <td>Timestamp of when the deployment got created.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="createdAt" /></td>
+    <td><CopyableCode code="created_at" /></td>
     <td><code>number</code></td>
-    <td>Timestamp of when the deployment got created.</td>
+    <td> (wire: createdAt)</td>
 </tr>
 <tr>
     <td><CopyableCode code="creator" /></td>
     <td><code>object</code></td>
-    <td>Metadata information of the user who created the deployment.</td>
+    <td>Metadata information of the deployment creator.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="inspectorUrl" /></td>
+    <td><CopyableCode code="custom_environment" /></td>
+    <td><code>object</code></td>
+    <td>The custom environment used for this deployment, if any (wire: customEnvironment)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="default_route" /></td>
     <td><code>string</code></td>
-    <td>Vercel URL to inspect the deployment. (example: https://vercel.com/acme/nextjs/J1hXN00qjUeoYfpEEf7dnDtpSiVq)</td>
+    <td>The default route that should be used for screenshots and links if configured with microfrontends. (example: /docs) (wire: defaultRoute)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="isRollbackCandidate" /></td>
+    <td><CopyableCode code="deleted" /></td>
+    <td><code>number</code></td>
+    <td>Timestamp of when the deployment got deleted.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="error_code" /></td>
+    <td><code>string</code></td>
+    <td>Error code when the deployment is in an error state. (example: BUILD_FAILED) (wire: errorCode)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="error_message" /></td>
+    <td><code>string</code></td>
+    <td>Error message when the deployment is in an canceled or error state. (example: The Deployment has been canceled because this project was not affected) (wire: errorMessage)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="expiration" /></td>
+    <td><code>number</code></td>
+    <td>The expiration configured by the project retention policy</td>
+</tr>
+<tr>
+    <td><CopyableCode code="inspector_url" /></td>
+    <td><code>string</code></td>
+    <td>Vercel URL to inspect the deployment. (example: https:​//vercel.com/acme/nextjs/J1hXN00qjUeoYfpEEf7dnDtpSiVq) (wire: inspectorUrl)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="is_rollback_candidate" /></td>
     <td><code>boolean</code></td>
-    <td>Deployment can be used for instant rollback</td>
+    <td>Deployment can be used for instant rollback (false, true, ) (wire: isRollbackCandidate)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="manual_provisioning" /></td>
+    <td><code>object</code></td>
+    <td> (wire: manualProvisioning)</td>
 </tr>
 <tr>
     <td><CopyableCode code="meta" /></td>
@@ -136,9 +657,29 @@ The deployment including only public information<br />The deployment including b
     <td>Metadata information from the Git provider.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="projectSettings" /></td>
+    <td><CopyableCode code="oom_report" /></td>
+    <td><code>string</code></td>
+    <td>Indicates if the deployment encountered an out-of-memory error. (out-of-memory) (example: out-of-memory) (wire: oomReport)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="platform" /></td>
     <td><code>object</code></td>
-    <td>The project settings which was used for this deployment</td>
+    <td>Metadata about the source platform that triggered the deployment.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="prebuilt" /></td>
+    <td><code>boolean</code></td>
+    <td> (false, true)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="project_settings" /></td>
+    <td><code>object</code></td>
+    <td>The project settings which was used for this deployment (wire: projectSettings)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="proposed_expiration" /></td>
+    <td><code>number</code></td>
+    <td>The expiration proposed to replace the existing expiration (wire: proposedExpiration)</td>
 </tr>
 <tr>
     <td><CopyableCode code="ready" /></td>
@@ -146,39 +687,54 @@ The deployment including only public information<br />The deployment including b
     <td>Timestamp of when the deployment got ready.</td>
 </tr>
 <tr>
-    <td><CopyableCode code="readyState" /></td>
+    <td><CopyableCode code="ready_state" /></td>
     <td><code>string</code></td>
-    <td>In which state is the deployment. (example: READY)</td>
+    <td> (BLOCKED, BUILDING, CANCELED, DELETED, ERROR, INITIALIZING, QUEUED, READY) (wire: readyState)</td>
 </tr>
 <tr>
-    <td><CopyableCode code="readySubstate" /></td>
+    <td><CopyableCode code="ready_substate" /></td>
     <td><code>string</code></td>
-    <td>Since June 2023 Substate of deployment when readyState is 'READY' Tracks whether or not deployment has seen production traffic: - STAGED: never seen production traffic - PROMOTED: has seen production traffic</td>
+    <td>Substate of deployment when readyState is 'READY' Tracks whether or not deployment has seen production traffic: - STAGED: never seen production traffic - ROLLING: in the process of gradually transitioning production traffic - PROMOTED: has seen production traffic (PROMOTED, ROLLING, STAGED) (wire: readySubstate)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="seat_block" /></td>
+    <td><code>object</code></td>
+    <td>NSNB Blocked metadata (wire: seatBlock)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="soft_deleted_by_retention" /></td>
+    <td><code>boolean</code></td>
+    <td>Optional flag to indicate if the deployment was soft deleted by retention policy. (false, true) (wire: softDeletedByRetention)</td>
 </tr>
 <tr>
     <td><CopyableCode code="source" /></td>
     <td><code>string</code></td>
-    <td>The source of the deployment. (example: cli)</td>
+    <td>The source of the deployment. (api-trigger-git-deploy, cli, clone/repo, drop, git, git-deploy-hook, import, import/repo, redeploy, v0-web) (example: cli)</td>
 </tr>
 <tr>
     <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
-    <td>In which state is the deployment. (example: READY)</td>
+    <td>In which state is the deployment. (BLOCKED, BUILDING, CANCELED, DELETED, ERROR, INITIALIZING, QUEUED, READY) (example: READY)</td>
 </tr>
 <tr>
     <td><CopyableCode code="target" /></td>
     <td><code>string</code></td>
-    <td>On which environment has the deployment been deployed to. (example: production)</td>
+    <td>On which environment has the deployment been deployed to. (production, staging, ) (example: production)</td>
 </tr>
 <tr>
     <td><CopyableCode code="type" /></td>
     <td><code>string</code></td>
-    <td>The type of the deployment. (example: LAMBDAS)</td>
+    <td>The type of the deployment. (LAMBDAS) (example: LAMBDAS)</td>
 </tr>
 <tr>
     <td><CopyableCode code="uid" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the deployment. (example: dpl_2euZBFqxYdDMDG1jTrHFnNZ2eUVa)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="undeleted" /></td>
+    <td><code>number</code></td>
+    <td>Timestamp of when the deployment was undeleted.</td>
 </tr>
 <tr>
     <td><CopyableCode code="url" /></td>
@@ -206,46 +762,46 @@ The following methods are available for this resource:
 </thead>
 <tbody>
 <tr>
-    <td><a href="#get_deployment"><CopyableCode code="get_deployment" /></a></td>
+    <td><a href="#get"><CopyableCode code="get" /></a></td>
     <td><CopyableCode code="select" /></td>
-    <td><a href="#parameter-idOrUrl"><code>idOrUrl</code></a>, <a href="#parameter-teamId"><code>teamId</code></a></td>
-    <td><a href="#parameter-withGitRepoInfo"><code>withGitRepoInfo</code></a></td>
+    <td><a href="#parameter-id_or_url"><code>id_or_url</code></a></td>
+    <td><a href="#parameter-with_git_repo_info"><code>with_git_repo_info</code></a>, <a href="#parameter-team_id"><code>team_id</code></a>, <a href="#parameter-slug"><code>slug</code></a></td>
     <td>Retrieves information for a deployment either by supplying its ID (`id` property) or Hostname (`url` property). Additional details will be included when the authenticated user or team is an owner of the deployment.</td>
 </tr>
 <tr>
-    <td><a href="#get_deployments"><CopyableCode code="get_deployments" /></a></td>
+    <td><a href="#list"><CopyableCode code="list" /></a></td>
     <td><CopyableCode code="select" /></td>
-    <td><a href="#parameter-teamId"><code>teamId</code></a></td>
-    <td><a href="#parameter-app"><code>app</code></a>, <a href="#parameter-from"><code>from</code></a>, <a href="#parameter-limit"><code>limit</code></a>, <a href="#parameter-projectId"><code>projectId</code></a>, <a href="#parameter-target"><code>target</code></a>, <a href="#parameter-to"><code>to</code></a>, <a href="#parameter-users"><code>users</code></a>, <a href="#parameter-since"><code>since</code></a>, <a href="#parameter-until"><code>until</code></a>, <a href="#parameter-state"><code>state</code></a>, <a href="#parameter-rollbackCandidate"><code>rollbackCandidate</code></a></td>
+    <td></td>
+    <td><a href="#parameter-app"><code>app</code></a>, <a href="#parameter-from"><code>from</code></a>, <a href="#parameter-limit"><code>limit</code></a>, <a href="#parameter-project_id"><code>project_id</code></a>, <a href="#parameter-project_ids"><code>project_ids</code></a>, <a href="#parameter-target"><code>target</code></a>, <a href="#parameter-to"><code>to</code></a>, <a href="#parameter-users"><code>users</code></a>, <a href="#parameter-since"><code>since</code></a>, <a href="#parameter-until"><code>until</code></a>, <a href="#parameter-state"><code>state</code></a>, <a href="#parameter-rollback_candidate"><code>rollback_candidate</code></a>, <a href="#parameter-branch"><code>branch</code></a>, <a href="#parameter-sha"><code>sha</code></a>, <a href="#parameter-team_id"><code>team_id</code></a>, <a href="#parameter-slug"><code>slug</code></a></td>
     <td>List deployments under the authenticated user or team. If a deployment hasn't finished uploading (is incomplete), the `url` property will have a value of `null`.</td>
 </tr>
 <tr>
-    <td><a href="#create_deployment"><CopyableCode code="create_deployment" /></a></td>
+    <td><a href="#create"><CopyableCode code="create" /></a></td>
     <td><CopyableCode code="insert" /></td>
-    <td><a href="#parameter-teamId"><code>teamId</code></a>, <a href="#parameter-data__name"><code>data__name</code></a>, <a href="#parameter-data__project"><code>data__project</code></a>, <a href="#parameter-data__connection_uris"><code>data__connection_uris</code></a>, <a href="#parameter-data__roles"><code>data__roles</code></a>, <a href="#parameter-data__databases"><code>data__databases</code></a>, <a href="#parameter-data__branch"><code>data__branch</code></a>, <a href="#parameter-data__endpoints"><code>data__endpoints</code></a>, <a href="#parameter-data__endpoint"><code>data__endpoint</code></a>, <a href="#parameter-data__database"><code>data__database</code></a>, <a href="#parameter-data__role"><code>data__role</code></a>, <a href="#parameter-data__password"><code>data__password</code></a>, <a href="#parameter-data__projects"><code>data__projects</code></a>, <a href="#parameter-data__pagination"><code>data__pagination</code></a></td>
-    <td><a href="#parameter-forceNew"><code>forceNew</code></a>, <a href="#parameter-skipAutoDetectionConfirmation"><code>skipAutoDetectionConfirmation</code></a></td>
-    <td>Create a new deployment with all the required and intended data. If the deployment is not a git deployment, all files must be provided with the request, either referenced or inlined. Additionally, a deployment id can be specified to redeploy a previous deployment.</td>
+    <td><a href="#parameter-name"><code>name</code></a></td>
+    <td><a href="#parameter-force_new"><code>force_new</code></a>, <a href="#parameter-skip_auto_detection_confirmation"><code>skip_auto_detection_confirmation</code></a>, <a href="#parameter-team_id"><code>team_id</code></a>, <a href="#parameter-slug"><code>slug</code></a></td>
+    <td>Creates a new deployment for the authenticated team or user. For non-git deployments, upload files first via the file upload API, then reference them here by SHA — or inline small files directly in the request body. To redeploy an existing deployment, provide its `deploymentId`; all settings are inherited unless explicitly overridden. The deployment begins building immediately and transitions through `QUEUED` → `INITIALIZING` → `BUILDING` before reaching `READY` or `ERROR`.</td>
 </tr>
 <tr>
-    <td><a href="#delete_deployment"><CopyableCode code="delete_deployment" /></a></td>
+    <td><a href="#delete"><CopyableCode code="delete" /></a></td>
     <td><CopyableCode code="delete" /></td>
-    <td><a href="#parameter-id"><code>id</code></a>, <a href="#parameter-teamId"><code>teamId</code></a></td>
-    <td><a href="#parameter-url"><code>url</code></a></td>
+    <td><a href="#parameter-id"><code>id</code></a></td>
+    <td><a href="#parameter-url"><code>url</code></a>, <a href="#parameter-team_id"><code>team_id</code></a>, <a href="#parameter-slug"><code>slug</code></a></td>
     <td>This API allows you to delete a deployment, either by supplying its `id` in the URL or the `url` of the deployment as a query parameter. You can obtain the ID, for example, by listing all deployments.</td>
 </tr>
 <tr>
-    <td><a href="#cancel_deployment"><CopyableCode code="cancel_deployment" /></a></td>
+    <td><a href="#update_integration_action"><CopyableCode code="update_integration_action" /></a></td>
     <td><CopyableCode code="exec" /></td>
-    <td><a href="#parameter-id"><code>id</code></a>, <a href="#parameter-teamId"><code>teamId</code></a></td>
+    <td><a href="#parameter-deployment_id"><code>deployment_id</code></a>, <a href="#parameter-integration_configuration_id"><code>integration_configuration_id</code></a>, <a href="#parameter-resource_id"><code>resource_id</code></a>, <a href="#parameter-action"><code>action</code></a></td>
     <td></td>
-    <td>This endpoint allows you to cancel a deployment which is currently building, by supplying its `id` in the URL.</td>
+    <td>Updates the deployment integration action for the specified integration installation</td>
 </tr>
 <tr>
-    <td><a href="#_get_deployments"><CopyableCode code="_get_deployments" /></a></td>
+    <td><a href="#cancel"><CopyableCode code="cancel" /></a></td>
     <td><CopyableCode code="exec" /></td>
-    <td><a href="#parameter-teamId"><code>teamId</code></a></td>
-    <td><a href="#parameter-app"><code>app</code></a>, <a href="#parameter-from"><code>from</code></a>, <a href="#parameter-limit"><code>limit</code></a>, <a href="#parameter-projectId"><code>projectId</code></a>, <a href="#parameter-target"><code>target</code></a>, <a href="#parameter-to"><code>to</code></a>, <a href="#parameter-users"><code>users</code></a>, <a href="#parameter-since"><code>since</code></a>, <a href="#parameter-until"><code>until</code></a>, <a href="#parameter-state"><code>state</code></a>, <a href="#parameter-rollbackCandidate"><code>rollbackCandidate</code></a></td>
-    <td>List deployments under the authenticated user or team. If a deployment hasn't finished uploading (is incomplete), the `url` property will have a value of `null`.</td>
+    <td><a href="#parameter-id"><code>id</code></a></td>
+    <td><a href="#parameter-teamId"><code>teamId</code></a>, <a href="#parameter-slug"><code>slug</code></a></td>
+    <td>Cancels a deployment that is currently in progress, stopping the build before it completes. Use this to recover quickly from accidental deploys, wrong-branch pushes, or builds with known errors — without waiting for them to finish. Returns 400 if the deployment is no longer cancelable (already `READY`, `ERROR`, or `CANCELED`). Returns the updated deployment object with `readyState: 'CANCELED'` on success.</td>
 </tr>
 </tbody>
 </table>
@@ -263,30 +819,50 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
     </tr>
 </thead>
 <tbody>
+<tr id="parameter-action">
+    <td><CopyableCode code="action" /></td>
+    <td><code>string</code></td>
+    <td></td>
+</tr>
+<tr id="parameter-deployment_id">
+    <td><CopyableCode code="deployment_id" /></td>
+    <td><code>string</code></td>
+    <td></td>
+</tr>
 <tr id="parameter-id">
     <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
     <td>The unique identifier of the deployment.</td>
 </tr>
-<tr id="parameter-idOrUrl">
-    <td><CopyableCode code="idOrUrl" /></td>
+<tr id="parameter-id_or_url">
+    <td><CopyableCode code="id_or_url" /></td>
     <td><code>string</code></td>
     <td>The unique identifier or hostname of the deployment.</td>
 </tr>
-<tr id="parameter-teamId">
-    <td><CopyableCode code="teamId" /></td>
+<tr id="parameter-integration_configuration_id">
+    <td><CopyableCode code="integration_configuration_id" /></td>
     <td><code>string</code></td>
-    <td>The Team identifier or slug to perform the request on behalf of.</td>
+    <td></td>
+</tr>
+<tr id="parameter-resource_id">
+    <td><CopyableCode code="resource_id" /></td>
+    <td><code>string</code></td>
+    <td></td>
 </tr>
 <tr id="parameter-app">
     <td><CopyableCode code="app" /></td>
     <td><code>string</code></td>
     <td>Name of the deployment.</td>
 </tr>
-<tr id="parameter-forceNew">
-    <td><CopyableCode code="forceNew" /></td>
+<tr id="parameter-branch">
+    <td><CopyableCode code="branch" /></td>
+    <td><code>string</code></td>
+    <td>Filter deployments based on the branch name</td>
+</tr>
+<tr id="parameter-force_new">
+    <td><CopyableCode code="force_new" /></td>
     <td><code></code></td>
-    <td>Forces a new deployment even if there is a previous similar deployment</td>
+    <td>Forces a new deployment even if there is a previous similar deployment. Set to `1` to bypass deployment deduplication and always trigger a fresh build. (wire: forceNew)</td>
 </tr>
 <tr id="parameter-from">
     <td><CopyableCode code="from" /></td>
@@ -298,35 +874,60 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
     <td><code>number</code></td>
     <td>Maximum number of deployments to list from a request.</td>
 </tr>
-<tr id="parameter-projectId">
-    <td><CopyableCode code="projectId" /></td>
+<tr id="parameter-project_id">
+    <td><CopyableCode code="project_id" /></td>
     <td><code>string</code></td>
-    <td>Filter deployments from the given `projectId`.</td>
+    <td>Filter deployments from the given ID or name. (wire: projectId)</td>
 </tr>
-<tr id="parameter-rollbackCandidate">
-    <td><CopyableCode code="rollbackCandidate" /></td>
+<tr id="parameter-project_ids">
+    <td><CopyableCode code="project_ids" /></td>
+    <td><code>array</code></td>
+    <td>Filter deployments from the given project IDs. Cannot be used when projectId is specified. (wire: projectIds)</td>
+</tr>
+<tr id="parameter-rollback_candidate">
+    <td><CopyableCode code="rollback_candidate" /></td>
     <td><code>boolean</code></td>
-    <td>Filter deployments based on their rollback candidacy</td>
+    <td>Filter deployments based on their rollback candidacy (wire: rollbackCandidate)</td>
+</tr>
+<tr id="parameter-sha">
+    <td><CopyableCode code="sha" /></td>
+    <td><code>string</code></td>
+    <td>Filter deployments based on the SHA</td>
 </tr>
 <tr id="parameter-since">
     <td><CopyableCode code="since" /></td>
     <td><code>number</code></td>
     <td>Get Deployments created after this JavaScript timestamp.</td>
 </tr>
-<tr id="parameter-skipAutoDetectionConfirmation">
-    <td><CopyableCode code="skipAutoDetectionConfirmation" /></td>
+<tr id="parameter-skip_auto_detection_confirmation">
+    <td><CopyableCode code="skip_auto_detection_confirmation" /></td>
     <td><code></code></td>
-    <td>Allows to skip framework detection so the API would not fail to ask for confirmation</td>
+    <td>Set to `1` to skip framework auto-detection and proceed without confirmation. By default, if Vercel detects a framework that differs from the project setting, the API returns a `400` asking you to confirm. Use this to suppress that check in automated pipelines. (wire: skipAutoDetectionConfirmation)</td>
+</tr>
+<tr id="parameter-slug">
+    <td><CopyableCode code="slug" /></td>
+    <td><code>string</code></td>
+    <td>The Team slug to perform the request on behalf of.</td>
 </tr>
 <tr id="parameter-state">
     <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
-    <td>Filter deployments based on their state (`BUILDING`, `ERROR`, `INITIALIZING`, `QUEUED`, `READY`, `CANCELED`)</td>
+    <td>Filter deployments based on their state (`BUILDING`, `ERROR`, `INITIALIZING`, `QUEUED`, `READY`, `CANCELED`, `BLOCKED`)</td>
 </tr>
 <tr id="parameter-target">
     <td><CopyableCode code="target" /></td>
     <td><code>string</code></td>
     <td>Filter deployments based on the environment.</td>
+</tr>
+<tr id="parameter-teamId">
+    <td><CopyableCode code="teamId" /></td>
+    <td><code>string</code></td>
+    <td>The Team identifier to perform the request on behalf of.</td>
+</tr>
+<tr id="parameter-team_id">
+    <td><CopyableCode code="team_id" /></td>
+    <td><code>string</code></td>
+    <td>The Team identifier to perform the request on behalf of. (wire: teamId)</td>
 </tr>
 <tr id="parameter-to">
     <td><CopyableCode code="to" /></td>
@@ -348,10 +949,10 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
     <td><code>string</code></td>
     <td>Filter out deployments based on users who have created the deployment.</td>
 </tr>
-<tr id="parameter-withGitRepoInfo">
-    <td><CopyableCode code="withGitRepoInfo" /></td>
+<tr id="parameter-with_git_repo_info">
+    <td><CopyableCode code="with_git_repo_info" /></td>
     <td><code>string</code></td>
-    <td>Whether to add in gitRepo information.</td>
+    <td>When `true`, the response includes the `gitSource` object with the commit SHA, branch name, and connected repository metadata. Defaults to `false`. (wire: withGitRepoInfo)</td>
 </tr>
 </tbody>
 </table>
@@ -359,69 +960,184 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 ## `SELECT` examples
 
 <Tabs
-    defaultValue="get_deployment"
+    defaultValue="get"
     values={[
-        { label: 'get_deployment', value: 'get_deployment' },
-        { label: 'get_deployments', value: 'get_deployments' }
+        { label: 'get', value: 'get' },
+        { label: 'list', value: 'list' }
     ]}
 >
-<TabItem value="get_deployment">
+<TabItem value="get">
 
 Retrieves information for a deployment either by supplying its ID (`id` property) or Hostname (`url` property). Additional details will be included when the authenticated user or team is an owner of the deployment.
 
 ```sql
 SELECT
-*
+id,
+name,
+connect_configuration_id,
+owner_id,
+passive_connect_configuration_id,
+project_id,
+user_configured_deployment_id,
+alias,
+alias_assigned,
+alias_assigned_at,
+alias_error,
+alias_final,
+alias_warning,
+always_refuse_to_build,
+atproto,
+attribution,
+auto_assign_custom_domains,
+automatic_aliases,
+booted_at,
+build,
+build_artifact_urls,
+build_container_finished_at,
+build_error_at,
+build_skipped,
+building_at,
+builds,
+canceled_at,
+checks,
+checks_conclusion,
+checks_state,
+config,
+connect_builds_enabled,
+created_at,
+created_in,
+creator,
+crons,
+custom_environment,
+default_route,
+deleted_at,
+env,
+error_code,
+error_link,
+error_message,
+error_step,
+flags,
+functions,
+git_repo,
+git_source,
+images,
+init_ready_at,
+inspector_url,
+integrations,
+is_first_branch_deployment,
+is_in_concurrent_builds_queue,
+is_in_system_builds_queue,
+is_instant_static,
+lambdas,
+manual_provisioning,
+meta,
+microfrontends,
+monorepo_manager,
+node_version,
+oidc_token_claims,
+oom_report,
+origin_cache_region,
+passive_regions,
+plan,
+platform,
+prebuilt,
+preview_comments_enabled,
+project,
+project_settings,
+public,
+ready,
+ready_state,
+ready_state_reason,
+ready_substate,
+regions,
+resource_config,
+routes,
+seat_block,
+services,
+soft_deleted_by_retention,
+source,
+status,
+target,
+team,
+tty_build_logs,
+type,
+undeleted_at,
+url,
+user_aliases,
+version
 FROM vercel.deployments.deployments
-WHERE idOrUrl = '{{ idOrUrl }}' -- required
-AND teamId = '{{ teamId }}' -- required
-AND withGitRepoInfo = '{{ withGitRepoInfo }}'
+WHERE id_or_url = '{{ id_or_url }}' -- required
+AND with_git_repo_info = '{{ with_git_repo_info }}'
+AND team_id = '{{ team_id }}'
+AND slug = '{{ slug }}'
 ;
 ```
 </TabItem>
-<TabItem value="get_deployments">
+<TabItem value="list">
 
 List deployments under the authenticated user or team. If a deployment hasn't finished uploading (is incomplete), the `url` property will have a value of `null`.
 
 ```sql
 SELECT
 name,
-aliasAssigned,
-aliasError,
-buildingAt,
-checksConclusion,
-checksState,
-connectBuildsEnabled,
-connectConfigurationId,
+connect_configuration_id,
+passive_connect_configuration_id,
+project_id,
+alias_assigned,
+alias_error,
+attribution,
+building_at,
+checks,
+checks_conclusion,
+checks_state,
+connect_builds_enabled,
 created,
-createdAt,
+created_at,
 creator,
-inspectorUrl,
-isRollbackCandidate,
+custom_environment,
+default_route,
+deleted,
+error_code,
+error_message,
+expiration,
+inspector_url,
+is_rollback_candidate,
+manual_provisioning,
 meta,
-projectSettings,
+oom_report,
+platform,
+prebuilt,
+project_settings,
+proposed_expiration,
 ready,
-readyState,
-readySubstate,
+ready_state,
+ready_substate,
+seat_block,
+soft_deleted_by_retention,
 source,
 state,
 target,
 type,
 uid,
+undeleted,
 url
 FROM vercel.deployments.deployments
-WHERE teamId = '{{ teamId }}' -- required
-AND app = '{{ app }}'
+WHERE app = '{{ app }}'
 AND from = '{{ from }}'
 AND limit = '{{ limit }}'
-AND projectId = '{{ projectId }}'
+AND project_id = '{{ project_id }}'
+AND project_ids = '{{ project_ids }}'
 AND target = '{{ target }}'
 AND to = '{{ to }}'
 AND users = '{{ users }}'
 AND since = '{{ since }}'
 AND until = '{{ until }}'
 AND state = '{{ state }}'
-AND rollbackCandidate = '{{ rollbackCandidate }}'
+AND rollback_candidate = '{{ rollback_candidate }}'
+AND branch = '{{ branch }}'
+AND sha = '{{ sha }}'
+AND team_id = '{{ team_id }}'
+AND slug = '{{ slug }}'
 ;
 ```
 </TabItem>
@@ -431,340 +1147,260 @@ AND rollbackCandidate = '{{ rollbackCandidate }}'
 ## `INSERT` examples
 
 <Tabs
-    defaultValue="create_deployment"
+    defaultValue="create"
     values={[
-        { label: 'create_deployment', value: 'create_deployment' },
+        { label: 'create', value: 'create' },
         { label: 'Manifest', value: 'manifest' }
     ]}
 >
-<TabItem value="create_deployment">
+<TabItem value="create">
 
-Create a new deployment with all the required and intended data. If the deployment is not a git deployment, all files must be provided with the request, either referenced or inlined. Additionally, a deployment id can be specified to redeploy a previous deployment.
+Creates a new deployment for the authenticated team or user. For non-git deployments, upload files first via the file upload API, then reference them here by SHA — or inline small files directly in the request body. To redeploy an existing deployment, provide its `deploymentId`; all settings are inherited unless explicitly overridden. The deployment begins building immediately and transitions through `QUEUED` → `INITIALIZING` → `BUILDING` before reaching `READY` or `ERROR`.
 
 ```sql
 INSERT INTO vercel.deployments.deployments (
-data__$schema,
-data__alias,
-data__build,
-data__builds,
-data__cleanUrls,
-data__env,
-data__functions,
-data__git,
-data__headers,
-data__images,
-data__name,
-data__public,
-data__redirects,
-data__regions,
-data__rewrites,
-data__routes,
-data__trailingSlash,
-data__buildCommand,
-data__ignoreCommand,
-data__devCommand,
-data__framework,
-data__installCommand,
-data__outputDirectory,
-data__crons,
-data__deploymentId,
-data__files,
-data__gitMetadata,
-data__gitSource,
-data__meta,
-data__monorepoManager,
-data__project,
-data__projectSettings,
-data__target,
-data__withLatestCommit,
-data__connection_uris,
-data__roles,
-data__databases,
-data__branch,
-data__endpoints,
-data__endpoint,
-data__database,
-data__role,
-data__password,
-data__projects,
-data__pagination,
-teamId,
-forceNew,
-skipAutoDetectionConfirmation
+custom_environment_slug_or_id,
+deployment_id,
+files,
+git_access_token,
+git_metadata,
+git_source,
+meta,
+monorepo_manager,
+name,
+project,
+project_settings,
+target,
+with_latest_commit,
+force_new,
+skip_auto_detection_confirmation,
+team_id,
+slug
 )
 SELECT 
-'{{ $schema }}',
-'{{ alias }}',
-'{{ build }}',
-'{{ builds }}',
-{{ cleanUrls }},
-'{{ env }}',
-'{{ functions }}',
-'{{ git }}',
-'{{ headers }}',
-'{{ images }}',
-'{{ name }}' /* required */,
-{{ public }},
-'{{ redirects }}',
-'{{ regions }}',
-'{{ rewrites }}',
-'{{ routes }}',
-{{ trailingSlash }},
-'{{ buildCommand }}',
-'{{ ignoreCommand }}',
-'{{ devCommand }}',
-'{{ framework }}',
-'{{ installCommand }}',
-'{{ outputDirectory }}',
-'{{ crons }}',
-'{{ deploymentId }}',
+'{{ custom_environment_slug_or_id }}',
+'{{ deployment_id }}',
 '{{ files }}',
-'{{ gitMetadata }}',
-'{{ gitSource }}',
+'{{ git_access_token }}',
+'{{ git_metadata }}',
+'{{ git_source }}',
 '{{ meta }}',
-'{{ monorepoManager }}',
-'{{ project }}' /* required */,
-'{{ projectSettings }}',
+'{{ monorepo_manager }}',
+'{{ name }}' /* required */,
+'{{ project }}',
+'{{ project_settings }}',
 '{{ target }}',
-{{ withLatestCommit }},
-'{{ connection_uris }}' /* required */,
-'{{ roles }}' /* required */,
-'{{ databases }}' /* required */,
-'{{ branch }}' /* required */,
-'{{ endpoints }}' /* required */,
-'{{ endpoint }}' /* required */,
-'{{ database }}' /* required */,
-'{{ role }}' /* required */,
-'{{ password }}' /* required */,
-'{{ projects }}' /* required */,
-'{{ pagination }}' /* required */,
-'{{ teamId }}',
-'{{ forceNew }}',
-'{{ skipAutoDetectionConfirmation }}'
+{{ with_latest_commit }},
+'{{ force_new }}',
+'{{ skip_auto_detection_confirmation }}',
+'{{ team_id }}',
+'{{ slug }}'
 RETURNING
 id,
 name,
+connect_configuration_id,
+owner_id,
+passive_connect_configuration_id,
+project_id,
+user_configured_deployment_id,
 alias,
-aliasAssigned,
-aliasAssignedAt,
-aliasError,
-aliasFinal,
-aliasWarning,
-autoAssignCustomDomains,
-automaticAliases,
-bootedAt,
+alias_assigned,
+alias_assigned_at,
+alias_error,
+alias_final,
+alias_warning,
+always_refuse_to_build,
+atproto,
+attribution,
+auto_assign_custom_domains,
+automatic_aliases,
+booted_at,
 build,
-buildErrorAt,
-buildingAt,
+build_artifact_urls,
+build_container_finished_at,
+build_error_at,
+build_skipped,
+building_at,
 builds,
-canceledAt,
-checksConclusion,
-checksState,
-connectBuildsEnabled,
-connectConfigurationId,
-createdAt,
-createdIn,
+canceled_at,
+checks,
+checks_conclusion,
+checks_state,
+config,
+connect_builds_enabled,
+created_at,
+created_in,
 creator,
+crons,
+custom_environment,
+default_route,
+deleted_at,
 env,
-errorCode,
-errorLink,
-errorMessage,
-errorStep,
+error_code,
+error_link,
+error_message,
+error_step,
+flags,
 functions,
-gitRepo,
-gitSource,
-inspectorUrl,
-isInConcurrentBuildsQueue,
+git_repo,
+git_source,
+images,
+init_ready_at,
+inspector_url,
+integrations,
+is_first_branch_deployment,
+is_in_concurrent_builds_queue,
+is_in_system_builds_queue,
+is_instant_static,
 lambdas,
+manual_provisioning,
 meta,
-monorepoManager,
-ownerId,
+microfrontends,
+monorepo_manager,
+node_version,
+oidc_token_claims,
+oom_report,
+origin_cache_region,
+passive_regions,
 plan,
-previewCommentsEnabled,
-projectId,
+platform,
+prebuilt,
+preview_comments_enabled,
+project,
+project_settings,
 public,
-readyState,
-readySubstate,
+ready,
+ready_state,
+ready_state_reason,
+ready_substate,
 regions,
+resource_config,
 routes,
+seat_block,
+services,
+soft_deleted_by_retention,
 source,
+status,
 target,
 team,
+tty_build_logs,
 type,
+undeleted_at,
 url,
-userAliases,
+user_aliases,
 version
 ;
 ```
 </TabItem>
 <TabItem value="manifest">
 
-```yaml
-# Description fields are for documentation purposes
+<CodeBlock language="yaml">{`# Description fields are for documentation purposes
 - name: deployments
   props:
-    - name: teamId
-      value: string
-      description: Required parameter for the deployments resource.
-    - name: $schema
-      value: string
+    - name: custom_environment_slug_or_id
+      value: "{{ custom_environment_slug_or_id }}"
       description: |
-        Ignored. Can be set to get completions, validations and documentation in some editors.
-    - name: alias
-      value: array
+        The slug or ID of a custom environment to deploy to, overriding the default target environment. When omitted, the deployment targets the environment inferred from the branch (production or preview).
+    - name: deployment_id
+      value: "{{ deployment_id }}"
       description: |
-        Aliases that will get assigned when the deployment is `READY` and the target is `production`. The client needs to make a `GET` request to its API to ensure the assignment
-    - name: build
-      value: object
-      description: |
-        An object containing another object with information to be passed to the Build Process
-    - name: builds
-      value: array
-      description: |
-        A list of build descriptions whose src references valid source files.
-    - name: cleanUrls
-      value: boolean
-      description: |
-        When set to `true`, all HTML files and Serverless Functions will have their extension removed. When visiting a path that ends with the extension, a 308 response will redirect the client to the extensionless path.
-    - name: env
-      value: object
-      description: |
-        An object containing the deployment's environment variable names and values. Secrets can be referenced by prefixing the value with `@`
-    - name: functions
-      value: object
-      description: |
-        An object describing custom options for your Serverless Functions. Each key must be glob pattern that matches the paths of the Serverless Functions you would like to customize (like `api/*.js` or `api/test.js`).
-    - name: git
-      value: object
-    - name: headers
-      value: array
-      description: |
-        A list of header definitions.
-    - name: images
-      value: object
-    - name: name
-      value: string
-      description: |
-        A string with the project name used in the deployment URL
-    - name: public
-      value: boolean
-      description: |
-        Whether a deployment's source and logs are available publicly
-    - name: redirects
-      value: array
-      description: |
-        A list of redirect definitions.
-    - name: regions
-      value: array
-      description: |
-        An array of the regions the deployment's Serverless Functions should be deployed to
-    - name: rewrites
-      value: array
-      description: |
-        A list of rewrite definitions.
-    - name: routes
-      value: array
-      description: |
-        A list of routes objects used to rewrite paths to point towards other internal or external paths
-    - name: trailingSlash
-      value: boolean
-      description: |
-        When `false`, visiting a path that ends with a forward slash will respond with a `308` status code and redirect to the path without the trailing slash.
-    - name: buildCommand
-      value: string
-      description: |
-        The build command for this project. When `null` is used this value will be automatically detected
-    - name: ignoreCommand
-      value: string
-    - name: devCommand
-      value: string
-      description: |
-        The dev command for this project. When `null` is used this value will be automatically detected
-    - name: framework
-      value: string
-      description: |
-        The framework that is being used for this project. When `null` is used no framework is selected
-      valid_values: ['', 'blitzjs', 'nextjs', 'gatsby', 'remix', 'astro', 'hexo', 'eleventy', 'docusaurus-2', 'docusaurus', 'preact', 'solidstart', 'dojo', 'ember', 'vue', 'scully', 'ionic-angular', 'angular', 'polymer', 'svelte', 'sveltekit', 'sveltekit-1', 'ionic-react', 'create-react-app', 'gridsome', 'umijs', 'sapper', 'saber', 'stencil', 'nuxtjs', 'redwoodjs', 'hugo', 'jekyll', 'brunch', 'middleman', 'zola', 'hydrogen', 'vite', 'vitepress', 'vuepress', 'parcel', 'sanity', 'storybook']
-    - name: installCommand
-      value: string
-      description: |
-        The install command for this project. When `null` is used this value will be automatically detected
-    - name: outputDirectory
-      value: string
-      description: |
-        The output directory of the project. When `null` is used this value will be automatically detected
-    - name: crons
-      value: array
-      description: |
-        An array of cron jobs that should be created for production Deployments.
-    - name: deploymentId
-      value: string
-      description: |
-        An deployment id for an existing deployment to redeploy
+        The ID of an existing deployment to redeploy. All project settings and environment variables are inherited from the original unless explicitly overridden in this request. The redeployment gets a new ID, URL, and build.
     - name: files
-      value: array
+      value: "{{ files }}"
       description: |
-        A list of objects with the files to be deployed
-    - name: gitMetadata
-      value: object
+        The files to include in the deployment. Each entry is either an inlined file (with \`data\` and \`encoding\`) or a reference to a previously uploaded file (with \`sha\` and \`size\`). Required for non-git deployments. Cannot be used together with \`gitSource\`.
+    - name: git_access_token
+      value: "{{ git_access_token }}"
+      description: |
+        Available only to Vercel platform accounts. A read-only GitHub access token scoped to the requested repository. Use a token with a lifetime of 24 hours or less that remains valid until source retrieval completes.
+    - name: git_metadata
       description: |
         Populates initial git metadata for different git providers.
-    - name: gitSource
-      value: string
+      value:
+        remoteUrl: "{{ remoteUrl }}"
+        commitAuthorName: "{{ commitAuthorName }}"
+        commitAuthorEmail: "{{ commitAuthorEmail }}"
+        commitMessage: "{{ commitMessage }}"
+        commitRef: "{{ commitRef }}"
+        commitSha: "{{ commitSha }}"
+        dirty: {{ dirty }}
+        ci: {{ ci }}
+        ciType: "{{ ciType }}"
+        ciGitProviderUsername: "{{ ciGitProviderUsername }}"
+        ciGitRepoVisibility: "{{ ciGitRepoVisibility }}"
+        rootDirectory: "{{ rootDirectory }}"
+    - name: git_source
       description: |
-        Defines the Git Repository source to be deployed. This property can not be used in combination with `files`.
+        Defines the Git Repository source to be deployed. This property can not be used in combination with \`files\`.
+      value:
+        type: "{{ type }}"
+        sha: "{{ sha }}"
+        ref: "{{ ref }}"
+        repoId: "{{ repoId }}"
+        org: "{{ org }}"
+        repo: "{{ repo }}"
+        projectId: "{{ projectId }}"
+        repoUuid: "{{ repoUuid }}"
+        workspaceUuid: "{{ workspaceUuid }}"
+        owner: "{{ owner }}"
+        slug: "{{ slug }}"
     - name: meta
-      value: object
+      value: "{{ meta }}"
       description: |
-        An object containing the deployment's metadata. Multiple key-value pairs can be attached to a deployment
-    - name: monorepoManager
-      value: string
+        An object containing the deployment's metadata. Multiple key-value pairs can be attached to a deployment. For deployments created with a Cursor Origin \`gitSource\`, Vercel automatically adds \`cursorOriginDeployment\`, \`cursorOriginCommitSha\`, \`cursorOriginCommitRef\`, \`cursorOriginCommitMessage\`, \`cursorOriginCommitAuthorName\`, \`cursorOriginCommitAuthorEmail\` when available, \`cursorOriginOwner\`, \`cursorOriginRepo\`, \`cursorOriginRepoId\`, and \`cursorOriginPrId\` for pull request deployments.
+    - name: monorepo_manager
+      value: "{{ monorepo_manager }}"
       description: |
-        The monorepo manager that is being used for this deployment. When `null` is used no monorepo manager is selected
+        The monorepo manager that is being used for this deployment. When \`null\` is used no monorepo manager is selected
+    - name: name
+      value: "{{ name }}"
+      description: |
+        A string with the project name used in the deployment URL
     - name: project
-      value: object
-    - name: projectSettings
-      value: object
+      value: "{{ project }}"
+      description: |
+        The target project identifier in which the deployment will be created. When defined, this parameter overrides name
+    - name: project_settings
       description: |
         Project settings that will be applied to the deployment. It is required for the first deployment of a project and will be saved for any following deployments
+      value:
+        buildCommand: "{{ buildCommand }}"
+        commandForIgnoringBuildStep: "{{ commandForIgnoringBuildStep }}"
+        devCommand: "{{ devCommand }}"
+        framework: "{{ framework }}"
+        installCommand: "{{ installCommand }}"
+        nodeVersion: "{{ nodeVersion }}"
+        outputDirectory: "{{ outputDirectory }}"
+        rootDirectory: "{{ rootDirectory }}"
+        serverlessFunctionRegion: "{{ serverlessFunctionRegion }}"
+        skipGitConnectDuringLink: {{ skipGitConnectDuringLink }}
+        sourceFilesOutsideRootDirectory: {{ sourceFilesOutsideRootDirectory }}
     - name: target
-      value: string
+      value: "{{ target }}"
       description: |
-        Either not defined, `staging`, or `production`. If `staging`, a staging alias in the format `<project>-<team>.vercel.app` will be assigned. If `production`, any aliases defined in `alias` will be assigned. If omitted, the target will be `preview`
-      valid_values: ['staging', 'production']
-    - name: withLatestCommit
-      value: boolean
+        Either not defined, \`staging\`, \`production\`, or a custom environment identifier. If \`staging\`, a staging alias in the format \`<project>-<team>.vercel.app\` will be assigned. If \`production\`, any aliases defined in \`alias\` will be assigned. If omitted, the target will be \`preview\`.
+    - name: with_latest_commit
+      value: {{ with_latest_commit }}
       description: |
-        When `true` and `deploymentId` is passed in, the sha from the previous deployment's `gitSource` is removed forcing the latest commit to be used.
-    - name: connection_uris
-      value: array
-    - name: roles
-      value: array
-    - name: databases
-      value: array
-    - name: branch
-      value: object
-    - name: endpoints
-      value: array
-    - name: endpoint
-      value: object
-    - name: database
-      value: object
-    - name: role
-      value: object
-    - name: password
-      value: string
-    - name: projects
-      value: array
-    - name: pagination
-      value: object
-    - name: forceNew
-      value: string
-      description: Forces a new deployment even if there is a previous similar deployment
-    - name: skipAutoDetectionConfirmation
-      value: string
-      description: Allows to skip framework detection so the API would not fail to ask for confirmation
-```
+        When \`true\` and \`deploymentId\` is passed in, the sha from the previous deployment's \`gitSource\` is removed forcing the latest commit to be used.
+    - name: force_new
+      value: "{{ force_new }}"
+      description: Forces a new deployment even if there is a previous similar deployment. Set to \`1\` to bypass deployment deduplication and always trigger a fresh build.
+      description: Forces a new deployment even if there is a previous similar deployment. Set to \`1\` to bypass deployment deduplication and always trigger a fresh build.
+    - name: skip_auto_detection_confirmation
+      value: "{{ skip_auto_detection_confirmation }}"
+      description: Set to \`1\` to skip framework auto-detection and proceed without confirmation. By default, if Vercel detects a framework that differs from the project setting, the API returns a \`400\` asking you to confirm. Use this to suppress that check in automated pipelines.
+      description: Set to \`1\` to skip framework auto-detection and proceed without confirmation. By default, if Vercel detects a framework that differs from the project setting, the API returns a \`400\` asking you to confirm. Use this to suppress that check in automated pipelines.
+    - name: team_id
+      value: "{{ team_id }}"
+      description: The Team identifier to perform the request on behalf of.
+      description: The Team identifier to perform the request on behalf of.
+    - name: slug
+      value: "{{ slug }}"
+      description: The Team slug to perform the request on behalf of.
+      description: The Team slug to perform the request on behalf of.
+`}</CodeBlock>
+
 </TabItem>
 </Tabs>
 
@@ -772,20 +1408,21 @@ version
 ## `DELETE` examples
 
 <Tabs
-    defaultValue="delete_deployment"
+    defaultValue="delete"
     values={[
-        { label: 'delete_deployment', value: 'delete_deployment' }
+        { label: 'delete', value: 'delete' }
     ]}
 >
-<TabItem value="delete_deployment">
+<TabItem value="delete">
 
 This API allows you to delete a deployment, either by supplying its `id` in the URL or the `url` of the deployment as a query parameter. You can obtain the ID, for example, by listing all deployments.
 
 ```sql
 DELETE FROM vercel.deployments.deployments
 WHERE id = '{{ id }}' --required
-AND teamId = '{{ teamId }}' --required
 AND url = '{{ url }}'
+AND team_id = '{{ team_id }}'
+AND slug = '{{ slug }}'
 ;
 ```
 </TabItem>
@@ -794,42 +1431,44 @@ AND url = '{{ url }}'
 
 ## Lifecycle Methods
 
+EXEC variables use wire (API) names.
+
 <Tabs
-    defaultValue="cancel_deployment"
+    defaultValue="update_integration_action"
     values={[
-        { label: 'cancel_deployment', value: 'cancel_deployment' },
-        { label: '_get_deployments', value: '_get_deployments' }
+        { label: 'update_integration_action', value: 'update_integration_action' },
+        { label: 'cancel', value: 'cancel' }
     ]}
 >
-<TabItem value="cancel_deployment">
+<TabItem value="update_integration_action">
 
-This endpoint allows you to cancel a deployment which is currently building, by supplying its `id` in the URL.
+Updates the deployment integration action for the specified integration installation
 
 ```sql
-EXEC vercel.deployments.deployments.cancel_deployment 
-@id='{{ id }}' --required, 
-@teamId='{{ teamId }}' --required
+EXEC vercel.deployments.deployments.update_integration_action 
+@deployment_id='{{ deployment_id }}' --required, 
+@integration_configuration_id='{{ integration_configuration_id }}' --required, 
+@resource_id='{{ resource_id }}' --required, 
+@action='{{ action }}' --required 
+@@json=
+'{
+"status": "{{ status }}", 
+"statusText": "{{ statusText }}", 
+"statusUrl": "{{ statusUrl }}", 
+"outcomes": "{{ outcomes }}"
+}'
 ;
 ```
 </TabItem>
-<TabItem value="_get_deployments">
+<TabItem value="cancel">
 
-List deployments under the authenticated user or team. If a deployment hasn't finished uploading (is incomplete), the `url` property will have a value of `null`.
+Cancels a deployment that is currently in progress, stopping the build before it completes. Use this to recover quickly from accidental deploys, wrong-branch pushes, or builds with known errors — without waiting for them to finish. Returns 400 if the deployment is no longer cancelable (already `READY`, `ERROR`, or `CANCELED`). Returns the updated deployment object with `readyState: 'CANCELED'` on success.
 
 ```sql
-EXEC vercel.deployments.deployments._get_deployments 
-@teamId='{{ teamId }}' --required, 
-@app='{{ app }}', 
-@from='{{ from }}', 
-@limit='{{ limit }}', 
-@projectId='{{ projectId }}', 
-@target='{{ target }}', 
-@to='{{ to }}', 
-@users='{{ users }}', 
-@since='{{ since }}', 
-@until='{{ until }}', 
-@state='{{ state }}', 
-@rollbackCandidate={{ rollbackCandidate }}
+EXEC vercel.deployments.deployments.cancel 
+@id='{{ id }}' --required, 
+@teamId='{{ teamId }}', 
+@slug='{{ slug }}'
 ;
 ```
 </TabItem>

@@ -18,17 +18,20 @@ integrations service documentation.
 
 :::info[Service Summary]
 
-total resources: __3__  
+total resources: __6__  
 
 :::
 
 ## Resources
 <div class="row">
 <div class="providerDocColumn">
-<a href="/services/integrations/configuration/">configuration</a><br />
-<a href="/services/integrations/git_namespaces/">git_namespaces</a>
+<a href="/services/integrations/billing_plans/">billing_plans</a><br />
+<a href="/services/integrations/configuration_products/">configuration_products</a><br />
+<a href="/services/integrations/configurations/">configurations</a>
 </div>
 <div class="providerDocColumn">
-<a href="/services/integrations/search_repo/">search_repo</a>
+<a href="/services/integrations/git_namespaces/">git_namespaces</a><br />
+<a href="/services/integrations/repos/">repos</a><br />
+<a href="/services/integrations/stores/">stores</a>
 </div>
 </div>

@@ -1,0 +1,12 @@
+{
+  "source": "https://openapi.vercel.sh/",
+  "file": "provider-dev/downloaded/openapi.json",
+  "fetched_at": "2026-09-14",
+  "openapi": "3.0.3",
+  "stated_version": "0.0.1",
+  "paths": 297,
+  "operations": 417,
+  "tags": 42,
+  "sha256": "0343d5d5718ccb17a79c476a219010fdadc0f6a4cb850bc1893093a84b19be77",
+  "bytes": 10766176
+}

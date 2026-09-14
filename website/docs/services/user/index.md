@@ -18,13 +18,14 @@ user service documentation.
 
 :::info[Service Summary]
 
-total resources: __2__  
+total resources: __3__  
 
 :::
 
 ## Resources
 <div class="row">
 <div class="providerDocColumn">
+<a href="/services/user/event_types/">event_types</a><br />
 <a href="/services/user/events/">events</a>
 </div>
 <div class="providerDocColumn">
