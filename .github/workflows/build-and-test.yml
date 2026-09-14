@@ -40,10 +40,16 @@ jobs:
       - name: stackql version
         run: stackql --version
 
-      # The spec is unversioned upstream; a hash change alone is not a
-      # failure. New or removed operations surface in validate-mappings.
-      - name: Fetch the spec (reports drift against the recorded pin)
-        run: make fetch-spec
+      # Build from the COMMITTED spec snapshot so the run is reproducible
+      # (Vercel republishes its unversioned document continuously). Upstream
+      # drift is reported as a warning here; the spec-drift job below opens
+      # the review issue. Refresh locally with `make build` and commit the
+      # snapshot, pin, manifest and generated provider together.
+      - name: Check the committed spec snapshot against upstream (warns on drift)
+        run: |
+          if ! make check-spec; then
+            echo "::warning title=Vercel OpenAPI spec drift::The served document no longer matches provider-dev/config/spec_pin.json - run 'make build && make test' locally, review the diff, and commit. Building from the committed snapshot."
+          fi
 
       - name: Split, merge and validate the mapping manifest
         run: make split mappings validate-mappings

@@ -47,7 +47,7 @@ VERCEL_TEAM_ID=...     # optional; the token's default team is used otherwise
 make fetch-spec        # or: npm run fetch-spec
 ```
 
-Downloads the OpenAPI document into `provider-dev/downloaded/openapi.json` (gitignored, about 10 MB) and records the fetch date, stated version, path / operation / tag counts and sha256 in `provider-dev/config/spec_pin.json`. Drift from the recorded pin is reported, not fatal: the mapping validation below is what turns upstream change into a reviewed decision. `make check-spec` fails on drift for CI.
+Downloads the OpenAPI document into `provider-dev/downloaded/openapi.json` and records the fetch date, stated version, path / operation / tag counts and sha256 in `provider-dev/config/spec_pin.json`. Both are committed: Vercel republishes a single unversioned document continuously, so the snapshot is what makes a build reproducible and a refresh a reviewable diff. Drift from the recorded pin is reported, not fatal: the mapping validation below is what turns upstream change into a reviewed decision. `make check-spec` fails on drift (the scheduled CI job uses it). After a refresh, commit the snapshot, the pin, the manifest and the generated provider together.
 
 ## 1. Split into service specs
 
@@ -152,7 +152,7 @@ SELECT id, name, framework FROM vercel.projects.projects WHERE team_id = 'team_x
 
 ### CI
 
-[.github/workflows/build-and-test.yml](.github/workflows/build-and-test.yml): fetch the spec, split, merge mappings, validate, normalize, generate and fail on uncommitted generation drift; offline validation, meta-route suite and docs generation on every push and pull request; the secret-gated live smoke suite on pushes; and a weekly spec-drift job that opens an issue when upstream adds or removes operations. The web workflows build and deploy the microsite from `main`.
+[.github/workflows/build-and-test.yml](.github/workflows/build-and-test.yml): build from the committed spec snapshot (warning only if upstream has drifted), split, merge mappings, validate, normalize, generate and fail on uncommitted generation drift; offline validation, meta-route suite and docs generation on every push and pull request; the secret-gated live smoke suite on pushes; and a weekly spec-drift job that opens an issue when the served document changes. The web workflows build and deploy the microsite from `main`.
 
 ## 6. Publish the provider
 

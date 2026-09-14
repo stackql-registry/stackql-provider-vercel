@@ -4,7 +4,7 @@ Findings recorded while building the refreshed `vercel` provider (September 2026
 
 ## Spec source
 
-- Vercel serves one unversioned OpenAPI 3.0.3 document at `https://openapi.vercel.sh/` (`info.version` is `0.0.1`). It changes continuously; `bin/fetch-spec.sh` records the sha256, date and counts in `provider-dev/config/spec_pin.json` rather than committing the 10 MB document. Snapshot used for this build: 297 paths, 417 operations, 42 tags.
+- Vercel serves one unversioned OpenAPI 3.0.3 document at `https://openapi.vercel.sh/` (`info.version` is `0.0.1`). It changes continuously - schema-only changes to eight services landed within hours of the first build - so the snapshot in `provider-dev/downloaded/openapi.json` is committed alongside the sha256, date and counts in `provider-dev/config/spec_pin.json`, and CI builds from the snapshot (drift is a warning on push and an issue from the weekly job). Snapshot used for this build: 297 paths, 417 operations, 42 tags.
 - Four HEAD operations (artifact exists, marketplace experimentation config, container registry blob and manifest heads) are outside the generator's verb set and are not mapped.
 - 8 operations carry no tag (`/domains/records`, `/api-keys`, `/v2/observability/*`, `/speed-insights/toggle`, `/web/insights/toggle`); the discriminator routes them by path prefix.
 

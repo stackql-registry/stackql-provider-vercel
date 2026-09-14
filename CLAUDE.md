@@ -21,7 +21,7 @@ bin/                          # fetch-spec.sh, start-server.sh, stop-server.sh, 
 provider-dev/
   config/all_services.csv     # THE durable operation -> resource/method/verb manifest (hand-maintained, checked in)
   config/spec_pin.json        # what the provider was built from (date, hash, counts)
-  downloaded/openapi.json     # fetched spec (gitignored, ~10 MB)
+  downloaded/openapi.json     # committed spec snapshot (~10 MB); CI builds from it, `make fetch-spec` refreshes it
   source/                     # split per-service specs (build artifacts)
   openapi/src/vercel/         # generated provider (checked in)
   scripts/svc-discriminator.mjs   # tag -> service map for the split

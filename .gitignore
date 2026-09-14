@@ -36,11 +36,11 @@ website/.shared-config/
 *.tmp
 *.bak
 
-# The Vercel OpenAPI document is large (~10 MB) and unversioned upstream;
-# it is fetched by `make fetch-spec` and recorded by hash, version and
-# operation counts in provider-dev/config/spec_pin.json (committed).
-provider-dev/downloaded/*
-!provider-dev/downloaded/.gitkeep
+# The Vercel OpenAPI document snapshot in provider-dev/downloaded/ IS
+# committed: Vercel serves a single unversioned document that changes
+# continuously, so the snapshot (plus the hash pin in
+# provider-dev/config/spec_pin.json) is what makes a CI build reproducible
+# and every refresh a reviewable diff.
 
 # transient analyze output merged into all_services.csv by `make mappings`
 provider-dev/config/.analyze/
