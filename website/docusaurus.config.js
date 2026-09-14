@@ -24,6 +24,10 @@ const config = createConfig({
 // history; the shared config leaves this off.
 config.presets[0][1].docs.showLastUpdateTime = true;
 
+// Social card: the shared config expects a generic img/stackql-featured-image.png;
+// this site ships only its own provider image.
+config.themeConfig.image = 'img/stackql-vercel-provider-featured-image.png';
+
 // Use the locally vendored registry-branded logos (STACKQL>> | REGISTRY)
 // instead of the shared config's hotlinked main-site wordmark - self-contained
 // assets, no cross-origin fetch. global.css swaps in the -mobile variants
