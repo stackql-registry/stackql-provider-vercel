@@ -25,12 +25,12 @@ total resources: __5__
 ## Resources
 <div class="row">
 <div class="providerDocColumn">
-<a href="/services/edge_config/edge_config/">edge_config</a><br />
-<a href="/services/edge_config/item/">item</a><br />
+<a href="/services/edge_config/backups/">backups</a><br />
+<a href="/services/edge_config/edge_configs/">edge_configs</a><br />
 <a href="/services/edge_config/items/">items</a>
 </div>
 <div class="providerDocColumn">
-<a href="/services/edge_config/token/">token</a><br />
+<a href="/services/edge_config/schema/">schema</a><br />
 <a href="/services/edge_config/tokens/">tokens</a>
 </div>
 </div>

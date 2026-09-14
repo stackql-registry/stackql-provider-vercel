@@ -18,16 +18,17 @@ checks service documentation.
 
 :::info[Service Summary]
 
-total resources: __1__  
+total resources: __3__  
 
 :::
 
 ## Resources
 <div class="row">
 <div class="providerDocColumn">
-<a href="/services/checks/deployments/">deployments</a>
+<a href="/services/checks/check_runs/">check_runs</a><br />
+<a href="/services/checks/deployment_checks/">deployment_checks</a>
 </div>
 <div class="providerDocColumn">
-
+<a href="/services/checks/project_checks/">project_checks</a>
 </div>
 </div>

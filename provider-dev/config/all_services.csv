@@ -1,0 +1,414 @@
+filename,path,operationId,formatted_op_id,verb,response_object,tags,formatted_tags,stackql_resource_name,stackql_method_name,stackql_verb,stackql_object_key,op_description
+access_groups.yaml,/v1/access-groups/{idOrName},readAccessGroup,read_access_group,get,,access-groups,access_groups,access_groups,get,select,,Reads an access group
+access_groups.yaml,/v1/access-groups/{idOrName},updateAccessGroup,update_access_group,post,,access-groups,access_groups,access_groups,update,update,,Update an access group
+access_groups.yaml,/v1/access-groups/{idOrName},deleteAccessGroup,delete_access_group,delete,,access-groups,access_groups,access_groups,delete,delete,,Deletes an access group
+access_groups.yaml,/v1/access-groups/{idOrName}/members,listAccessGroupMembers,list_access_group_members,get,,access-groups,access_groups,access_group_members,list,select,$.members,List members of an access group
+access_groups.yaml,/v1/access-groups,listAccessGroups,list_access_groups,get,,access-groups,access_groups,access_groups,list,select,$.accessGroups,"List access groups for a team, project or member"
+access_groups.yaml,/v1/access-groups,createAccessGroup,create_access_group,post,,access-groups,access_groups,access_groups,create,insert,,Creates an access group
+access_groups.yaml,/v1/access-groups/{idOrName}/projects,listAccessGroupProjects,list_access_group_projects,get,,access-groups,access_groups,access_group_projects,list,select,$.projects,List projects of an access group
+access_groups.yaml,/v1/access-groups/{accessGroupIdOrName}/projects,createAccessGroupProject,create_access_group_project,post,,access-groups,access_groups,access_group_projects,create,insert,,Create an access group project
+access_groups.yaml,/v1/access-groups/{accessGroupIdOrName}/projects/{projectId},readAccessGroupProject,read_access_group_project,get,,access-groups,access_groups,access_group_projects,get,select,,Reads an access group project
+access_groups.yaml,/v1/access-groups/{accessGroupIdOrName}/projects/{projectId},updateAccessGroupProject,update_access_group_project,patch,,access-groups,access_groups,access_group_projects,update,update,,Update an access group project
+access_groups.yaml,/v1/access-groups/{accessGroupIdOrName}/projects/{projectId},deleteAccessGroupProject,delete_access_group_project,delete,,access-groups,access_groups,access_group_projects,delete,delete,,Delete an access group project
+ai_gateway.yaml,/v1/ai-gateway/virtual-model-configs,createAiGatewayVirtualModelConfig,create_ai_gateway_virtual_model_config,post,AiGatewayVirtualModelConfig,api-ai-gateway,api_ai_gateway,virtual_model_configs,create,insert,,Create virtual model config
+ai_gateway.yaml,/v1/ai-gateway/virtual-model-configs,getAiGatewayVirtualModelConfig,get_ai_gateway_virtual_model_config,get,,api-ai-gateway,api_ai_gateway,virtual_model_configs,get_by_query,exec,,Get virtual model config
+ai_gateway.yaml,/v1/ai-gateway/virtual-model-configs,updateAiGatewayVirtualModelConfig,update_ai_gateway_virtual_model_config,patch,AiGatewayVirtualModelConfig,api-ai-gateway,api_ai_gateway,virtual_model_configs,update,update,,Update virtual model config
+ai_gateway.yaml,/v1/ai-gateway/virtual-model-configs,deleteAiGatewayVirtualModelConfig,delete_ai_gateway_virtual_model_config,delete,,api-ai-gateway,api_ai_gateway,virtual_model_configs,delete,delete,,Delete virtual model config
+ai_gateway.yaml,/v1/ai-gateway/virtual-model-configs/list,listAiGatewayVirtualModelConfigs,list_ai_gateway_virtual_model_configs,get,AiGatewayVirtualModelConfigList,api-ai-gateway,api_ai_gateway,virtual_model_configs,list,select,$.virtualModelConfigs,List virtual model configs
+ai_gateway.yaml,/v1/ai-gateway/virtual-model-configs/{vmcSlug},getAiGatewayVirtualModelConfigBySlug,get_ai_gateway_virtual_model_config_by_slug,get,AiGatewayVirtualModelConfig,api-ai-gateway,api_ai_gateway,virtual_model_configs,get_by_slug,select,,Get virtual model config
+ai_gateway.yaml,/v1/ai-gateway/virtual-model-configs/{vmcSlug},updateAiGatewayVirtualModelConfigBySlug,update_ai_gateway_virtual_model_config_by_slug,patch,AiGatewayVirtualModelConfig,api-ai-gateway,api_ai_gateway,virtual_model_configs,update_by_slug,update,,Update virtual model config
+ai_gateway.yaml,/v1/ai-gateway/virtual-model-configs/{vmcSlug},deleteAiGatewayVirtualModelConfigBySlug,delete_ai_gateway_virtual_model_config_by_slug,delete,,api-ai-gateway,api_ai_gateway,virtual_model_configs,delete_by_slug,delete,,Delete virtual model config
+ai_gateway.yaml,/v1/ai-gateway/rules,createAiGatewayRule,create_ai_gateway_rule,post,AiGatewayRule,ai-gateway,ai_gateway,rules,create,insert,,Create rule
+ai_gateway.yaml,/v1/ai-gateway/rules,listAiGatewayRules,list_ai_gateway_rules,get,AiGatewayRuleList,ai-gateway,ai_gateway,rules,list,select,$.rules,List rules
+ai_gateway.yaml,/v1/ai-gateway/rules,updateAiGatewayRule,update_ai_gateway_rule,patch,AiGatewayRule,ai-gateway,ai_gateway,rules,update,update,,Update rule
+ai_gateway.yaml,/v1/ai-gateway/rules,deleteAiGatewayRule,delete_ai_gateway_rule,delete,,ai-gateway,ai_gateway,rules,delete,delete,,Delete rule
+aliases.yaml,/v2/deployments/{id}/aliases,listDeploymentAliases,list_deployment_aliases,get,,aliases,aliases,deployment_aliases,list,select,$.aliases,List Deployment Aliases
+aliases.yaml,/v2/deployments/{id}/aliases,assignAlias,assign_alias,post,,aliases,aliases,deployment_aliases,assign,insert,,Assign an Alias
+aliases.yaml,/v4/aliases,listAliases,list_aliases,get,,aliases,aliases,aliases,list,select,$.aliases,List aliases
+aliases.yaml,/v4/aliases/{idOrAlias},getAlias,get_alias,get,,aliases,aliases,aliases,get,select,,Get an Alias
+aliases.yaml,/v2/aliases/{aliasId},deleteAlias,delete_alias,delete,,aliases,aliases,aliases,delete,delete,,Delete an Alias
+aliases.yaml,/aliases/{id}/protection-bypass,patchUrlProtectionBypass,patch_url_protection_bypass,patch,,aliases,aliases,aliases,update_protection_bypass,exec,,Update the protection bypass for a URL
+artifacts.yaml,/v8/artifacts/events,recordEvents,record_events,post,,artifacts,artifacts,artifacts,record_events,exec,,Record an artifacts cache usage event
+artifacts.yaml,/v8/artifacts/status,status,status,get,,artifacts,artifacts,artifact_status,get,select,,Get status of Remote Caching for this principal
+artifacts.yaml,/v8/artifacts/{hash},uploadArtifact,upload_artifact,put,,artifacts,artifacts,artifacts,upload,exec,,Upload a cache artifact
+artifacts.yaml,/v8/artifacts/{hash},downloadArtifact,download_artifact,get,,artifacts,artifacts,artifacts,download,exec,,Download a cache artifact
+artifacts.yaml,/v8/artifacts,artifactQuery,artifact_query,post,,artifacts,artifacts,artifacts,query,exec,,Query information about an artifact
+artifacts.yaml,/v8/artifacts,deleteAllArtifacts,delete_all_artifacts,delete,,artifacts,artifacts,artifacts,delete_all,delete,,Delete all cache artifacts
+authentication.yaml,/api-keys,createApiKeys,create_api_keys,post,,,,api_keys,create,insert,,
+authentication.yaml,/v6/user/tokens,listAuthTokens,list_auth_tokens,get,,authentication,authentication,tokens,list,select,$.tokens,List Auth Tokens
+authentication.yaml,/v3/user/tokens,createAuthToken,create_auth_token,post,,authentication,authentication,tokens,create,insert,,Create an Auth Token
+authentication.yaml,/v5/user/tokens/{tokenId},getAuthToken,get_auth_token,get,,authentication,authentication,tokens,get,select,$.token,Get Auth Token Metadata
+authentication.yaml,/v3/user/tokens/{tokenId},deleteAuthToken,delete_auth_token,delete,,authentication,authentication,tokens,delete,delete,,Delete an authentication token
+billing.yaml,/v1/billing/charges,listBillingCharges,list_billing_charges,get,,billing,billing,charges,list,select,,List FOCUS billing charges
+billing.yaml,/v1/billing/contract-commitments,listContractCommitments,list_contract_commitments,get,,billing,billing,contract_commitments,list,select,,List FOCUS contract commitments
+billing.yaml,/v1/billing/buy,buyCredits,buy_credits,post,,billing,billing,credits,buy,exec,,Purchase credits
+bulk_redirects.yaml,/v1/bulk-redirects,stageRedirects,stage_redirects,put,,bulk-redirects,bulk_redirects,redirects,stage,replace,,Stages new redirects for a project.
+bulk_redirects.yaml,/v1/bulk-redirects,getRedirects,get_redirects,get,,bulk-redirects,bulk_redirects,redirects,list,select,$.redirects,Gets project-level redirects.
+bulk_redirects.yaml,/v1/bulk-redirects,deleteRedirects,delete_redirects,delete,,bulk-redirects,bulk_redirects,redirects,delete,delete,,Delete project-level redirects.
+bulk_redirects.yaml,/v1/bulk-redirects,editRedirect,edit_redirect,patch,,bulk-redirects,bulk_redirects,redirects,update,update,,Edit a project-level redirect.
+bulk_redirects.yaml,/v1/bulk-redirects/restore,restoreRedirects,restore_redirects,post,,bulk-redirects,bulk_redirects,redirects,restore,exec,,Restore staged project-level redirects to their production version.
+bulk_redirects.yaml,/v1/bulk-redirects/versions,getVersions,get_versions,get,,bulk-redirects,bulk_redirects,versions,list,select,$.versions,Get the version history for a project's redirects.
+bulk_redirects.yaml,/v1/bulk-redirects/versions,updateVersion,update_version,post,,bulk-redirects,bulk_redirects,versions,update,exec,,Promote a staging version to production or restore a previous production version.
+certs.yaml,/v8/certs/{id},getCertById,get_cert_by_id,get,,certs,certs,certs,get,select,,Get cert by id
+certs.yaml,/v8/certs/{id},removeCert,remove_cert,delete,,certs,certs,certs,delete,delete,,Remove cert
+certs.yaml,/v8/certs,getCerts,get_certs,get,,certs,certs,certs,list,select,$.certs,Get certs
+certs.yaml,/v8/certs,issueCert,issue_cert,post,,certs,certs,certs,issue,insert,,Issue a new cert
+certs.yaml,/v8/certs,uploadCert,upload_cert,put,,certs,certs,certs,upload,exec,,Upload a cert
+checks.yaml,/v2/projects/{projectIdOrName}/checks,listProjectChecks,list_project_checks,get,,checks-v2,checks_v2,project_checks,list,select,$.checks,List all checks for a project
+checks.yaml,/v2/projects/{projectIdOrName}/checks,createProjectCheck,create_project_check,post,,checks-v2,checks_v2,project_checks,create,insert,,Create a check
+checks.yaml,/v2/projects/{projectIdOrName}/checks/{checkId},getProjectCheck,get_project_check,get,,checks-v2,checks_v2,project_checks,get,select,,Get a check
+checks.yaml,/v2/projects/{projectIdOrName}/checks/{checkId},updateProjectCheck,update_project_check,patch,,checks-v2,checks_v2,project_checks,update,update,,Update a check
+checks.yaml,/v2/projects/{projectIdOrName}/checks/{checkId},deleteProjectCheck,delete_project_check,delete,,checks-v2,checks_v2,project_checks,delete,delete,,Delete a check
+checks.yaml,/v2/projects/{projectIdOrName}/checks/{checkId}/runs,listCheckRuns,list_check_runs,get,,checks-v2,checks_v2,check_runs,list_for_check,select,$.runs,List runs for a check
+checks.yaml,/v2/deployments/{deploymentId}/check-runs,listDeploymentCheckRuns,list_deployment_check_runs,get,,checks-v2,checks_v2,check_runs,list,select,$.runs,List check runs for a deployment
+checks.yaml,/v2/deployments/{deploymentId}/check-runs,createDeploymentCheckRun,create_deployment_check_run,post,,checks-v2,checks_v2,check_runs,create,insert,,Create a check run
+checks.yaml,/v2/deployments/{deploymentId}/check-runs/{checkRunId},getDeploymentCheckRun,get_deployment_check_run,get,,checks-v2,checks_v2,check_runs,get,select,,Get a check run
+checks.yaml,/v2/deployments/{deploymentId}/check-runs/{checkRunId},updateDeploymentCheckRun,update_deployment_check_run,patch,,checks-v2,checks_v2,check_runs,update,update,,Update a check run
+checks.yaml,/v1/deployments/{deploymentId}/checks,createCheck,create_check,post,,checks,checks,deployment_checks,create,insert,,Creates a new Check
+checks.yaml,/v1/deployments/{deploymentId}/checks,getAllChecks,get_all_checks,get,,checks,checks,deployment_checks,list,select,$.checks,Retrieve a list of all checks
+checks.yaml,/v1/deployments/{deploymentId}/checks/{checkId},getCheck,get_check,get,,checks,checks,deployment_checks,get,select,,Get a single check
+checks.yaml,/v1/deployments/{deploymentId}/checks/{checkId},updateCheck,update_check,patch,,checks,checks,deployment_checks,update,update,,Update a check
+checks.yaml,/v1/deployments/{deploymentId}/checks/{checkId}/rerequest,rerequestCheck,rerequest_check,post,,checks,checks,deployment_checks,rerequest,exec,,Rerequest a check
+connect.yaml,/v2/connect/connectors,listConnectors,list_connectors,get,ConnectConnectorList,connect,connect,connectors,list,select,$.connectors,List connectors
+connect.yaml,/v1/connect/connectors/{connector},getConnector,get_connector,get,ConnectConnector,connect,connect,connectors,get,select,,Get a connector
+connect.yaml,/v1/connect/connectors/{connector},deleteConnector,delete_connector,delete,,connect,connect,connectors,delete,delete,,Delete a connector
+connect.yaml,/v1/connect/connectors,createConnector,create_connector,post,ConnectConnectorCreateResult,connect,connect,connectors,create,insert,,Create a connector
+connect.yaml,/v2/connect/connectors/{connector},updateConnector,update_connector,patch,ConnectConnectorUpdateResult,connect,connect,connectors,update,update,,Update a connector
+connect.yaml,/v1/connect/connectors/{connector}/trigger-destinations,replaceConnectorTriggerDestinations,replace_connector_trigger_destinations,patch,ConnectConnector,connect,connect,connectors,replace_trigger_destinations,exec,,Update connector trigger destinations
+connect.yaml,/v2/connect/connectors/{connector}/projects,listConnectorProjectConnections,list_connector_project_connections,get,ConnectConnectorProjectConnectionList,connect,connect,connector_project_connections,list,select,$.projects,List projects for a connector
+connect.yaml,/v1/connect/connectors/{connector}/projects/{projectId},getConnectorProjectConnection,get_connector_project_connection,get,ConnectProjectConnection,connect,connect,connector_project_connections,get,select,,Get a connector project connection
+connect.yaml,/v1/connect/connectors/{connector}/projects/{projectId},upsertConnectorProjectConnection,upsert_connector_project_connection,post,ConnectProjectConnection,connect,connect,connector_project_connections,upsert,insert,,Create or update a connector project connection
+connect.yaml,/v1/connect/connectors/{connector}/projects/{projectId},deleteConnectorProjectConnection,delete_connector_project_connection,delete,,connect,connect,connector_project_connections,delete,delete,,Disconnect a connector from a project
+connect.yaml,/v2/connect/projects/{projectId}/connectors,listProjectConnectorConnections,list_project_connector_connections,get,ConnectProjectConnectorConnectionList,connect,connect,project_connectors,list,select,$.connectors,List connectors for a project
+connect.yaml,/v1/connect/token/{connector},getConnectorToken,get_connector_token,post,,connect,connect,connectors,get_token,exec,,Get a Connect token
+connect.yaml,/v1/connect/authorize/{connector},createConnectorAuthorizationRequest,create_connector_authorization_request,post,,connect,connect,connectors,create_authorization_request,exec,,Create a Connect authorization request
+deployments.yaml,/v3/deployments/{idOrUrl}/events,getDeploymentEvents,get_deployment_events,get,,deployments,deployments,deployment_events,list,select,,Get deployment events
+deployments.yaml,/v1/deployments/{deploymentId}/integrations/{integrationConfigurationId}/resources/{resourceId}/actions/{action},update-integration-deployment-action,update_integration_deployment_action,patch,,deployments|integrations,deployments|integrations,deployments,update_integration_action,exec,,Update deployment integration action
+deployments.yaml,/v13/deployments/{idOrUrl},getDeployment,get_deployment,get,,deployments,deployments,deployments,get,select,,Get a deployment by ID or URL
+deployments.yaml,/v13/deployments,createDeployment,create_deployment,post,,deployments,deployments,deployments,create,insert,,Create a new deployment
+deployments.yaml,/v12/deployments/{id}/cancel,cancelDeployment,cancel_deployment,patch,,deployments,deployments,deployments,cancel,exec,,Cancel a deployment
+deployments.yaml,/v1/projects/{projectId}/deployments/{deploymentId}/runtime-logs,getRuntimeLogs,get_runtime_logs,get,,logs,logs,runtime_logs,list,select,,Get logs for a deployment
+deployments.yaml,/v2/files,uploadFile,upload_file,post,,deployments,deployments,files,upload,exec,,Upload Deployment Files
+deployments.yaml,/v6/deployments/{id}/files,listDeploymentFiles,list_deployment_files,get,FileTree,deployments,deployments,deployment_files,list,select,,List Deployment Files
+deployments.yaml,/v8/deployments/{id}/files/{fileId},getDeploymentFileContents,get_deployment_file_contents,get,,deployments,deployments,skip_this_resource,,,,Get Deployment File Contents
+deployments.yaml,/v7/deployments,getDeployments,get_deployments,get,,deployments,deployments,deployments,list,select,$.deployments,List deployments
+deployments.yaml,/v13/deployments/{id},deleteDeployment,delete_deployment,delete,,deployments,deployments,deployments,delete,delete,,Delete a Deployment
+dns.yaml,/v5/domains/{domain}/records,getRecords,get_records,get,,dns,dns,records,list,select,$.records,List existing DNS records
+dns.yaml,/v2/domains/{domain}/records,createRecord,create_record,post,,dns,dns,records,create,insert,,Create a DNS record
+dns.yaml,/v1/domains/records/{recordId},updateRecord,update_record,patch,,dns,dns,records,update,update,,Update an existing DNS record
+dns.yaml,/domains/{domain}/records,replaceDomainsByDomainRecords,replace_domains_by_domain_records,put,,,,records,replace,replace,,
+dns.yaml,/domains/records/{recordId},getDomainsRecordsByRecordId,get_domains_records_by_record_id,get,,,,records,get,select,,
+dns.yaml,/v2/domains/{domain}/records/{recordId},removeRecord,remove_record,delete,,dns,dns,records,delete,delete,,Delete a DNS record
+domains.yaml,/v6/domains/{domain}/config,getDomainConfig,get_domain_config,get,,domains,domains,domain_config,get,select,,Get a Domain's configuration
+domains.yaml,/v9/domains/{domain}/verification,getDomainVerificationRecord,get_domain_verification_record,get,,domains,domains,domain_verification,get,select,,Get Domain Verification Record
+domains.yaml,/v9/domains/{domain}/claim,claimDomainOwnership,claim_domain_ownership,post,,domains,domains,domains,claim_ownership,exec,,Claim Domain Ownership
+domains.yaml,/v1/domains/{domain}/project-domains,getDomainProjectDomains,get_domain_project_domains,get,,domains,domains,domain_project_domains,list,select,$.projectDomains,List Project Domains by Apex Domain
+domains.yaml,/v5/domains/{domain},getDomain,get_domain,get,,domains,domains,domains,get,select,$.domain,Get Information for a Single Domain
+domains.yaml,/v5/domains,getDomains,get_domains,get,,domains,domains,domains,list,select,$.domains,List all the domains
+domains.yaml,/v7/domains,createOrTransferDomain,create_or_transfer_domain,post,,domains,domains,domains,create,insert,,Add an existing domain to the Vercel platform
+domains.yaml,/v3/domains/{domain},patchDomain,patch_domain,patch,,domains,domains,domains,update,update,,Update or move apex domain
+domains.yaml,/v6/domains/{domain},deleteDomain,delete_domain,delete,,domains,domains,domains,delete,delete,,Remove a domain by name
+domains_registrar.yaml,/v1/registrar/tlds/supported,getSupportedTlds,get_supported_tlds,get,TldName,domains-registrar,domains_registrar,tlds,list,select,,Get supported TLDs
+domains_registrar.yaml,/v1/registrar/tlds/{tld},getTld,get_tld,get,,domains-registrar,domains_registrar,tlds,get,select,,Get TLD
+domains_registrar.yaml,/v1/registrar/tlds/{tld}/price,getTldPrice,get_tld_price,get,,domains-registrar,domains_registrar,tld_prices,get,select,,Get TLD price data
+domains_registrar.yaml,/v1/registrar/domains/{domain}/availability,getDomainAvailability,get_domain_availability,get,,domains-registrar,domains_registrar,domain_availability,get,select,,Get availability for a domain
+domains_registrar.yaml,/v1/registrar/domains/{domain}/price,getDomainPrice,get_domain_price,get,,domains-registrar,domains_registrar,domain_prices,get,select,,Get price data for a domain
+domains_registrar.yaml,/v1/registrar/domains/availability,getBulkAvailability,get_bulk_availability,post,,domains-registrar,domains_registrar,domain_availability,get_bulk,exec,,Get availability for multiple domains
+domains_registrar.yaml,/v1/registrar/domains/{domain}/auth-code,getDomainAuthCode,get_domain_auth_code,get,,domains-registrar,domains_registrar,domain_auth_codes,get,select,,Get the auth code for a domain
+domains_registrar.yaml,/v1/registrar/domains/{domain}/buy,buySingleDomain,buy_single_domain,post,,domains-registrar,domains_registrar,orders,buy_domain,exec,,Buy a domain
+domains_registrar.yaml,/v1/registrar/domains/buy,buyDomains,buy_domains,post,,domains-registrar,domains_registrar,orders,buy_domains,exec,,Buy multiple domains
+domains_registrar.yaml,/v1/registrar/domains/{domain}/transfer,transferInDomain,transfer_in_domain,post,,domains-registrar,domains_registrar,orders,transfer_in_domain,exec,,Transfer-in a domain
+domains_registrar.yaml,/v1/registrar/domains/{domain}/transfer,getDomainTransferIn,get_domain_transfer_in,get,,domains-registrar,domains_registrar,domain_transfers,get,select,,Get a domain's transfer status
+domains_registrar.yaml,/v1/registrar/domains/{domain}/renew,renewDomain,renew_domain,post,,domains-registrar,domains_registrar,orders,renew_domain,exec,,Renew a domain
+domains_registrar.yaml,/v1/registrar/domains/{domain}/auto-renew,updateDomainAutoRenew,update_domain_auto_renew,patch,,domains-registrar,domains_registrar,domains,update_auto_renew,exec,,Update auto-renew for a domain
+domains_registrar.yaml,/v1/registrar/domains/{domain}/nameservers,updateDomainNameservers,update_domain_nameservers,patch,,domains-registrar,domains_registrar,domains,update_nameservers,exec,,Update nameservers for a domain
+domains_registrar.yaml,/v1/registrar/domains/{domain}/contact-verification,getDomainContactVerification,get_domain_contact_verification,get,,domains-registrar,domains_registrar,domain_contact_verification,get,select,,Get contact verification status for a domain
+domains_registrar.yaml,/v1/registrar/domains/{domain}/contact-info/schema,getContactInfoSchema,get_contact_info_schema,get,,domains-registrar,domains_registrar,contact_info_schema,get,select,,Get contact info schema
+domains_registrar.yaml,/v1/registrar/orders/{orderId},getOrder,get_order,get,,domains-registrar,domains_registrar,orders,get,select,,Get a domain order
+drains.yaml,/v1/drains,createDrain,create_drain,post,,drains,drains,drains,create,insert,,Create a new Drain
+drains.yaml,/v1/drains,getDrains,get_drains,get,,drains,drains,drains,list,select,$.drains,Retrieve a list of all Drains
+drains.yaml,/v1/drains/{id},deleteDrain,delete_drain,delete,,drains,drains,drains,delete,delete,,Delete a drain
+drains.yaml,/v1/drains/{id},getDrain,get_drain,get,,drains,drains,drains,get,select,,Find a Drain by id
+drains.yaml,/v1/drains/{id},updateDrain,update_drain,patch,,drains,drains,drains,update,update,,Update an existing Drain
+drains.yaml,/v1/drains/test,testDrain,test_drain,post,,drains,drains,drains,test,exec,,Validate Drain delivery configuration
+edge_cache.yaml,/v1/edge-cache/invalidate-by-tags,invalidateByTags,invalidate_by_tags,post,,edge-cache,edge_cache,cache,invalidate_by_tags,exec,,Invalidate by tag
+edge_cache.yaml,/v1/edge-cache/dangerously-delete-by-tags,dangerouslyDeleteByTags,dangerously_delete_by_tags,post,,edge-cache,edge_cache,cache,delete_by_tags,exec,,Dangerously delete by tag
+edge_cache.yaml,/v1/edge-cache/invalidate-by-src-images,invalidateBySrcImages,invalidate_by_src_images,post,,edge-cache,edge_cache,cache,invalidate_by_src_images,exec,,Invalidate by source image
+edge_cache.yaml,/v1/edge-cache/dangerously-delete-by-src-images,dangerouslyDeleteBySrcImages,dangerously_delete_by_src_images,post,,edge-cache,edge_cache,cache,delete_by_src_images,exec,,Dangerously delete by source image
+edge_config.yaml,/v1/global-config,getEdgeConfigs,get_edge_configs,get,,global-config,global_config,edge_configs,list,select,,Get Global Configs
+edge_config.yaml,/v1/global-config,createEdgeConfig,create_edge_config,post,,global-config,global_config,edge_configs,create,insert,,Create a Global Config
+edge_config.yaml,/v1/global-config/{edgeConfigId},getEdgeConfig,get_edge_config,get,,global-config,global_config,edge_configs,get,select,,Get a Global Config
+edge_config.yaml,/v1/global-config/{edgeConfigId},updateEdgeConfig,update_edge_config,put,,global-config,global_config,edge_configs,update,update,,Update a Global Config
+edge_config.yaml,/v1/global-config/{edgeConfigId},deleteEdgeConfig,delete_edge_config,delete,,global-config,global_config,edge_configs,delete,delete,,Delete a Global Config
+edge_config.yaml,/v1/global-config/{edgeConfigId}/items,getEdgeConfigItems,get_edge_config_items,get,GlobalConfigItem,global-config,global_config,items,list,select,,Get Global Config items
+edge_config.yaml,/v1/global-config/{edgeConfigId}/items,patchEdgeConfigItems,patch_edge_config_items,patch,,global-config,global_config,items,update,update,,Update Global Config items in batch
+edge_config.yaml,/v1/global-config/{edgeConfigId}/schema,getEdgeConfigSchema,get_edge_config_schema,get,,global-config,global_config,schema,get,select,,Get Global Config schema
+edge_config.yaml,/v1/global-config/{edgeConfigId}/schema,patchEdgeConfigSchema,patch_edge_config_schema,post,,global-config,global_config,schema,update,update,,Update Global Config schema
+edge_config.yaml,/v1/global-config/{edgeConfigId}/schema,deleteEdgeConfigSchema,delete_edge_config_schema,delete,,global-config,global_config,schema,delete,delete,,Delete a Global Config's schema
+edge_config.yaml,/v1/global-config/{edgeConfigId}/item/{edgeConfigItemKey},getEdgeConfigItem,get_edge_config_item,get,GlobalConfigItem,global-config,global_config,items,get,select,,Get a Global Config item
+edge_config.yaml,/v1/global-config/{edgeConfigId}/tokens,getEdgeConfigTokens,get_edge_config_tokens,get,GlobalConfigToken,global-config,global_config,tokens,list,select,,Get all tokens of a Global Config
+edge_config.yaml,/v1/global-config/{edgeConfigId}/tokens,deleteEdgeConfigTokens,delete_edge_config_tokens,delete,,global-config,global_config,tokens,delete,delete,,Delete one or more Global Config tokens
+edge_config.yaml,/v1/global-config/{edgeConfigId}/token/{token},getEdgeConfigToken,get_edge_config_token,get,GlobalConfigToken,global-config,global_config,tokens,get,select,,Get Global Config token meta data
+edge_config.yaml,/v1/global-config/{edgeConfigId}/token,createEdgeConfigToken,create_edge_config_token,post,,global-config,global_config,tokens,create,insert,,Create a Global Config token
+edge_config.yaml,/v1/global-config/{edgeConfigId}/backups/{edgeConfigBackupVersionId},getEdgeConfigBackup,get_edge_config_backup,get,,global-config,global_config,backups,get,select,,Get Global Config backup
+edge_config.yaml,/v1/global-config/{edgeConfigId}/backups/{edgeConfigBackupVersionId}/restore,restoreEdgeConfigBackup,restore_edge_config_backup,post,,global-config,global_config,backups,restore,exec,,Restore Global Config backup
+edge_config.yaml,/v1/global-config/{edgeConfigId}/backups,getEdgeConfigBackups,get_edge_config_backups,get,,global-config,global_config,backups,list,select,$.backups,Get Global Config backups
+environments.yaml,/v1/env,createSharedEnvVariable,create_shared_env_variable,post,,environment,environment,shared_env_variables,create,insert,,Create one or more shared environment variables
+environments.yaml,/v1/env,listSharedEnvVariable,list_shared_env_variable,get,,environment,environment,shared_env_variables,list,select,$.data,Lists all Shared Environment Variables for a team
+environments.yaml,/v1/env,updateSharedEnvVariable,update_shared_env_variable,patch,,environment,environment,shared_env_variables,update,update,,Updates one or more shared environment variables
+environments.yaml,/v1/env,deleteSharedEnvVariable,delete_shared_env_variable,delete,,environment,environment,shared_env_variables,delete,delete,,Delete one or more Env Var
+environments.yaml,/v1/env/{id},getSharedEnvVar,get_shared_env_var,get,,environment,environment,shared_env_variables,get,select,,Retrieve the decrypted value of a Shared Environment Variable by id.
+environments.yaml,/v1/env/{id}/unlink/{projectId},unlinkSharedEnvVariable,unlink_shared_env_variable,patch,,environment,environment,shared_env_variables,unlink,exec,,Disconnects a shared environment variable for a given project
+environments.yaml,/v9/projects/{idOrName}/custom-environments,createCustomEnvironment,create_custom_environment,post,,environment,environment,custom_environments,create,insert,,Create a custom environment for the current project.
+environments.yaml,/v9/projects/{idOrName}/custom-environments,getProjectsByIdOrNameCustomEnvironments,get_projects_by_id_or_name_custom_environments,get,,environment,environment,custom_environments,list,select,$.environments,Retrieve custom environments
+environments.yaml,/v9/projects/{idOrName}/custom-environments/{environmentSlugOrId},getCustomEnvironment,get_custom_environment,get,,environment,environment,custom_environments,get,select,,Retrieve a custom environment
+environments.yaml,/v9/projects/{idOrName}/custom-environments/{environmentSlugOrId},updateCustomEnvironment,update_custom_environment,patch,,environment,environment,custom_environments,update,update,,Update a custom environment
+environments.yaml,/v9/projects/{idOrName}/custom-environments/{environmentSlugOrId},removeCustomEnvironment,remove_custom_environment,delete,,environment,environment,custom_environments,delete,delete,,Remove a custom environment
+feature_flags.yaml,/v2/projects/{projectIdOrName}/feature-flags/flags,listFlagsV2,list_flags_v2,get,,feature-flags,feature_flags,flags,list,select,$.data,List flags
+feature_flags.yaml,/v1/projects/{projectIdOrName}/feature-flags/flags,listFlags,list_flags,get,,feature-flags,feature_flags,flags,list_v1,exec,,List flags
+feature_flags.yaml,/v1/projects/{projectIdOrName}/feature-flags/flags,createFlag,create_flag,put,,feature-flags,feature_flags,flags,create,insert,,Create a flag
+feature_flags.yaml,/v1/projects/{projectIdOrName}/feature-flags/flags/{flagIdOrSlug},getFlag,get_flag,get,Flag,feature-flags,feature_flags,flags,get,select,,Get a flag
+feature_flags.yaml,/v1/projects/{projectIdOrName}/feature-flags/flags/{flagIdOrSlug},updateFlag,update_flag,patch,,feature-flags,feature_flags,flags,update,update,,Update a flag
+feature_flags.yaml,/v1/projects/{projectIdOrName}/feature-flags/flags/{flagIdOrSlug},deleteFlag,delete_flag,delete,,feature-flags,feature_flags,flags,delete,delete,,Delete a flag
+feature_flags.yaml,/v1/projects/{projectIdOrName}/feature-flags/flags/{flagIdOrSlug}/versions,listFlagVersions,list_flag_versions,get,,feature-flags,feature_flags,flag_versions,list,select,$.versions,List flag versions
+feature_flags.yaml,/v1/projects/{projectIdOrName}/feature-flags/settings,getFlagSettings,get_flag_settings,get,,feature-flags,feature_flags,settings,get,select,,Get project flag settings
+feature_flags.yaml,/v1/projects/{projectIdOrName}/feature-flags/settings,updateFlagSettings,update_flag_settings,patch,,feature-flags,feature_flags,settings,update,update,,Update project flag settings
+feature_flags.yaml,/v1/teams/{teamId}/feature-flags/settings,listTeamFlagSettings,list_team_flag_settings,get,,feature-flags,feature_flags,team_settings,list,select,$.data,List team project flag settings
+feature_flags.yaml,/v2/teams/{teamId}/feature-flags/flags,listTeamFlagsV2,list_team_flags_v2,get,,feature-flags,feature_flags,team_flags,list,select,$.data,List all flags for a team
+feature_flags.yaml,/v1/teams/{teamId}/feature-flags/flags,listTeamFlags,list_team_flags,get,,feature-flags,feature_flags,team_flags,list_v1,exec,,List all flags for a team
+feature_flags.yaml,/v1/projects/{projectIdOrName}/feature-flags/segments,createFlagSegment,create_flag_segment,put,,feature-flags,feature_flags,segments,create,insert,,Create a segment
+feature_flags.yaml,/v1/projects/{projectIdOrName}/feature-flags/segments,listFlagSegments,list_flag_segments,get,,feature-flags,feature_flags,segments,list,select,$.data,List segments
+feature_flags.yaml,/v1/projects/{projectIdOrName}/feature-flags/segments/{segmentIdOrSlug},getFlagSegment,get_flag_segment,get,Segment,feature-flags,feature_flags,segments,get,select,,Get a segment
+feature_flags.yaml,/v1/projects/{projectIdOrName}/feature-flags/segments/{segmentIdOrSlug},deleteFlagSegment,delete_flag_segment,delete,,feature-flags,feature_flags,segments,delete,delete,,Delete a segment
+feature_flags.yaml,/v1/projects/{projectIdOrName}/feature-flags/segments/{segmentIdOrSlug},updateFlagSegment,update_flag_segment,patch,,feature-flags,feature_flags,segments,update,update,,Update a segment
+feature_flags.yaml,/v1/deployments/{deploymentId}/feature-flags,getDeploymentFeatureFlags,get_deployment_feature_flags,get,,feature-flags,feature_flags,deployment_flags,get,select,,Retrieve the feature flags of a deployment
+feature_flags.yaml,/v1/projects/{projectIdOrName}/feature-flags/sdk-keys,getSdkKeys,get_sdk_keys,get,,feature-flags,feature_flags,sdk_keys,list,select,$.data,Get all SDK keys
+feature_flags.yaml,/v1/projects/{projectIdOrName}/feature-flags/sdk-keys,createSdkKey,create_sdk_key,put,FlagsSdkKeyWithSecrets,feature-flags,feature_flags,sdk_keys,create,insert,,Create an SDK key
+feature_flags.yaml,/v1/projects/{projectIdOrName}/feature-flags/sdk-keys/{hashKey},deleteSdkKey,delete_sdk_key,delete,,feature-flags,feature_flags,sdk_keys,delete,delete,,Delete an SDK key
+integrations.yaml,/v1/integrations/git-namespaces,gitNamespaces,git_namespaces,get,,integrations,integrations,git_namespaces,list,select,,List git namespaces by provider
+integrations.yaml,/v1/integrations/search-repo,searchRepo,search_repo,get,,integrations,integrations,repos,search,select,$.repos,List git repositories linked to namespace by provider
+integrations.yaml,/v1/integrations/integration/{integrationIdOrSlug}/products/{productIdOrSlug}/plans,getBillingPlans,get_billing_plans,get,,integrations,integrations,billing_plans,list,select,$.plans,List integration billing plans
+integrations.yaml,/v1/integrations/installations/{integrationConfigurationId}/resources/{resourceId}/connections,connectIntegrationResourceToProject,connect_integration_resource_to_project,post,,integrations,integrations,configurations,connect_resource_to_project,exec,,Connect integration resource to project
+integrations.yaml,/v1/integrations/configurations,getConfigurations,get_configurations,get,,integrations,integrations,configurations,list,select,,Get configurations for the authenticated user or team
+integrations.yaml,/v1/integrations/configuration/{id},getConfiguration,get_configuration,get,,integrations,integrations,configurations,get,select,,Retrieve an integration configuration
+integrations.yaml,/v1/integrations/configuration/{id},deleteConfiguration,delete_configuration,delete,,integrations,integrations,configurations,delete,delete,,Delete an integration configuration
+integrations.yaml,/v1/integrations/configuration/{id}/products,getConfigurationProducts,get_configuration_products,get,,integrations,integrations,configuration_products,list,select,$.products,List products for integration configuration
+integrations.yaml,/v1/storage/stores/integration/direct,createIntegrationStoreDirect,create_integration_store_direct,post,,integrations,integrations,stores,create_direct,insert,,Create integration store (free and paid plans)
+kms.yaml,/v1/kms/issuers,listKmsIssuers,list_kms_issuers,get,,kms,kms,issuers,list,select,$.issuers,List issuers
+kms.yaml,/v1/kms/issuers,createKmsIssuer,create_kms_issuer,post,,kms,kms,issuers,create,insert,,Create an issuer
+kms.yaml,/v1/kms/issuers/{issuerId}/sign/message,signKmsMessage,sign_kms_message,post,,kms,kms,issuers,sign_message,exec,,Sign a message
+kms.yaml,/v1/kms/issuers/{issuerId}/sign/token,signKmsToken,sign_kms_token,post,,kms,kms,issuers,sign_token,exec,,Sign a token
+kms.yaml,/v1/kms/issuers/{issuerId}/keys,createKmsSigningKey,create_kms_signing_key,post,,kms,kms,signing_keys,create,insert,,Create a signing key
+kms.yaml,/v1/kms/issuers/{issuerId}/keys/{keyId}/activate,activateKmsSigningKey,activate_kms_signing_key,post,,kms,kms,signing_keys,activate,exec,,Activate a signing key
+kms.yaml,/v1/kms/issuers/{issuerId}/keys/{keyId}/revoke,revokeKmsSigningKey,revoke_kms_signing_key,post,,kms,kms,signing_keys,revoke,exec,,Revoke a signing key
+kms.yaml,/v1/kms/issuers/{issuerId},getKmsIssuer,get_kms_issuer,get,,kms,kms,issuers,get,select,,Get an issuer
+kms.yaml,/v1/kms/issuers/{issuerId},updateKmsIssuer,update_kms_issuer,patch,,kms,kms,issuers,update,update,,Update an issuer
+kms.yaml,/v1/kms/issuers/{issuerId},deleteKmsIssuer,delete_kms_issuer,delete,,kms,kms,issuers,delete,delete,,Delete an issuer
+kms.yaml,/v1/kms/issuers/{issuerId}/policies,createKmsIssuerPolicy,create_kms_issuer_policy,post,,kms,kms,issuer_policies,create,insert,,Create an issuer policy
+kms.yaml,/v1/kms/issuers/{issuerId}/policies/{kind}/{policyKey},updateKmsIssuerPolicy,update_kms_issuer_policy,patch,,kms,kms,issuer_policies,update,update,,Update an issuer policy
+kms.yaml,/v1/kms/issuers/{issuerId}/policies/{kind}/{policyKey},deleteKmsIssuerPolicy,delete_kms_issuer_policy,delete,,kms,kms,issuer_policies,delete,delete,,Delete an issuer policy
+log_drains.yaml,/v1/log-drains/{id},getConfigurableLogDrain,get_configurable_log_drain,get,,logDrains,log_drains,log_drains,get,select,,Retrieves a Configurable Log Drain (deprecated)
+log_drains.yaml,/v1/log-drains/{id},deleteConfigurableLogDrain,delete_configurable_log_drain,delete,,logDrains,log_drains,log_drains,delete,delete,,Deletes a Configurable Log Drain (deprecated)
+log_drains.yaml,/v1/log-drains,getAllLogDrains,get_all_log_drains,get,,logDrains,log_drains,log_drains,list,select,,Retrieves a list of all the Log Drains (deprecated)
+log_drains.yaml,/v1/log-drains,createConfigurableLogDrain,create_configurable_log_drain,post,,logDrains,log_drains,log_drains,create,insert,,Creates a Configurable Log Drain (deprecated)
+log_drains.yaml,/v2/integrations/log-drains,getIntegrationLogDrains,get_integration_log_drains,get,,logDrains,log_drains,integration_log_drains,list,select,,Retrieves a list of Integration log drains (deprecated)
+log_drains.yaml,/v2/integrations/log-drains,createLogDrain,create_log_drain,post,,logDrains,log_drains,integration_log_drains,create,insert,,Creates a new Integration Log Drain (deprecated)
+log_drains.yaml,/v1/integrations/log-drains/{id},deleteIntegrationLogDrain,delete_integration_log_drain,delete,,logDrains,log_drains,integration_log_drains,delete,delete,,Deletes the Integration log drain with the provided `id` (deprecated)
+marketplace.yaml,/v1/installations/{integrationConfigurationId},update-installation,update_installation,patch,,marketplace,marketplace,installations,update,update,,Update Installation
+marketplace.yaml,/v1/installations/{integrationConfigurationId}/account,get-account-info,get_account_info,get,,marketplace,marketplace,account_info,get,select,,Get Account Information
+marketplace.yaml,/v1/installations/{integrationConfigurationId}/member/{memberId},get-member,get_member,get,,marketplace,marketplace,members,get,select,,Get Member Information
+marketplace.yaml,/v1/installations/{integrationConfigurationId}/credentials/rotate,rotate-installation-credential,rotate_installation_credential,post,,marketplace,marketplace,installations,rotate_credential,exec,,Rotate Installation Credential
+marketplace.yaml,/v1/installations/{integrationConfigurationId}/credentials/revoke,revoke-installation-credential,revoke_installation_credential,post,,marketplace,marketplace,installations,revoke_credential,exec,,Revoke Installation Credential
+marketplace.yaml,/v1/installations/{integrationConfigurationId}/events,create-event,create_event,post,,marketplace,marketplace,events,create,insert,,Create Event
+marketplace.yaml,/v1/installations/{integrationConfigurationId}/resources,get-integration-resources,get_integration_resources,get,,marketplace,marketplace,resources,list,select,$.resources,Get Integration Resources
+marketplace.yaml,/v1/installations/{integrationConfigurationId}/resources/{resourceId},get-integration-resource,get_integration_resource,get,,marketplace,marketplace,resources,get,select,,Get Integration Resource
+marketplace.yaml,/v1/installations/{integrationConfigurationId}/resources/{resourceId},delete-integration-resource,delete_integration_resource,delete,,marketplace,marketplace,resources,delete,delete,,Delete Integration Resource
+marketplace.yaml,/v1/installations/{integrationConfigurationId}/resources/{resourceId},import-resource,import_resource,put,,marketplace,marketplace,resources,import,replace,,Import Resource
+marketplace.yaml,/v1/installations/{integrationConfigurationId}/resources/{resourceId},update-resource,update_resource,patch,,marketplace,marketplace,resources,update,update,,Update Resource
+marketplace.yaml,/v1/installations/{integrationConfigurationId}/billing,submit-billing-data,submit_billing_data,post,,marketplace,marketplace,billing,submit,exec,,Submit Billing Data
+marketplace.yaml,/v1/installations/{integrationConfigurationId}/billing/invoices,submit-invoice,submit_invoice,post,,marketplace,marketplace,invoices,create,insert,,Submit Invoice
+marketplace.yaml,/v1/installations/{integrationConfigurationId}/billing/finalize,finalize-installation,finalize_installation,post,,marketplace,marketplace,installations,finalize,exec,,Finalize Installation
+marketplace.yaml,/v1/installations/{integrationConfigurationId}/billing/invoices/{invoiceId},get-invoice,get_invoice,get,,marketplace,marketplace,invoices,get,select,,Get Invoice
+marketplace.yaml,/v1/installations/{integrationConfigurationId}/billing/invoices/{invoiceId}/actions,update-invoice,update_invoice,post,,marketplace,marketplace,invoices,update,exec,,Invoice Actions
+marketplace.yaml,/v1/installations/{integrationConfigurationId}/billing/balance,submit-prepayment-balances,submit_prepayment_balances,post,,marketplace,marketplace,billing,submit_prepayment_balances,exec,,Submit Prepayment Balances
+marketplace.yaml,/v1/installations/{integrationConfigurationId}/products/{integrationProductIdOrSlug}/resources/{resourceId}/secrets,update-resource-secrets,update_resource_secrets,put,,marketplace,marketplace,resources,update_secrets,exec,,Deprecated: true. Update Resource Secrets (Deprecated)
+marketplace.yaml,/v1/installations/{integrationConfigurationId}/resources/{resourceId}/secrets,update-resource-secrets-by-id,update_resource_secrets_by_id,put,,marketplace,marketplace,resources,update_secrets_by_id,exec,,Update Resource Secrets
+marketplace.yaml,/v1/integrations/sso/token,exchange-sso-token,exchange_sso_token,post,,authentication|marketplace,authentication|marketplace,sso_tokens,exchange,exec,,SSO Token Exchange
+marketplace.yaml,/v1/installations/{integrationConfigurationId}/resources/{resourceId}/experimentation/items,createInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationItems,create_installations_by_integration_configuration_id_resources_by_resource_id_experimentation_items,post,,marketplace,marketplace,experimentation_items,create,insert,,Create one or multiple experimentation items
+marketplace.yaml,/v1/installations/{integrationConfigurationId}/resources/{resourceId}/experimentation/items/{itemId},updateInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationItemsByItemId,update_installations_by_integration_configuration_id_resources_by_resource_id_experimentation_items_by_item_id,patch,,marketplace,marketplace,experimentation_items,update,update,,Patch an existing experimentation item
+marketplace.yaml,/v1/installations/{integrationConfigurationId}/resources/{resourceId}/experimentation/items/{itemId},deleteInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationItemsByItemId,delete_installations_by_integration_configuration_id_resources_by_resource_id_experimentation_items_by_item_id,delete,,marketplace,marketplace,experimentation_items,delete,delete,,Delete an existing experimentation item
+marketplace.yaml,/v1/installations/{integrationConfigurationId}/resources/{resourceId}/experimentation/global-config,getInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationGlobalConfig,get_installations_by_integration_configuration_id_resources_by_resource_id_experimentation_global_config,get,,marketplace,marketplace,experimentation_edge_config,get,select,$,Get the data of a user-provided Global Config
+marketplace.yaml,/v1/installations/{integrationConfigurationId}/resources/{resourceId}/experimentation/global-config,replaceInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationGlobalConfig,replace_installations_by_integration_configuration_id_resources_by_resource_id_experimentation_global_config,put,,marketplace,marketplace,experimentation_edge_config,replace,replace,,Push data into a user-provided Global Config
+microfrontends.yaml,/v1/microfrontends/groups,getMicrofrontendsGroups,get_microfrontends_groups,get,,microfrontends,microfrontends,groups,list,select,,List microfrontends groups
+microfrontends.yaml,/v1/microfrontends/groups/{groupId}/projects,getMicrofrontendsInGroup,get_microfrontends_in_group,get,,microfrontends,microfrontends,group_projects,list,select,$.projects,List projects in a microfrontends group
+microfrontends.yaml,/v1/microfrontends/{deploymentId}/config,getMicrofrontendsConfig,get_microfrontends_config,get,,microfrontends,microfrontends,deployment_config,get,select,$.config,Get microfrontends config for a deployment
+microfrontends.yaml,/v1/microfrontends/projects/{projectIdOrName}/production-mfe-config,getMicrofrontendsConfigForProject,get_microfrontends_config_for_project,get,,microfrontends,microfrontends,project_config,get,select,$.config,Get microfrontends config for a project
+microfrontends.yaml,/v1/microfrontends/group,createMicrofrontendsGroupWithApplications,create_microfrontends_group_with_applications,post,,microfrontends,microfrontends,groups,create,insert,,Create a microfrontends group with applications
+networking.yaml,/v1/connect/networks,listNetworks,list_networks,get,Network,networking,networking,networks,list,select,,List Secure Compute networks
+networking.yaml,/v1/connect/networks,createNetwork,create_network,post,Network,networking,networking,networks,create,insert,,Create a Secure Compute network
+networking.yaml,/v1/connect/networks/{networkId},deleteNetwork,delete_network,delete,,networking,networking,networks,delete,delete,,Delete a Secure Compute network
+networking.yaml,/v1/connect/networks/{networkId},updateNetwork,update_network,patch,Network,networking,networking,networks,update,update,,Update a Secure Compute network
+networking.yaml,/v1/connect/networks/{networkId},readNetwork,read_network,get,Network,networking,networking,networks,get,select,,Read a Secure Compute network
+networking.yaml,/v1/networking/privatelink/endpoints,createPrivateLinkEndpoint,create_private_link_endpoint,post,PrivateLinkEndpoint,networking,networking,privatelink_endpoints,create,insert,,Create a PrivateLink endpoint
+networking.yaml,/v1/networking/privatelink/endpoints,listPrivateLinkEndpoints,list_private_link_endpoints,get,PrivateLinkEndpoint,networking,networking,privatelink_endpoints,list,select,,List PrivateLink endpoints
+networking.yaml,/v1/networking/privatelink/endpoints/{endpointId},readPrivateLinkEndpoint,read_private_link_endpoint,get,PrivateLinkEndpoint,networking,networking,privatelink_endpoints,get,select,,Read a PrivateLink endpoint
+networking.yaml,/v1/networking/privatelink/endpoints/{endpointId},deletePrivateLinkEndpoint,delete_private_link_endpoint,delete,,networking,networking,privatelink_endpoints,delete,delete,,Delete a PrivateLink endpoint
+networking.yaml,/v1/networking/privatelink/endpoints/{endpointId},updatePrivateLinkEndpoint,update_private_link_endpoint,patch,PrivateLinkEndpoint,networking,networking,privatelink_endpoints,update,update,,Update a PrivateLink endpoint
+networking.yaml,/v1/projects/{idOrName}/shared-connect-links,updateStaticIps,update_static_ips,patch,,networking|static-ips,networking|static_ips,static_ips,update,update,,Configures Static IPs for a project
+observability.yaml,/v1/observability/manage/configuration/projects,getObservabilityConfigurationProjects,get_observability_configuration_projects,get,,observability,observability,configuration_projects,list,select,$.disabledProjects,Lists disabled Observability Plus projects
+observability.yaml,/v1/observability/manage/configuration/projects/{projectIdOrName},updateObservabilityConfigurationProject,update_observability_configuration_project,put,,observability,observability,configuration_projects,update,update,,Updates a disabled Observability Plus project setting
+observability.yaml,/v2/observability/query,createObservabilityQuery,create_observability_query,post,,,,queries,run,exec,,
+observability.yaml,/v2/observability/schema,getObservabilitySchema,get_observability_schema,get,,,,schema,list,select,,
+observability.yaml,/v2/observability/schema/{metricId},getObservabilitySchemaByMetricId,get_observability_schema_by_metric_id,get,,,,schema,get,select,,
+projects.yaml,/v10/projects,getProjects,get_projects,get,,projects,projects,projects,list,select,$.projects,Retrieve a list of projects
+projects.yaml,/v1/projects/traces,getProjectTrace,get_project_trace,get,,projects,projects,traces,get,select,$.trace,Get a project trace by request ID
+projects.yaml,/v11/projects,createProject,create_project,post,,projects,projects,projects,create,insert,,Create a new project
+projects.yaml,/v1/projects/{idOrName}/token,getProjectToken,get_project_token,post,,projects,projects,projects,get_token,exec,,Generate a project OIDC token
+projects.yaml,/v1/projects/traces/session,createTraceSession,create_trace_session,post,,projects,projects,traces,create_session,exec,,Create a trace session token for a deployment
+projects.yaml,/v9/projects/{idOrName},getProject,get_project,get,,projects,projects,projects,get,select,,Find a project by id or name
+projects.yaml,/v9/projects/{idOrName},updateProject,update_project,patch,,projects,projects,projects,update,update,,Update an existing project
+projects.yaml,/v9/projects/{idOrName},deleteProject,delete_project,delete,,projects,projects,projects,delete,delete,,Delete a Project
+projects.yaml,/v1/projects/{idOrName}/avatar,uploadProjectAvatar,upload_project_avatar,post,,projects,projects,projects,upload_avatar,exec,,Upload a project avatar
+projects.yaml,/v9/projects/{idOrName}/domains,getProjectDomains,get_project_domains,get,,projects,projects,domains,list,select,$.domains,Retrieve project domains by project by id or name
+projects.yaml,/v9/projects/{idOrName}/domains/{domain},getProjectDomain,get_project_domain,get,,projects,projects,domains,get,select,,Get a project domain
+projects.yaml,/v9/projects/{idOrName}/domains/{domain},updateProjectDomain,update_project_domain,patch,,projects,projects,domains,update,update,,Update a project domain
+projects.yaml,/v9/projects/{idOrName}/domains/{domain},removeProjectDomain,remove_project_domain,delete,,projects,projects,domains,delete,delete,,Remove a domain from a project
+projects.yaml,/v10/projects/{idOrName}/domains,addProjectDomain,add_project_domain,post,,projects,projects,domains,add,insert,,Add a domain to a project
+projects.yaml,/v1/projects/{idOrName}/domains/{domain}/move,moveProjectDomain,move_project_domain,post,,projects,projects,domains,move,exec,,Move a project domain
+projects.yaml,/v9/projects/{idOrName}/domains/{domain}/verify,verifyProjectDomain,verify_project_domain,post,,projects,projects,domains,verify,exec,,Verify project domain
+projects.yaml,/v10/projects/{idOrName}/env,filterProjectEnvs,filter_project_envs,get,,projects,projects,env_vars,list,select,$.envs,Retrieve the environment variables of a project by id or name
+projects.yaml,/v10/projects/{idOrName}/env,createProjectEnv,create_project_env,post,,projects,projects,env_vars,create,insert,,Create one or more environment variables
+projects.yaml,/v1/projects/{idOrName}/env/{id},getProjectEnv,get_project_env,get,,projects,projects,env_vars,get,select,,Retrieve the decrypted value of an environment variable of a project by id
+projects.yaml,/v9/projects/{idOrName}/env/{id},removeProjectEnv,remove_project_env,delete,,projects,projects,env_vars,delete,delete,,Remove an environment variable
+projects.yaml,/v9/projects/{idOrName}/env/{id},editProjectEnv,edit_project_env,patch,,projects,projects,env_vars,update,update,,Edit an environment variable
+projects.yaml,/v1/projects/{idOrName}/env,batchRemoveProjectEnv,batch_remove_project_env,delete,,projects,projects,env_vars,batch_delete,delete,,Batch remove environment variables
+projects.yaml,/projects/{idOrName}/transfer-request,createProjectTransferRequest,create_project_transfer_request,post,,projects,projects,transfer_requests,create,insert,,Create project transfer request
+projects.yaml,/projects/transfer-request/{code},acceptProjectTransferRequest,accept_project_transfer_request,put,,projects,projects,transfer_requests,accept,exec,,Accept project transfer request
+projects.yaml,/v1/projects/{idOrName}/protection-bypass,updateProjectProtectionBypass,update_project_protection_bypass,patch,,projects,projects,projects,update_protection_bypass,exec,,Update Protection Bypass for Automation
+projects.yaml,/v1/projects/{projectId}/rollback/{deploymentId},requestRollback,request_rollback,post,,projects,projects,projects,rollback,exec,,Point production traffic to a previous production deployment by ID
+projects.yaml,/v1/projects/{projectId}/rollback/{deploymentId}/update-description,updateProjectsByProjectIdRollbackByDeploymentIdUpdateDescription,update_projects_by_project_id_rollback_by_deployment_id_update_description,patch,,projects,projects,projects,update_rollback_description,exec,,Updates the description for a rollback
+projects.yaml,/v1/projects/{projectId}/microfrontends,updateMicrofrontends,update_microfrontends,patch,,projects,projects,projects,update_microfrontends,exec,,Update the microfrontends settings
+projects.yaml,/v10/projects/{projectId}/promote/{deploymentId},requestPromote,request_promote,post,,projects,projects,projects,promote,exec,,Point production traffic to a given deployment
+projects.yaml,/v1/projects/{projectId}/promote/aliases,listPromoteAliases,list_promote_aliases,get,,projects,projects,promote_aliases,list,select,$.aliases,Gets a list of aliases with status for the current promote
+projects.yaml,/v1/projects/{projectId}/pause,pauseProject,pause_project,post,,projects,projects,projects,pause,exec,,Pause a project
+projects.yaml,/v1/projects/{projectId}/unpause,unpauseProject,unpause_project,post,,projects,projects,projects,unpause,exec,,Unpause a project
+project_members.yaml,/v1/projects/{idOrName}/members,getProjectMembers,get_project_members,get,,projectMembers,project_members,members,list,select,$.members,List project members
+project_members.yaml,/v1/projects/{idOrName}/members,addProjectMember,add_project_member,post,,projectMembers,project_members,members,add,insert,,Adds a new member to a project.
+project_members.yaml,/v1/projects/{idOrName}/members/{uid},removeProjectMember,remove_project_member,delete,,projectMembers,project_members,members,remove,delete,,Remove a Project Member
+project_routes.yaml,/v1/projects/{projectId}/routes,getRoutes,get_routes,get,,project-routes,project_routes,routes,list,select,$.routes,Get project routing rules
+project_routes.yaml,/v1/projects/{projectId}/routes,stageRoutes,stage_routes,put,,project-routes,project_routes,routes,stage,replace,,Stage routing rules
+project_routes.yaml,/v1/projects/{projectId}/routes,addRoute,add_route,post,,project-routes,project_routes,routes,create,insert,,Add a routing rule
+project_routes.yaml,/v1/projects/{projectId}/routes,deleteRoutes,delete_routes,delete,,project-routes,project_routes,routes,delete,delete,,Delete routing rules
+project_routes.yaml,/v1/projects/{projectId}/routes/{routeId},editRoute,edit_route,patch,,project-routes,project_routes,routes,update,update,,Edit a routing rule
+project_routes.yaml,/v1/projects/{projectId}/routes/generate,generateRoute,generate_route,post,,project-routes,project_routes,routes,generate,exec,,Generate a routing rule from natural language
+project_routes.yaml,/v1/projects/{projectId}/routes/versions,getRouteVersions,get_route_versions,get,,project-routes,project_routes,versions,list,select,$.versions,Get routing rule version history
+project_routes.yaml,/v1/projects/{projectId}/routes/versions,updateRouteVersions,update_route_versions,post,,project-routes,project_routes,versions,update,exec,,"Promote, restore, or discard a routing rule version"
+rolling_release.yaml,/v1/projects/{idOrName}/rolling-release/billing,getRollingReleaseBillingStatus,get_rolling_release_billing_status,get,,rolling-release,rolling_release,billing_status,get,select,,Get rolling release billing status
+rolling_release.yaml,/v1/projects/{idOrName}/rolling-release/config,getRollingReleaseConfig,get_rolling_release_config,get,,rolling-release,rolling_release,config,get,select,$.rollingRelease,Get rolling release configuration
+rolling_release.yaml,/v1/projects/{idOrName}/rolling-release/config,deleteRollingReleaseConfig,delete_rolling_release_config,delete,,rolling-release,rolling_release,config,delete,delete,,Delete rolling release configuration
+rolling_release.yaml,/v1/projects/{idOrName}/rolling-release/config,updateRollingReleaseConfig,update_rolling_release_config,patch,,rolling-release,rolling_release,config,update,update,,Update the rolling release settings for the project
+rolling_release.yaml,/v1/projects/{idOrName}/rolling-release,getRollingRelease,get_rolling_release,get,,rolling-release,rolling_release,rolling_releases,get,select,$.rollingRelease,Get the active rolling release information for a project
+rolling_release.yaml,/v1/projects/{idOrName}/rolling-release/approve-stage,approveRollingReleaseStage,approve_rolling_release_stage,post,,rolling-release,rolling_release,rolling_releases,approve_stage,exec,,Update the active rolling release to the next stage for a project
+rolling_release.yaml,/v1/projects/{idOrName}/rolling-release/start,startRollingRelease,start_rolling_release,post,,rolling-release,rolling_release,rolling_releases,start,exec,,Start a rolling release for the project
+rolling_release.yaml,/v1/projects/{idOrName}/rolling-release/complete,completeRollingRelease,complete_rolling_release,post,,rolling-release,rolling_release,rolling_releases,complete,exec,,Complete the rolling release for the project
+sandboxes.yaml,/v2/sandboxes,listNamedSandboxes,list_named_sandboxes,get,,sandboxes,sandboxes,sandboxes,list,select,$.sandboxes,List sandboxes
+sandboxes.yaml,/v2/sandboxes,createSandboxesV2,create_sandboxes_v2,post,,sandboxes,sandboxes,sandboxes,create_v2,exec,,Create a named sandbox
+sandboxes.yaml,/v2/sandboxes/drives,listDrives,list_drives,get,,sandboxes,sandboxes,drives,list,select,$.drives,List drives
+sandboxes.yaml,/v2/sandboxes/drives/{name},getOrCreateDrive,get_or_create_drive,post,,sandboxes,sandboxes,drives,get_or_create,insert,,Get or create a drive
+sandboxes.yaml,/v2/sandboxes/drives/{name},deleteDrive,delete_drive,delete,,sandboxes,sandboxes,drives,delete,delete,,Delete a drive
+sandboxes.yaml,/v2/sandboxes/snapshots,listSessionSnapshots,list_session_snapshots,get,,sandboxes,sandboxes,snapshots,list,select,$.snapshots,List snapshots
+sandboxes.yaml,/v2/sandboxes/snapshots/{snapshotId},getSessionSnapshot,get_session_snapshot,get,,sandboxes,sandboxes,snapshots,get,select,$.snapshot,Get a snapshot
+sandboxes.yaml,/v2/sandboxes/snapshots/{snapshotId},deleteSessionSnapshot,delete_session_snapshot,delete,,sandboxes,sandboxes,snapshots,delete,delete,,Delete a snapshot
+sandboxes.yaml,/v2/sandboxes/sessions,listSessions,list_sessions,get,,sandboxes,sandboxes,sessions,list,select,$.sessions,List sessions
+sandboxes.yaml,/v2/sandboxes/sessions/{sessionId},getSession,get_session,get,,sandboxes,sandboxes,sessions,get,select,$.session,Get a session
+sandboxes.yaml,/v2/sandboxes/{name},getNamedSandbox,get_named_sandbox,get,,sandboxes,sandboxes,sandboxes,get,select,$.sandbox,Get a named sandbox
+sandboxes.yaml,/v2/sandboxes/{name},updateSandbox,update_sandbox,patch,,sandboxes,sandboxes,sandboxes,update,update,,Update a sandbox
+sandboxes.yaml,/v2/sandboxes/{name},deleteSandbox,delete_sandbox,delete,,sandboxes,sandboxes,sandboxes,delete,delete,,Delete a sandbox
+sandboxes.yaml,/v2/sandboxes/sessions/{sessionId}/cmd,listSessionCommands,list_session_commands,get,,sandboxes,sandboxes,commands,list,select,$.commands,List commands
+sandboxes.yaml,/v2/sandboxes/sessions/{sessionId}/cmd,runSessionCommand,run_session_command,post,,sandboxes,sandboxes,commands,run,exec,,Execute a command
+sandboxes.yaml,/v2/sandboxes/sessions/{sessionId}/cmd/{cmdId},getSessionCommand,get_session_command,get,,sandboxes,sandboxes,commands,get,select,$.command,Get a command
+sandboxes.yaml,/v2/sandboxes/sessions/{sessionId}/cmd/{cmdId}/kill,killSessionCommand,kill_session_command,post,,sandboxes,sandboxes,commands,kill,exec,,Kill a command
+sandboxes.yaml,/v2/sandboxes/sessions/{sessionId}/cmd/{cmdId}/logs,getSessionCommandLogs,get_session_command_logs,get,,sandboxes,sandboxes,commands,get_logs,exec,,Stream command logs
+sandboxes.yaml,/v2/sandboxes/sessions/{sessionId}/stop,stopSession,stop_session,post,,sandboxes,sandboxes,sessions,stop,exec,,Stop a session
+sandboxes.yaml,/v2/sandboxes/sessions/{sessionId}/extend-timeout,extendSessionTimeout,extend_session_timeout,post,,sandboxes,sandboxes,sessions,extend_timeout,exec,,Extend session timeout
+sandboxes.yaml,/v2/sandboxes/sessions/{sessionId}/network-policy,updateSessionNetworkPolicy,update_session_network_policy,post,,sandboxes,sandboxes,sessions,update_network_policy,exec,,Update network policy
+sandboxes.yaml,/v2/sandboxes/sessions/{sessionId}/fs/read,readSessionFile,read_session_file,post,,sandboxes,sandboxes,session_files,read,exec,,Read a file
+sandboxes.yaml,/v2/sandboxes/sessions/{sessionId}/fs/mkdir,createSessionDirectory,create_session_directory,post,,sandboxes,sandboxes,session_files,mkdir,exec,,Create a directory
+sandboxes.yaml,/v2/sandboxes/sessions/{sessionId}/fs/write,writeSessionFiles,write_session_files,post,,sandboxes,sandboxes,session_files,write,exec,,Write files
+sandboxes.yaml,/v2/sandboxes/sessions/{sessionId}/snapshot,createSandboxesSessionsBySessionIdSnapshotV2,create_sandboxes_sessions_by_session_id_snapshot_v2,post,,sandboxes,sandboxes,snapshots,create_v2,exec,,Create a snapshot
+sandboxes.yaml,/v2/sandboxes/{name}/fork,createSandboxesByNameForkV2,create_sandboxes_by_name_fork_v2,post,,sandboxes,sandboxes,sandboxes,fork_v2,exec,,Fork a named sandbox
+sandboxes.yaml,/v3/sandboxes,createSandboxesV3,create_sandboxes_v3,post,,sandboxes,sandboxes,sandboxes,create_v3,exec,,Create a named sandbox
+sandboxes.yaml,/v3/sandboxes/sessions/{sessionId}/snapshot,createSandboxesSessionsBySessionIdSnapshotV3,create_sandboxes_sessions_by_session_id_snapshot_v3,post,,sandboxes,sandboxes,snapshots,create,insert,,Create a snapshot
+sandboxes.yaml,/v3/sandboxes/{name}/fork,createSandboxesByNameForkV3,create_sandboxes_by_name_fork_v3,post,,sandboxes,sandboxes,sandboxes,fork,exec,,Fork a named sandbox
+sandboxes.yaml,/v4/sandboxes,createSandboxesV4,create_sandboxes_v4,post,,sandboxes,sandboxes,sandboxes,create,insert,,Create a named sandbox
+security.yaml,/v1/security/attack-mode,updateAttackChallengeMode,update_attack_challenge_mode,post,,security,security,attack_challenge_mode,update,update,,Update Attack Challenge mode
+security.yaml,/v1/security/firewall/config,getSecurityFirewallConfig,get_security_firewall_config,get,,security,security,firewall_config,get,select,,Returns activated WAF config
+security.yaml,/v1/security/firewall/config,putFirewallConfig,put_firewall_config,put,,security,security,firewall_config,replace,replace,,Put Firewall Configuration
+security.yaml,/v1/security/firewall/config,updateFirewallConfig,update_firewall_config,patch,,security,security,firewall_config,update,update,,Update Firewall Configuration
+security.yaml,/v1/security/firewall/config/{configVersion},getFirewallConfig,get_firewall_config,get,,security,security,firewall_config_versions,get,select,,Read Firewall Configuration
+security.yaml,/v1/security/firewall/config/{configVersion},deleteSecurityFirewallConfigByConfigVersion,delete_security_firewall_config_by_config_version,delete,,security,security,firewall_config_versions,delete,delete,,Returns activated WAF config
+security.yaml,/v1/security/firewall/config/{configVersion}/activate,createSecurityFirewallConfigByConfigVersionActivate,create_security_firewall_config_by_config_version_activate,post,,security,security,firewall_config_versions,activate,exec,,Returns activated WAF config
+security.yaml,/v1/security/firewall/attack-status,getActiveAttackStatus,get_active_attack_status,get,,security,security,attack_status,get,select,$.anomalies,Read active attack data
+security.yaml,/v1/security/firewall/bypass,getBypassIp,get_bypass_ip,get,,security,security,firewall_bypass,list,select,$.result,Read System Bypass
+security.yaml,/v1/security/firewall/bypass,addBypassIp,add_bypass_ip,post,,security,security,firewall_bypass,create,insert,,Create System Bypass Rule
+security.yaml,/v1/security/firewall/bypass,removeBypassIp,remove_bypass_ip,delete,,security,security,firewall_bypass,delete,delete,,Remove System Bypass Rule
+security.yaml,/v1/security/firewall/events,getSecurityFirewallEvents,get_security_firewall_events,get,,security,security,firewall_events,list,select,,Read Firewall Actions by Project
+security.yaml,/v1/security/firewall/config/generate-rule,generateFirewallRule,generate_firewall_rule,post,,security,security,firewall_config,generate_rule,exec,,Generate a firewall rule from natural language
+storage.yaml,/storage/stores/{id},getStorageStoresById,get_storage_stores_by_id,get,,storage,storage,stores,get,select,$.store,Get a store
+storage.yaml,/storage/stores/blob,createStorageStoresBlob,create_storage_stores_blob,post,,storage,storage,stores,create_blob,insert,,Create a Blob store
+storage.yaml,/storage/stores/blob/{id},deleteStorageStoresBlobById,delete_storage_stores_blob_by_id,delete,,storage,storage,stores,delete_blob,delete,,Delete a Blob store
+teams.yaml,/v3/teams/{teamId}/members,getTeamMembers,get_team_members,get,,teams,teams,members,list,select,$.members,List team members
+teams.yaml,/v2/teams/{teamId}/members,inviteUserToTeam,invite_user_to_team,post,InvitedTeamMember,teams,teams,members,invite,insert,,Invite a user
+teams.yaml,/v1/teams/{teamId}/request,requestAccessToTeam,request_access_to_team,post,,teams,teams,access_requests,create,insert,,Request access to a team
+teams.yaml,/v1/teams/{teamId}/request/{userId},getTeamAccessRequest,get_team_access_request,get,,teams,teams,access_requests,get,select,,Get access request status
+teams.yaml,/v1/teams/{teamId}/members/teams/join,joinTeam,join_team,post,,teams,teams,members,join,exec,,Join a team
+teams.yaml,/v1/teams/{teamId}/members/{uid},updateTeamMember,update_team_member,patch,,teams,teams,members,update,update,,Update a Team Member
+teams.yaml,/v1/teams/{teamId}/members/{uid},removeTeamMember,remove_team_member,delete,,teams,teams,members,remove,delete,,Remove a Team Member
+teams.yaml,/v2/teams/{teamId},getTeam,get_team,get,Team,teams,teams,teams,get,select,,Get a Team
+teams.yaml,/v2/teams/{teamId},patchTeam,patch_team,patch,Team,teams,teams,teams,update,update,,Update a Team
+teams.yaml,/v2/teams,getTeams,get_teams,get,,teams,teams,teams,list,select,$.teams,List all teams
+teams.yaml,/v1/teams,createTeam,create_team,post,,teams,teams,teams,create,insert,,Create a Team
+teams.yaml,/v1/teams/{teamId}/dsync-roles,postTeamDsyncRoles,post_team_dsync_roles,post,,teams,teams,teams,update_dsync_roles,exec,,Update Team Directory Sync Role Mappings
+teams.yaml,/v1/teams/{teamId},deleteTeam,delete_team,delete,,teams,teams,teams,delete,delete,,Delete a Team
+teams.yaml,/v1/teams/{teamId}/invites/{inviteId},deleteTeamInviteCode,delete_team_invite_code,delete,,teams,teams,members,delete_invite,delete,,Delete a Team invite code
+teams.yaml,/v1/teams/{teamId}/microfrontends/{groupId},updateMicrofrontendsGroup,update_microfrontends_group,patch,,teams,teams,microfrontend_groups,update,update,,Update a microfrontends group
+teams.yaml,/v1/teams/{teamId}/microfrontends/{groupId},deleteMicrofrontendsGroup,delete_microfrontends_group,delete,,teams,teams,microfrontend_groups,delete,delete,,Delete a microfrontends group
+user.yaml,/v3/events,listUserEvents,list_user_events,get,,user,user,events,list,select,$.events,List User Events
+user.yaml,/v1/events/types,listEventTypes,list_event_types,get,ListEventTypesResponse,user,user,event_types,list,select,$.types,List Event Types
+user.yaml,/v2/user,getAuthUser,get_auth_user,get,,user,user,user,get,select,$.user,Get the User
+user.yaml,/v1/user,requestDelete,request_delete,delete,,user,user,user,delete,delete,,Delete User Account
+vcr.yaml,/v1/vcr/repository,createRepository,create_repository,post,,vcr,vcr,repositories,create,insert,,Create a repository
+vcr.yaml,/v1/vcr/repository,listRepositories,list_repositories,get,VcrRepositoryList,vcr,vcr,repositories,list,select,$.repositories,List repositories
+vcr.yaml,/v1/vcr/repository/{idOrName},getRepository,get_repository,get,,vcr,vcr,repositories,get,select,$.repository,Get a repository
+vcr.yaml,/v1/vcr/repository/{idOrName},deleteRepository,delete_repository,delete,,vcr,vcr,repositories,delete,delete,,Delete a repository
+vcr.yaml,/v1/vcr/repository/{idOrName}/images,listRepositoryImages,list_repository_images,get,VcrImageList,vcr,vcr,images,list,select,$.images,List repository images
+vcr.yaml,/v1/vcr/repository/{idOrName}/permissions,addRepositoryPermission,add_repository_permission,post,,vcr,vcr,permissions,create,insert,,Add a repository permission
+vcr.yaml,/v1/vcr/repository/{idOrName}/permissions,removeRepositoryPermission,remove_repository_permission,delete,,vcr,vcr,permissions,delete,delete,,Remove a repository permission
+vcr.yaml,/v1/vcr/repository/{idOrName}/permissions,listRepositoryPermissions,list_repository_permissions,get,VcrRepositoryPermissionList,vcr,vcr,permissions,list,select,$.permissions,List repository permissions
+vcr.yaml,/v1/vcr/repository/{idOrName}/permissions/all,clearRepositoryPermissions,clear_repository_permissions,delete,,vcr,vcr,permissions,clear,exec,,Clear all repository permissions
+vcr.yaml,/v1/vcr/repository/{idOrName}/tags,listRepositoryTags,list_repository_tags,get,,vcr,vcr,tags,list,select,$.tags,List repository tags
+vcr.yaml,/v1/vcr/repository/{idOrName}/tags/{tag},getRepositoryTag,get_repository_tag,get,,vcr,vcr,tags,get,select,$.tag,Get a repository tag
+vcr.yaml,/v1/vcr/repository/{idOrName}/images/{imageIdOrDigest},getRepositoryImage,get_repository_image,get,,vcr,vcr,images,get,select,$.image,Get a repository image
+vcr.yaml,/v1/vcr/repository/{idOrName}/images/{imageId},deleteRepositoryImage,delete_repository_image,delete,,vcr,vcr,images,delete,delete,,Delete a repository image
+vcr.yaml,/v2/,getRoot,get_root,get,,vcr,vcr,skip_this_resource,,,,Check registry API version support
+vcr.yaml,/v2/{teamSlug}/{projectSlug}/{repositoryName}/blobs/{digest},getByTeamSlugByProjectSlugByRepositoryNameBlobsByDigest,get_by_team_slug_by_project_slug_by_repository_name_blobs_by_digest,get,,vcr,vcr,skip_this_resource,,,,Download a blob
+vcr.yaml,/v2/{teamSlug}/{projectSlug}/{repositoryName}/blobs/{digest},deleteByTeamSlugByProjectSlugByRepositoryNameBlobsByDigest,delete_by_team_slug_by_project_slug_by_repository_name_blobs_by_digest,delete,,vcr,vcr,skip_this_resource,,,,Delete a blob
+vcr.yaml,/v2/{teamSlug}/{projectSlug}/{repositoryName}/blobs/uploads/{uuid},getByTeamSlugByProjectSlugByRepositoryNameBlobsUploadsByUuid,get_by_team_slug_by_project_slug_by_repository_name_blobs_uploads_by_uuid,get,,vcr,vcr,skip_this_resource,,,,Get blob upload status
+vcr.yaml,/v2/{teamSlug}/{projectSlug}/{repositoryName}/blobs/uploads/{uuid},deleteByTeamSlugByProjectSlugByRepositoryNameBlobsUploadsByUuid,delete_by_team_slug_by_project_slug_by_repository_name_blobs_uploads_by_uuid,delete,,vcr,vcr,skip_this_resource,,,,Cancel a blob upload
+vcr.yaml,/v2/{teamSlug}/{projectSlug}/{repositoryName}/blobs/uploads/{uuid},updateByTeamSlugByProjectSlugByRepositoryNameBlobsUploadsByUuid,update_by_team_slug_by_project_slug_by_repository_name_blobs_uploads_by_uuid,patch,,vcr,vcr,skip_this_resource,,,,Upload a blob chunk
+vcr.yaml,/v2/{teamSlug}/{projectSlug}/{repositoryName}/blobs/uploads/{uuid},replaceByTeamSlugByProjectSlugByRepositoryNameBlobsUploadsByUuid,replace_by_team_slug_by_project_slug_by_repository_name_blobs_uploads_by_uuid,put,,vcr,vcr,skip_this_resource,,,,Complete a blob upload
+vcr.yaml,/v2/{teamSlug}/{projectSlug}/{repositoryName}/blobs/uploads/,createByTeamSlugByProjectSlugByRepositoryNameBlobsUploads,create_by_team_slug_by_project_slug_by_repository_name_blobs_uploads,post,,vcr,vcr,skip_this_resource,,,,Start a blob upload
+vcr.yaml,/v2/{teamSlug}/{projectSlug}/{repositoryName}/manifests/{reference},replaceByTeamSlugByProjectSlugByRepositoryNameManifestsByReference,replace_by_team_slug_by_project_slug_by_repository_name_manifests_by_reference,put,,vcr,vcr,skip_this_resource,,,,Push an image manifest
+vcr.yaml,/v2/{teamSlug}/{projectSlug}/{repositoryName}/manifests/{reference},getByTeamSlugByProjectSlugByRepositoryNameManifestsByReference,get_by_team_slug_by_project_slug_by_repository_name_manifests_by_reference,get,,vcr,vcr,skip_this_resource,,,,Pull an image manifest
+vcr.yaml,/v2/{teamSlug}/{projectSlug}/{repositoryName}/manifests/{reference},deleteByTeamSlugByProjectSlugByRepositoryNameManifestsByReference,delete_by_team_slug_by_project_slug_by_repository_name_manifests_by_reference,delete,,vcr,vcr,skip_this_resource,,,,Delete an image manifest
+vcr.yaml,/v2/{teamSlug}/{projectSlug}/{repositoryName}/tags/list,getByTeamSlugByProjectSlugByRepositoryNameTagsList,get_by_team_slug_by_project_slug_by_repository_name_tags_list,get,,vcr,vcr,skip_this_resource,,,,List image tags
+webhooks.yaml,/v1/webhooks,createWebhook,create_webhook,post,,webhooks,webhooks,webhooks,create,insert,,Creates a webhook
+webhooks.yaml,/v1/webhooks,getWebhooks,get_webhooks,get,,webhooks,webhooks,webhooks,list,select,,Get a list of webhooks
+webhooks.yaml,/v1/webhooks/{id},getWebhook,get_webhook,get,,webhooks,webhooks,webhooks,get,select,,Get a webhook
+webhooks.yaml,/v1/webhooks/{id},deleteWebhook,delete_webhook,delete,,webhooks,webhooks,webhooks,delete,delete,,Deletes a webhook
+web_analytics.yaml,/speed-insights/toggle,createSpeedInsightsToggle,create_speed_insights_toggle,post,,,,speed_insights,toggle,exec,,
+web_analytics.yaml,/web/insights/toggle,createWebInsightsToggle,create_web_insights_toggle,post,,,,web_insights,toggle,exec,,
+web_analytics.yaml,/v1/query/web-analytics/visits/aggregate,aggregatePageviews,aggregate_pageviews,get,,web-analytics,web_analytics,pageview_aggregates,list,select,$.data,Aggregates page views
+web_analytics.yaml,/v1/query/web-analytics/events/aggregate,aggregateEvents,aggregate_events,get,,web-analytics,web_analytics,event_aggregates,list,select,$.data,Aggregates custom events
+web_analytics.yaml,/v1/query/web-analytics/visits/count,countPageviews,count_pageviews,get,,web-analytics,web_analytics,pageview_counts,list,select,$.data,Counts page views
+web_analytics.yaml,/v1/query/web-analytics/events/count,countEvents,count_events,get,,web-analytics,web_analytics,event_counts,list,select,$.data,Counts custom events

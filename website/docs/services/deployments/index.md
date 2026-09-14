@@ -18,18 +18,19 @@ deployments service documentation.
 
 :::info[Service Summary]
 
-total resources: __4__  
+total resources: __5__  
 
 :::
 
 ## Resources
 <div class="row">
 <div class="providerDocColumn">
-<a href="/services/deployments/builds/">builds</a><br />
+<a href="/services/deployments/deployment_events/">deployment_events</a><br />
+<a href="/services/deployments/deployment_files/">deployment_files</a><br />
 <a href="/services/deployments/deployments/">deployments</a>
 </div>
 <div class="providerDocColumn">
-<a href="/services/deployments/events/">events</a><br />
-<a href="/services/deployments/files/">files</a>
+<a href="/services/deployments/files/">files</a><br />
+<a href="/services/deployments/runtime_logs/">runtime_logs</a>
 </div>
 </div>

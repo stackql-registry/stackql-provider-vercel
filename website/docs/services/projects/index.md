@@ -18,7 +18,7 @@ projects service documentation.
 
 :::info[Service Summary]
 
-total resources: __3__  
+total resources: __6__  
 
 :::
 
@@ -26,9 +26,12 @@ total resources: __3__
 <div class="row">
 <div class="providerDocColumn">
 <a href="/services/projects/domains/">domains</a><br />
-<a href="/services/projects/env/">env</a>
+<a href="/services/projects/env_vars/">env_vars</a><br />
+<a href="/services/projects/projects/">projects</a>
 </div>
 <div class="providerDocColumn">
-<a href="/services/projects/projects/">projects</a>
+<a href="/services/projects/promote_aliases/">promote_aliases</a><br />
+<a href="/services/projects/traces/">traces</a><br />
+<a href="/services/projects/transfer_requests/">transfer_requests</a>
 </div>
 </div>

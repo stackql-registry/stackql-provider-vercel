@@ -18,16 +18,16 @@ authentication service documentation.
 
 :::info[Service Summary]
 
-total resources: __1__  
+total resources: __2__  
 
 :::
 
 ## Resources
 <div class="row">
 <div class="providerDocColumn">
-<a href="/services/authentication/user_tokens/">user_tokens</a>
+<a href="/services/authentication/api_keys/">api_keys</a>
 </div>
 <div class="providerDocColumn">
-
+<a href="/services/authentication/tokens/">tokens</a>
 </div>
 </div>

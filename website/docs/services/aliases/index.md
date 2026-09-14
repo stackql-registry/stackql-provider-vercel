@@ -28,6 +28,6 @@ total resources: __2__
 <a href="/services/aliases/aliases/">aliases</a>
 </div>
 <div class="providerDocColumn">
-<a href="/services/aliases/deployments/">deployments</a>
+<a href="/services/aliases/deployment_aliases/">deployment_aliases</a>
 </div>
 </div>

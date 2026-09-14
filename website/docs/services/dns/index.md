@@ -25,7 +25,7 @@ total resources: __1__
 ## Resources
 <div class="row">
 <div class="providerDocColumn">
-<a href="/services/dns/domains_records/">domains_records</a>
+<a href="/services/dns/records/">records</a>
 </div>
 <div class="providerDocColumn">
 
