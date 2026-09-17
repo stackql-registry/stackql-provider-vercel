@@ -108,7 +108,11 @@ WHERE team_id = 'team_xxxxxxxxxxxxxxxxxxxxxxxx';
 
 List operations page automatically until the last page. `LIMIT n` is pushed down as the API's `limit` parameter (capped at 100, the Vercel page size ceiling), so `SELECT ... LIMIT 20` fetches one page.
 
-## Project inventory
+## Example Queries
+
+Try the following queries using `stackql shell`, or run them from a script or CI pipeline with `stackql exec`.
+
+### Project inventory
 
 Every project in a team, with framework and the latest production deployment:
 
@@ -125,7 +129,7 @@ FROM vercel.projects.projects
 WHERE team_id = 'team_xxxxxxxxxxxxxxxxxxxxxxxx';
 ```
 
-## Deployments by state
+### Deployments by state
 
 Deployments that failed or were cancelled recently (the list method returns `uid`; the single-deployment method returns `id`):
 
@@ -146,7 +150,7 @@ WHERE id_or_url = 'dpl_xxxxxxxxxxxxxxxxxxxxxxxx'
 AND team_id = 'team_xxxxxxxxxxxxxxxxxxxxxxxx';
 ```
 
-## Environment variable audit
+### Environment variable audit
 
 Every environment variable of a project, its targets and type (values of `encrypted` and `sensitive` variables are not returned):
 
@@ -157,7 +161,7 @@ WHERE id_or_name = 'my-project'
 AND team_id = 'team_xxxxxxxxxxxxxxxxxxxxxxxx';
 ```
 
-## Domains and DNS
+### Domains and DNS
 
 Domains in the team and their verification state, then the DNS records of one of them:
 
@@ -172,7 +176,7 @@ WHERE domain = 'example.com'
 AND team_id = 'team_xxxxxxxxxxxxxxxxxxxxxxxx';
 ```
 
-## Edge Config items
+### Edge Config items
 
 ```sql
 SELECT id, slug, item_count, size_in_bytes, updated_at
@@ -185,7 +189,7 @@ WHERE edge_config_id = 'ecfg_xxxxxxxxxxxxxxxxxxxxxxxxxxxx'
 AND team_id = 'team_xxxxxxxxxxxxxxxxxxxxxxxx';
 ```
 
-## Team members and tokens
+### Team members and tokens
 
 ```sql
 SELECT uid, email, role, confirmed, created_at
@@ -196,7 +200,7 @@ SELECT id, name, type, created_at, expires_at
 FROM vercel.authentication.tokens;
 ```
 
-## Provision, mutate and tear down
+### Provision, mutate and tear down
 
 Mutations use the same SQL grammar - `INSERT` creates a resource, `UPDATE` patches it, `EXEC` invokes lifecycle methods and `DELETE` removes it. Request body fields are written as columns in snake_case; JSON values (arrays and objects) are passed as JSON text.
 
@@ -232,7 +236,7 @@ DELETE FROM vercel.projects.projects
 WHERE id_or_name = 'my-project' AND team_id = 'team_xxxxxxxxxxxxxxxxxxxxxxxx';
 ```
 
-## Deploy a static site
+### Deploy a static site
 
 A deployment is two steps: upload each file by its SHA1 digest with the `files.upload` method (the file contents go in the `value` variable and are sent as the raw request body), then create the deployment referencing the uploaded digests. A project that is not linked to a framework needs `project_settings`.
 
