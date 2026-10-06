@@ -19,6 +19,7 @@ SHELL := bash
 .DEFAULT_GOAL := help
 
 PROVIDER := vercel
+SOURCE_PROJECT ?= https://github.com/stackql-registry/stackql-provider-$(PROVIDER)
 SERVICES_DIR := provider-dev/openapi/src/$(PROVIDER)
 SERVERS := [{"url": "https://api.vercel.com"}]
 # bearer auth from VERCEL_API_TOKEN (the Terraform provider's variable);
@@ -133,7 +134,8 @@ docs: ## generate the website docs (snake_case surface), then sanitize for MDX
 	  --provider-dir ./$(SERVICES_DIR)/v00.00.00000 \
 	  --output-dir ./website \
 	  --provider-data-dir ./provider-dev/docgen/provider-data \
-	  --snake-case-aliases
+	  --snake-case-aliases \
+	  --source-project $(SOURCE_PROJECT)
 	node website/scripts/sanitize-docs.mjs
 
 website: ## build the docusaurus microsite (vendors the shared config first)
