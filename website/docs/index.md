@@ -25,6 +25,7 @@ Query, provision and operate the Vercel platform using SQL - projects, deploymen
 
 total services: __38__  
 total resources: __172__  
+source project: __[stackql-provider-vercel](https://github.com/stackql-registry/stackql-provider-vercel)__  
 
 :::
 
